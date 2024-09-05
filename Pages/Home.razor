@@ -1,0 +1,274 @@
+﻿@page "/New_Game"
+@using DemoRepo.Pages
+@using DemoRepo.Shared
+
+@inject GlobalStringListService StringListService
+@inject IJSRuntime JSRuntime
+
+
+<style>
+    .Play_Again 
+    {
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        margin: 10px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+    }
+    .Play_Again_Heading 
+    {
+        font-size: 40px;
+        align-self: center;
+        justify-self: center;
+        margin-top:10px;
+
+    }
+    .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: black;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        display: none;
+    }
+</style>
+<div class="Home_Page">
+    @if(isEnded)
+    {
+        <h1 class="Time_Elapsed_Message">Your time finished!</h1><br>
+        <h2 class="Time_Elapsed_Score">Your score was:@New_Player.Balance</h2><br>
+        <h3 class="Time_Elapsed_Instruction">Click on the button below to play again</h3>
+        <div class="Play_Again_Button">
+            <div class="Play_Again" @onclick="ReloadGame">
+                <h1 class="Play_Again_Heading">PLAY AGAIN</h1>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="Select_Buttons">
+            <Bun_Select />
+            <br>
+            <Patty_Select />
+            <br>
+            <Toppings_Select />
+            <br>
+            <Sauces_Select />
+        </div>
+        <!-- <button class="btn btn-primary" @onclick="ShowNotification">Show Notification</button> -->
+        <div id="notification" class="notification" style="display: none;">
+            @message
+        </div>
+        <Main_Page_Header />
+        <div class="Timer_Divison">
+            <CountdownTimer InitialTimeInSeconds="120" OnTimerFinished= "HandleTimerFinished" ShowResetButton = "false" />
+        </div>
+        @* <div class="burger-and-table-container"> *@
+        <div class="Cooking_Table_Division">
+            <div class="burger-container">
+                @foreach (var ingredient in StringListService.StringList)
+                {
+                    <div class="@ingredient.ToLower().Replace(" ", "-")"></div>
+                }
+            </div>
+            <Cooking_Table />
+        </div>
+        @* </div> *@
+
+        <div class="Order_Division">
+            <Order Order_List="@currentOrderList" Order_Price="@currentOrderPrice" />
+        </div>
+        <div class="Skip_Play_Buttons">
+            <Skip OnSkip="Player_Skip"/>
+            <Submit OnSubmit="CheckList"/>
+        </div>
+
+        <div class="Score_Board_Divison">
+            <Score_Board CurrentScore="New_Player.Balance"/>
+        </div>
+    }
+</div>
+
+@code
+{
+    private bool isEnded=false;
+    private string message = "Hello World!";
+    private List<string> currentOrderList = new List<string>();
+    private int currentOrderPrice = 0;
+    private int makingCost = 0;
+
+    Users New_Player= new Users();
+    private void HandleTimerFinished()
+    {
+        isEnded = true;
+        Console.WriteLine("Timer Finished");
+    }
+    private List<string> Fetch_Order_List()
+    {
+        BurgerComponents burgerComponents = new BurgerComponents();
+        return burgerComponents.Order_List;
+    }
+    private int Fetch_Order_Price()
+    {
+        Random random = new Random();
+        return random.Next(5, 200);
+    }
+
+    private void ReloadGame()
+    {
+        if (isEnded)
+        {
+            isEnded = false;
+            New_Player = new Users();
+        }
+    }
+    private void UpdateOrder()
+    {
+        currentOrderList = Fetch_Order_List();
+        currentOrderPrice = Fetch_Order_Price();
+        StateHasChanged();
+    }
+
+    private void Player_Skip()
+    {
+        New_Player.Balance -= 5;
+        StringListService.ClearList();
+        UpdateOrder();
+        StateHasChanged();
+    }
+    
+    protected override void OnInitialized()
+    {
+        StringListService.OnChange += StateHasChanged;
+        UpdateOrder();
+    }
+
+    public void Dispose()
+    {
+        StringListService.OnChange -= StateHasChanged;
+    }
+
+    private void CheckList()
+    {
+        //Compare the Elements in the two lists.
+        //If they are the same, add the price to the player's balance
+        //Calculate the making cost of the burger
+        makingCost = 0;
+
+        if (StringListService.StringList.Count == 0)
+        {
+            message = "No Order!";
+            ShowNotification();
+            return;
+        }
+    
+        foreach (var item in StringListService.StringList)
+        {
+            if(item == "Bun Bottom") makingCost += 0;
+            else if(item == "Plain Bun") makingCost += 10;
+            else if(item == "Sesame Bun") makingCost += 12;
+            else if(item == "Garlic Bun") makingCost += 20;
+            else if(item == "Parmesan Bun") makingCost += 25;
+            else if(item == "Veggie Patty") makingCost += 15;
+            else if(item == "Chicken Patty") makingCost += 20;
+            else if(item == "Fish Patty") makingCost += 25;
+            else if(item == "Portobello Mushroom Patty") makingCost += 18;
+            else if(item == "Avocado") makingCost += 8;
+            else if(item == "Bacon") makingCost += 7;
+            else if(item == "Cheese") makingCost += 5;
+            else if(item == "Egg") makingCost += 4;
+            else if(item == "Jalapenos") makingCost += 6;
+            else if(item == "Lettuce") makingCost += 3;
+            else if(item == "Onion") makingCost += 4;
+            else if(item == "Pickles") makingCost += 2;
+            else if(item == "Tomato") makingCost += 5;
+            else if(item == "Aioli") makingCost += 5;
+            else if(item == "BBQ Sauce") makingCost += 5;
+            else if(item == "Hot Sauce") makingCost += 5;
+            else if(item == "Ketchup") makingCost += 5;
+            else if(item == "Mayonnaise") makingCost += 5;
+            else if(item == "Mustard") makingCost += 5;
+            else if(item == "Ranch") makingCost += 5;
+            else makingCost += 0;
+        }
+        New_Player.Balance -= makingCost;
+        bool truth = true;
+        foreach (var item in currentOrderList)
+        {
+            if (StringListService.StringList.Contains(item))
+            {
+                Console.WriteLine("You passed the order");
+                Console.WriteLine(item);
+                continue;
+            }
+            else
+            {
+                Console.WriteLine("You failed the order");
+                Console.WriteLine(item);
+                truth = false;
+                break;
+            }
+        }
+        if(currentOrderList.Count + 1 != StringListService.StringList.Count)
+        {
+            truth = false;
+        }
+        //Check the first element of the list
+        if ("Bun Bottom"!= StringListService.StringList[0])
+        {
+            New_Player.Balance -= 10;
+            truth = false;
+        }
+        if (truth)
+        {
+            message = "Perfect Order!";
+            ShowNotification();
+            New_Player.Balance += currentOrderPrice;
+        }
+        else
+        {
+            message = "Wrong Order!";
+            ShowNotification();
+        }
+        
+        StringListService.ClearList();
+        UpdateOrder();
+        StateHasChanged();
+    }
+    private void Clear_List()
+    {
+        StringListService.ClearList();
+    }
+    private async Task ShowNotification()
+    {
+        await JSRuntime.InvokeVoidAsync("showNotification");
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("initializeNotification");
+        }
+    }
+}
+
+<script>
+    function initializeNotification() 
+    {
+        window.showNotification = function () 
+        {
+            var notification = document.getElementById('notification');
+            notification.style.display = 'block';
+            setTimeout(function () 
+            {
+                notification.style.display = 'none';
+            }, 5000);
+        }
+    }
+</script>
