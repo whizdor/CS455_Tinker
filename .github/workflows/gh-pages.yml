@@ -32,15 +32,15 @@ jobs:
 
     # Change base tag in index.html to point to the correct subdirectory (StackNServe)
     - name: Change base-tag in index.html
-      run: sed -i 's/<base href="\/" \/>/<base href="\/CS455_Tinker\/" \/>/g' release/wwwroot/index.html
+      run: sed -i 's/<base href="\/" \/>/<base href="\/CS455_Tinker\/" \/>/g' src/StackNServe/release/wwwroot/index.html
     
     # Copy index.html to 404.html for GitHub Pages fallback routing
     - name: Copy index.html to 404.html
-      run: cp release/wwwroot/index.html release/wwwroot/404.html
+      run: cp src/StackNServe/release/wwwroot/index.html src/StackNServe/release/wwwroot/404.html
 
     # Add a .nojekyll file to prevent Jekyll processing
     - name: Add .nojekyll file
-      run: touch release/wwwroot/.nojekyll
+      run: touch src/StackNServe/release/wwwroot/.nojekyll
 
     # Deploy the wwwroot folder to the gh-pages branch
     - name: Deploy to GitHub Pages
