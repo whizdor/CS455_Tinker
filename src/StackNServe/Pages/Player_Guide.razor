@@ -1,0 +1,80 @@
+@page "/"
+@using StackNServe.Shared
+<style>
+    .Player_Guide
+    {
+        font-family: 'Poppins', sans-serif;
+    }
+    .Player_Guide_Heading
+    {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #ff7f50;
+    }
+    .Player_Guide_Rules
+    {
+        background-color: bisque;
+        border: 1px solid black;
+        padding: 10px;
+    }
+    .Player_Guide_Controls
+    {
+        background-color: bisque;
+        border: 1px solid black;
+        padding: 10px;
+    }
+</style>
+
+<div class="Player_Guide">
+    <h1 class="Player_Guide_Heading">Player Guide</h1>
+    <p class="Player_Guide_Greeting">
+        Welcome to Stack-N-Serve! This is a game where you can play as a chef and serve customers by making burgers. You can
+        earn money by making burgers and serving them to customers. You can also lose money by skipping customers or making
+        the wrong burger. The goal of the game is to make as much money as possible before the timer runs out.
+    </p>
+    <div class="Player_Guide_Rules">
+        <p>Following are the rules of the game:
+            <li>Customers will come to your restaurant and order a burger. They will also tell you how much they are willing to pay
+                for the burger.</li>
+            <li>You can make the burger by stacking the ingredients in the correct order, i.e. with a bun at the top and the bottom
+                of the stack, and the correct ingredients in the middle. Non-bun ingredients can be in any order.</li>
+            <li>You have to make as many burgers as possible before the timer runs out.</li>
+            <li>If you skip an order, you will lose Rs.10. </li>
+            <li>If you make the wrong burger, you will lose the cost of ingredients. </li>
+            <li>If you make the right burger and serve it to the customer, you will earn money. However, there's a catch! The ingredients cost money, so you have to make sure that you are making a profit. Sometimes it might be a better option to skip an order. Choose wisely!</li>
+            <li>Your initial balance in the game is Rs. 100.</li>
+            <li>The time allotted to make the burgers is 120 seconds.</li>
+        </p>
+    </div>
+    
+    <br>
+    <p class="Player_Guide_Intent">
+        The intent of the game is to test your memory and speed. 
+        <br>You need to remember where to find the ingredients asked for, and their prices.
+        <br> You also need to be quick in making the burgers and serving them to the customers.
+        <br>You need to calculate if the current order is profitable or not.
+        <br>There is no option to remove any wrong ingredients you may have stacked. So, be careful while stacking the ingredients.
+    </p>
+
+    <br>
+    <div class="Player_Guide_Controls">
+        <p>
+            Following are the controls of the game:
+            <li>Use the New Game button to start a new game.</li>
+            <li>Use the Player Guide button to view the player guide.</li>
+            <li>Use the Select buttons present at the left side of the playing area to select the ingredients.</li>
+            <li>Hover over the ingredients to view their price.</li>
+            <li>Use the 'Skip' button to skip a customer.</li>
+            <li>Use the 'Submit' button to serve the burger to the customer.</li>
+        </p>
+    </div>
+
+    <br>
+    <div class="Play_Game_Button">
+        <Play_Again />
+    </div>
+
+</div>
+
+@code
+{}

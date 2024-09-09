@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/StackNServe.csproj": {}
+    "/Users/kushagra/Desktop/CS455 ASSIGNMENT FOLDER/StackNServe/StackNServe.csproj": {}
   },
   "projects": {
-    "/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/StackNServe.csproj": {
+    "/Users/kushagra/Desktop/CS455 ASSIGNMENT FOLDER/StackNServe/StackNServe.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/StackNServe.csproj",
+        "projectUniqueName": "/Users/kushagra/Desktop/CS455 ASSIGNMENT FOLDER/StackNServe/StackNServe.csproj",
         "projectName": "StackNServe",
-        "projectPath": "/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/StackNServe.csproj",
+        "projectPath": "/Users/kushagra/Desktop/CS455 ASSIGNMENT FOLDER/StackNServe/StackNServe.csproj",
         "packagesPath": "/Users/kushagra/.nuget/packages/",
-        "outputPath": "/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/obj/",
+        "outputPath": "/Users/kushagra/Desktop/CS455 ASSIGNMENT FOLDER/StackNServe/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/kushagra/.nuget/NuGet/NuGet.Config"
@@ -43,6 +43,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Components.Web": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
             "Microsoft.AspNetCore.Components.WebAssembly": {
               "target": "Package",
               "version": "[8.0.7, )"
