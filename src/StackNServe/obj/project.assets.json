@@ -2065,11 +2065,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/kushagra/Desktop/CS455 ASSIGNMENT FOLDER/StackNServe/StackNServe.csproj",
+      "projectUniqueName": "/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/StackNServe.csproj",
       "projectName": "StackNServe",
-      "projectPath": "/Users/kushagra/Desktop/CS455 ASSIGNMENT FOLDER/StackNServe/StackNServe.csproj",
+      "projectPath": "/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/StackNServe.csproj",
       "packagesPath": "/Users/kushagra/.nuget/packages/",
-      "outputPath": "/Users/kushagra/Desktop/CS455 ASSIGNMENT FOLDER/StackNServe/obj/",
+      "outputPath": "/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/kushagra/.nuget/NuGet/NuGet.Config"
