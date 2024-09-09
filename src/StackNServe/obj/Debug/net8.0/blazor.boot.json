@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "StackNServe",
   "resources": {
-    "hash": "sha256-6Va7lEvaCMEj6M+GleHhUfHSL3nvIQgztNwyDVIzM2s=",
+    "hash": "sha256-MZxBQFDcnOlmlyxX1mwcCjNDHbTC+Qi0qpfsgGVhejQ=",
     "jsModuleNative": {
       "dotnet.native.8.0.7.z0qmlxdeha.js": "sha256-tFsxPBbhkdn6GKNBKvCRLzrfAHdyM86odYTe0MtrwMk="
     },
@@ -208,10 +208,10 @@
       "mscorlib.wasm": "sha256-fLbZiSHBNdpHoh4EgRqMaNP5NQyIK5TEj6AXFLqo8m8=",
       "netstandard.wasm": "sha256-d4xbAE8qrKq5euUoZHPO+jkYPjlCYBzUew45MKsYKic=",
       "System.Private.CoreLib.wasm": "sha256-8yi6NcX1lkNQgV4WKjnMBYIZyKh4P+OXnXVQmgxGZD4=",
-      "StackNServe.wasm": "sha256-qBCCEIvy5UrBkxTmaJ8cGRA4u8syCLOKkIjHGAU7NN4="
+      "StackNServe.wasm": "sha256-VwE3zR4TP2rCJ19jO6zXXv6P8mQ1EoHWDsyOepmZuUY="
     },
     "pdb": {
-      "StackNServe.pdb": "sha256-QWae/lipJ8xMcW8wdohDLdeuSRlkmTY5JC175OktM6E="
+      "StackNServe.pdb": "sha256-dyMxNC47k/V5VnvLkfjCLYiPUrezkRk/VfReqSVGmig="
     }
   },
   "cacheBootResources": true,
