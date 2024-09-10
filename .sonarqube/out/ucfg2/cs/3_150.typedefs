@@ -1,0 +1,13 @@
+è
+StackNServe.Layout.NavMenu-Microsoft.AspNetCore.Components.ComponentBaseobject∑
+LBuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)gStackNServe.Layout.NavMenu.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)1
+	NewGame()$StackNServe.Layout.NavMenu.NewGame()A
+LoadPlayerGuide(),StackNServe.Layout.NavMenu.LoadPlayerGuide()=
+ToggleNavMenu()*StackNServe.Layout.NavMenu.ToggleNavMenu()1
+	NavMenu()$StackNServe.Layout.NavMenu.NavMenu()E
+NavMenuCssClass.get.StackNServe.Layout.NavMenu.NavMenuCssClass.getE
+NavMenuCssClass.set.StackNServe.Layout.NavMenu.NavMenuCssClass.setI
+NavigationManager.get0StackNServe.Layout.NavMenu.NavigationManager.getI
+NavigationManager.set0StackNServe.Layout.NavMenu.NavigationManager.set9
+JSRuntime.get(StackNServe.Layout.NavMenu.JSRuntime.get9
+JSRuntime.set(StackNServe.Layout.NavMenu.JSRuntime.set

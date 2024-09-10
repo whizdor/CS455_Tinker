@@ -1,0 +1,11 @@
+©
+,StackNServe.Services.GlobalStringListServiceobjectI
+OnChange.add9StackNServe.Services.GlobalStringListService.OnChange.addO
+OnChange.remove<StackNServe.Services.GlobalStringListService.OnChange.removeS
+AddString(string)>StackNServe.Services.GlobalStringListService.AddString(string)Y
+RemoveString(string)AStackNServe.Services.GlobalStringListService.RemoveString(string)G
+ClearList()8StackNServe.Services.GlobalStringListService.ClearList()Y
+NotifyStateChanged()AStackNServe.Services.GlobalStringListService.NotifyStateChanged()c
+GlobalStringListService()FStackNServe.Services.GlobalStringListService.GlobalStringListService()M
+StringList.get;StackNServe.Services.GlobalStringListService.StringList.getM
+StringList.set;StackNServe.Services.GlobalStringListService.StringList.set

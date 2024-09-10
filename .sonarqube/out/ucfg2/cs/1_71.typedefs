@@ -1,0 +1,14 @@
+¿
++StackNServe.Services.SelectionButtonServiceobjectH
+OnChange.add8StackNServe.Services.SelectionButtonService.OnChange.addN
+OnChange.remove;StackNServe.Services.SelectionButtonService.OnChange.removeX
+NotifyStateChanged()@StackNServe.Services.SelectionButtonService.NotifyStateChanged()`
+SelectionButtonService()DStackNServe.Services.SelectionButtonService.SelectionButtonService()P
+BunSelectVar.get<StackNServe.Services.SelectionButtonService.BunSelectVar.getP
+BunSelectVar.set<StackNServe.Services.SelectionButtonService.BunSelectVar.setT
+PattySelectVar.get>StackNServe.Services.SelectionButtonService.PattySelectVar.getT
+PattySelectVar.set>StackNServe.Services.SelectionButtonService.PattySelectVar.setV
+SaucesSelectVar.get?StackNServe.Services.SelectionButtonService.SaucesSelectVar.getV
+SaucesSelectVar.set?StackNServe.Services.SelectionButtonService.SaucesSelectVar.setX
+ToppingSelectVar.get@StackNServe.Services.SelectionButtonService.ToppingSelectVar.getX
+ToppingSelectVar.set@StackNServe.Services.SelectionButtonService.ToppingSelectVar.set

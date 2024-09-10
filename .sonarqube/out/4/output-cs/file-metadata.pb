@@ -1,0 +1,11 @@
+†
+{/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/tests/StackNServe.Tests/obj/Debug/net8.0/StackNServe.Tests.AssemblyInfo.csutf-8”
+ˆ/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/tests/StackNServe.Tests/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.csutf-8ˆ
+}/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/tests/StackNServe.Tests/obj/Debug/net8.0/StackNServe.Tests.GlobalUsings.g.csutf-8~
+s/Users/kushagra/.nuget/packages/microsoft.net.test.sdk/17.8.0/build/netcoreapp3.1/Microsoft.NET.Test.Sdk.Program.csutf-8m
+d/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/tests/StackNServe.Tests/Models.Tests/Users.Tests.csutf-8p
+g/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/tests/StackNServe.Tests/Models.Tests/Toppings.Tests.csutf-8n
+e/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/tests/StackNServe.Tests/Models.Tests/Sauces.Tests.csutf-8m
+d/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/tests/StackNServe.Tests/Models.Tests/Patty.Tests.csutf-8k
+b/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/tests/StackNServe.Tests/Models.Tests/Bun.Tests.csutf-8b
+Y/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/tests/StackNServe.Tests/GlobalImports.csutf-8

@@ -1,0 +1,8 @@
+¦
+StackNServe.Shared.Order-Microsoft.AspNetCore.Components.ComponentBaseobjectµ
+LBuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)eStackNServe.Shared.Order.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)+
+Order() StackNServe.Shared.Order.Order()9
+Order_List.get'StackNServe.Shared.Order.Order_List.get9
+Order_List.set'StackNServe.Shared.Order.Order_List.set;
+Order_Price.get(StackNServe.Shared.Order.Order_Price.get;
+Order_Price.set(StackNServe.Shared.Order.Order_Price.set

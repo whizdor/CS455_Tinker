@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Skip.razor</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+&lt;style&gt;
+    
+    .Skip
+    {
+        background-color:#FFCBA2;
+        width:150px;
+        border-radius: 25px;
+        border: 1px solid #E38282;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+    .Skip_Heading
+    {
+        font-family: &#39;Poppins&#39;, sans-serif;
+        font-size: 1.5rem;
+        margin-top: 10px;
+    }
+&lt;/style&gt;
+&lt;div class=&quot;Skip&quot; @onclick=&quot;InvokeOnSkip&quot;&gt;
+    &lt;h1 class=&quot;Skip_Heading&quot;&gt;Skip&lt;/h1&gt;
+&lt;/div&gt;
+
+@code
+{
+    [Parameter]
+    public EventCallback OnSkip { get; set; }
+    private async Task InvokeOnSkip()
+    {
+        await OnSkip.InvokeAsync();
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[27,35,27,39,0],[27,40,27,44,0],[29,5,29,6,0],[30,9,30,36,0],[31,5,31,6,0]]);
+    </script>
+  </body>
+</html>

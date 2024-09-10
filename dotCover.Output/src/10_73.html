@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/tests/StackNServe.Tests/Models.Tests/Patty.Tests.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using Xunit;
+using StackNServe.Models;
+
+namespace StackNServe.Tests;
+
+public class ChickenPattyTests
+{
+    [Fact]
+    public void ChickenPatty_IsDefined_True()
+    {
+        // Arrange &amp; Act
+        var chickenPatty = new Chicken_Patty();
+
+        // Assert
+        Assert.True(chickenPatty != null);
+    }   
+    [Fact]
+    public void ChickenPatty_Ctor_SetsProperties()
+    {
+        // Arrange &amp; Act
+        var chickenPatty = new Chicken_Patty();
+
+        // Assert
+        Assert.Equal(1, chickenPatty.Id);
+        Assert.Equal(&quot;Chicken Patty&quot;, chickenPatty.Name);
+        Assert.Equal(20.00m, chickenPatty.Price);
+        Assert.Equal(&quot;../wwwroot/images/Patty/Chicken_Patty.png&quot;, chickenPatty.ImageUrl);
+        Assert.Equal(&quot;A chicken patty is a type of breaded chicken cutlet. They are usually served with lettuce, tomato, and mayonnaise.&quot;, chickenPatty.Description);
+    }
+}
+
+public class VeggiePattyTests
+{
+    [Fact]
+    public void VeggiePatty_IsDefined_True()
+    {
+        // Arrange &amp; Act
+        var veggiePatty = new Veggie_Patty();
+
+        // Assert
+        Assert.True(veggiePatty != null);
+    }
+    [Fact]
+    public void VeggiePatty_Ctor_SetsProperties()
+    {
+        // Arrange &amp; Act
+        var veggiePatty = new Veggie_Patty();
+
+        // Assert
+        Assert.Equal(2, veggiePatty.Id);
+        Assert.Equal(&quot;Veggie Patty&quot;, veggiePatty.Name);
+        Assert.Equal(15.00m, veggiePatty.Price);
+        Assert.Equal(&quot;../wwwroot/images/Patty/Veggie_Patty.png&quot;, veggiePatty.ImageUrl);
+        Assert.Equal(&quot;A veggie patty is as nutritious as it is delicious. They can be made from a variety of vegetables, grains, and legumes.&quot;, veggiePatty.Description);
+    }
+}
+
+public class FishPattyTests
+{
+    [Fact]
+    public void FishPatty_IsDefined_True()
+    {
+        // Arrange &amp; Act
+        var fishPatty = new Fish_Patty();
+
+        // Assert
+        Assert.True(fishPatty != null);
+    }
+    [Fact]
+    public void FishPatty_Ctor_SetsProperties()
+    {
+        // Arrange &amp; Act
+        var fishPatty = new Fish_Patty();
+
+        // Assert
+        Assert.Equal(3, fishPatty.Id);
+        Assert.Equal(&quot;Fish Patty&quot;, fishPatty.Name);
+        Assert.Equal(25.00m, fishPatty.Price);
+        Assert.Equal(&quot;../wwwroot/images/Patty/Fish_Patty.png&quot;, fishPatty.ImageUrl);
+        Assert.Equal(&quot;A fish patty is a unique blend of fish, spices, and herbs. They are usually served with tartar sauce and a slice of lemon.&quot;, fishPatty.Description);
+    }
+}
+
+public class PortobelloMushrromPattyTests
+{
+    [Fact]
+    public void PortobelloMushroomPatty_IsDefined_True()
+    {
+        // Arrange &amp; Act
+        var portobelloMushroomPatty = new Portobello_Mushroom_Patty();
+
+        // Assert
+        Assert.True(portobelloMushroomPatty != null);
+    }
+    [Fact]
+    public void PortobelloMushroomPatty_Ctor_SetsProperties()
+    {
+        // Arrange &amp; Act
+        var portobelloMushroomPatty = new Portobello_Mushroom_Patty();
+
+        // Assert
+        Assert.Equal(4, portobelloMushroomPatty.Id);
+        Assert.Equal(&quot;Portobello Mushroom Patty&quot;, portobelloMushroomPatty.Name);
+        Assert.Equal(18.00m, portobelloMushroomPatty.Price);
+        Assert.Equal(&quot;../wwwroot/images/Patty/Portobello_Mushroom_Patty.png&quot;, portobelloMushroomPatty.ImageUrl);
+        Assert.Equal(&quot;A portobello mushroom burger is a vegetarian burger made from a large, mature portobello mushroom. They are usually marinated and grilled to perfection.&quot;, portobelloMushroomPatty.Description);
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[10,5,10,6,1],[12,9,12,48,1],[15,9,15,43,1],[16,5,16,6,1],[19,5,19,6,1],[21,9,21,48,1],[24,9,24,42,1],[25,9,25,58,1],[26,9,26,50,1],[27,9,27,90,1],[28,9,28,166,1],[29,5,29,6,1],[36,5,36,6,1],[38,9,38,46,1],[41,9,41,42,1],[42,5,42,6,1],[45,5,45,6,1],[47,9,47,46,1],[50,9,50,41,1],[51,9,51,56,1],[52,9,52,49,1],[53,9,53,88,1],[54,9,54,170,1],[55,5,55,6,1],[62,5,62,6,1],[64,9,64,42,1],[67,9,67,40,1],[68,5,68,6,1],[71,5,71,6,1],[73,9,73,42,1],[76,9,76,39,1],[77,9,77,52,1],[78,9,78,47,1],[79,9,79,84,1],[80,9,80,171,1],[81,5,81,6,1],[88,5,88,6,1],[90,9,90,71,1],[93,9,93,54,1],[94,5,94,6,1],[97,5,97,6,1],[99,9,99,71,1],[102,9,102,53,1],[103,9,103,81,1],[104,9,104,61,1],[105,9,105,113,1],[106,9,106,215,1],[107,5,107,6,1]]);
+    </script>
+  </body>
+</html>

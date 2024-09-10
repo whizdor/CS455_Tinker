@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Services/BurgerBuilderServices.razor.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+
+namespace StackNServe.Services
+{
+    public class BurgerComponent
+    {
+        public string Name { get; set; }
+        public string Color { get; set; }
+    }
+
+    public class BurgerService
+    {
+        private List&lt;BurgerComponent&gt; _burgerStack = new List&lt;BurgerComponent&gt;();
+        public event Action OnBurgerChanged;
+
+        public IReadOnlyList&lt;BurgerComponent&gt; BurgerStack =&gt; _burgerStack.AsReadOnly();
+
+        public void AddComponent(BurgerComponent component)
+        {
+            _burgerStack.Add(component);
+            NotifyBurgerChanged();
+        }
+
+        public void ClearBurger()
+        {
+            _burgerStack.Clear();
+            NotifyBurgerChanged();
+        }
+
+        private void NotifyBurgerChanged() =&gt; OnBurgerChanged?.Invoke();
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[8,30,8,34,0],[8,35,8,39,0],[9,31,9,35,0],[9,36,9,40,0],[14,9,14,82,0],[17,62,17,87,0],[20,9,20,10,0],[21,13,21,41,0],[22,13,22,35,0],[23,9,23,10,0],[26,9,26,10,0],[27,13,27,34,0],[28,13,28,35,0],[29,9,29,10,0],[31,47,31,72,0]]);
+    </script>
+  </body>
+</html>

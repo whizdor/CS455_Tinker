@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Play_Again.razor</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+@page &quot;/Play_Again&quot;
+@using StackNServe.Pages
+@using StackNServe.Shared
+@inject NavigationManager NavigationManager
+&lt;style&gt;
+    .Play_Again 
+    {
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        margin: 10px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+    }
+    .Play_Again_Heading 
+    {
+        font-size: 40px;
+        align-self: center;
+        justify-self: center;
+        margin-top:10px;
+
+    }
+&lt;/style&gt;
+&lt;div class=&quot;Play_Again&quot; @onclick=&quot;InvokeOnPlayAgain&quot;&gt;
+    &lt;h1 class=&quot;Play_Again_Heading&quot;&gt;PLAY&lt;/h1&gt;
+&lt;/div&gt;
+@code
+{
+    [Parameter]
+    public EventCallback OnPlayAgain { get; set; }
+    private void InvokeOnPlayAgain()
+    {
+        NavigationManager.NavigateTo(&quot;New_Game&quot;);
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[32,40,32,44,0],[32,45,32,49,0],[34,5,34,6,0],[35,9,35,50,0],[36,5,36,6,0]]);
+    </script>
+  </body>
+</html>

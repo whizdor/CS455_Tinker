@@ -1,0 +1,9 @@
+Ù
++StackNServe.Shared.Sauces_Select.SaucesInfoobjectv
+#SaucesInfo(string, string, decimal)OStackNServe.Shared.Sauces_Select.SaucesInfo.SaucesInfo(string, string, decimal)@
+Name.get4StackNServe.Shared.Sauces_Select.SaucesInfo.Name.get@
+Name.set4StackNServe.Shared.Sauces_Select.SaucesInfo.Name.setN
+Description.get;StackNServe.Shared.Sauces_Select.SaucesInfo.Description.getN
+Description.set;StackNServe.Shared.Sauces_Select.SaucesInfo.Description.setB
+	Price.get5StackNServe.Shared.Sauces_Select.SaucesInfo.Price.getB
+	Price.set5StackNServe.Shared.Sauces_Select.SaucesInfo.Price.set

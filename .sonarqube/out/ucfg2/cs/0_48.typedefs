@@ -1,0 +1,9 @@
+¹
+StackNServe.Shared.Play_Again-Microsoft.AspNetCore.Components.ComponentBaseobjectº
+LBuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)jStackNServe.Shared.Play_Again.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)H
+InvokeOnPlayAgain()1StackNServe.Shared.Play_Again.InvokeOnPlayAgain():
+Play_Again()*StackNServe.Shared.Play_Again.Play_Again()@
+OnPlayAgain.get-StackNServe.Shared.Play_Again.OnPlayAgain.get@
+OnPlayAgain.set-StackNServe.Shared.Play_Again.OnPlayAgain.setL
+NavigationManager.get3StackNServe.Shared.Play_Again.NavigationManager.getL
+NavigationManager.set3StackNServe.Shared.Play_Again.NavigationManager.set

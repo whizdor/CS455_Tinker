@@ -1,0 +1,13 @@
+…
+StackNServe.Models.Plain_Bunobject7
+Plain_Bun()(StackNServe.Models.Plain_Bun.Plain_Bun()-
+Id.get#StackNServe.Models.Plain_Bun.Id.get-
+Id.set#StackNServe.Models.Plain_Bun.Id.set1
+Name.get%StackNServe.Models.Plain_Bun.Name.get1
+Name.set%StackNServe.Models.Plain_Bun.Name.set3
+	Price.get&StackNServe.Models.Plain_Bun.Price.get3
+	Price.set&StackNServe.Models.Plain_Bun.Price.set9
+ImageUrl.get)StackNServe.Models.Plain_Bun.ImageUrl.get9
+ImageUrl.set)StackNServe.Models.Plain_Bun.ImageUrl.set?
+Description.get,StackNServe.Models.Plain_Bun.Description.get?
+Description.set,StackNServe.Models.Plain_Bun.Description.set

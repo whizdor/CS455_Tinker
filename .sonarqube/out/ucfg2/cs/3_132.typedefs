@@ -1,0 +1,10 @@
+É
+"StackNServe.Services.BurgerServiceobjectM
+OnBurgerChanged.add6StackNServe.Services.BurgerService.OnBurgerChanged.addS
+OnBurgerChanged.remove9StackNServe.Services.BurgerService.OnBurgerChanged.remove‹
+2AddComponent(StackNServe.Services.BurgerComponent)UStackNServe.Services.BurgerService.AddComponent(StackNServe.Services.BurgerComponent)A
+ClearBurger()0StackNServe.Services.BurgerService.ClearBurger()Q
+NotifyBurgerChanged()8StackNServe.Services.BurgerService.NotifyBurgerChanged()E
+BurgerService()2StackNServe.Services.BurgerService.BurgerService()E
+BurgerStack.get2StackNServe.Services.BurgerService.BurgerStack.getE
+BurgerStack.set2StackNServe.Services.BurgerService.BurgerStack.set
