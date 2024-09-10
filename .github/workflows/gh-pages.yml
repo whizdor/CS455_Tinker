@@ -50,7 +50,7 @@ jobs:
 
       # SonarCloud analysis begins
       - name: Begin SonarCloud Analysis
-        run: .\.sonar\scanner\dotnet-sonarscanner begin /k:"whizdor_CS455_Tinker" /o:"whizdor" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.opencover.reportsPaths="tests/StackNServe.Tests/TestResults/coverage.cobertura.xml /d:sonar.exclusions="**/dotCover.Output/** dotCover.Output.html"
+        run: .\.sonar\scanner\dotnet-sonarscanner begin /k:"whizdor_CS455_Tinker" /o:"whizdor" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.opencover.reportsPaths="tests/StackNServe.Tests/TestResults/coverage.cobertura.xml" /d:sonar.exclusions="**/dotCover.Output/**,dotCover.Output.html"
 
       # Build the solution after starting SonarCloud analysis
       - name: Build the solution
