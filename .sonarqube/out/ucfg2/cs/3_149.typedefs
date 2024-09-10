@@ -1,9 +1,0 @@
-Ý
-StackNServe.Layout.MainLayout3Microsoft.AspNetCore.Components.LayoutComponentBase-Microsoft.AspNetCore.Components.ComponentBaseobjectSystem.IAsyncDisposableº
-LBuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)jStackNServe.Layout.MainLayout.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)J
-OnInitializedAsync()2StackNServe.Layout.MainLayout.OnInitializedAsync()R
-OnAfterRenderAsync(bool)6StackNServe.Layout.MainLayout.OnAfterRenderAsync(bool)>
-DisposeAsync(),StackNServe.Layout.MainLayout.DisposeAsync():
-MainLayout()*StackNServe.Layout.MainLayout.MainLayout().
-JS.get$StackNServe.Layout.MainLayout.JS.get.
-JS.set$StackNServe.Layout.MainLayout.JS.set

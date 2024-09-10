@@ -1,7 +1,0 @@
-organization=whizdor
-projectKey=whizdor_CS455_Tinker
-serverUrl=https://sonarcloud.io
-serverVersion=8.0.0.56443
-dashboardUrl=https://sonarcloud.io/dashboard?id=whizdor_CS455_Tinker
-ceTaskId=AZHdNBcwyjpFaLMlAqAa
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZHdNBcwyjpFaLMlAqAa

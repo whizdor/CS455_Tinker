@@ -1,18 +1,0 @@
-×
-
-!StackNServe.Shared.CountdownTimer-Microsoft.AspNetCore.Components.ComponentBaseobjectSystem.IDisposable¾
-LBuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)nStackNServe.Shared.CountdownTimer.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)D
-OnInitialized()1StackNServe.Shared.CountdownTimer.OnInitialized()<
-TimerTick()-StackNServe.Shared.CountdownTimer.TimerTick()>
-ResetTimer().StackNServe.Shared.CountdownTimer.ResetTimer()d
-FormatTimeSpan(System.TimeSpan)AStackNServe.Shared.CountdownTimer.FormatTimeSpan(System.TimeSpan)8
-	Dispose()+StackNServe.Shared.CountdownTimer.Dispose()F
-CountdownTimer()2StackNServe.Shared.CountdownTimer.CountdownTimer()V
-InitialTimeInSeconds.get:StackNServe.Shared.CountdownTimer.InitialTimeInSeconds.getV
-InitialTimeInSeconds.set:StackNServe.Shared.CountdownTimer.InitialTimeInSeconds.setL
-ShowResetButton.get5StackNServe.Shared.CountdownTimer.ShowResetButton.getL
-ShowResetButton.set5StackNServe.Shared.CountdownTimer.ShowResetButton.setL
-OnTimerFinished.get5StackNServe.Shared.CountdownTimer.OnTimerFinished.getL
-OnTimerFinished.set5StackNServe.Shared.CountdownTimer.OnTimerFinished.setH
-TimeRemaining.get3StackNServe.Shared.CountdownTimer.TimeRemaining.getH
-TimeRemaining.set3StackNServe.Shared.CountdownTimer.TimeRemaining.set

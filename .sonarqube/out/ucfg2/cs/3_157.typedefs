@@ -1,7 +1,0 @@
-ë
-StackNServe.Shared.Submit-Microsoft.AspNetCore.Components.ComponentBaseobject¶
-LBuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)fStackNServe.Shared.Submit.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)>
-InvokeOnSubmit()*StackNServe.Shared.Submit.InvokeOnSubmit().
-Submit()"StackNServe.Shared.Submit.Submit()6
-OnSubmit.get&StackNServe.Shared.Submit.OnSubmit.get6
-OnSubmit.set&StackNServe.Shared.Submit.OnSubmit.set

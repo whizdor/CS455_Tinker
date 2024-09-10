@@ -1,13 +1,0 @@
-“
-StackNServe.Models.Garlic_Bunobject:
-Garlic_Bun()*StackNServe.Models.Garlic_Bun.Garlic_Bun().
-Id.get$StackNServe.Models.Garlic_Bun.Id.get.
-Id.set$StackNServe.Models.Garlic_Bun.Id.set2
-Name.get&StackNServe.Models.Garlic_Bun.Name.get2
-Name.set&StackNServe.Models.Garlic_Bun.Name.set4
-	Price.get'StackNServe.Models.Garlic_Bun.Price.get4
-	Price.set'StackNServe.Models.Garlic_Bun.Price.set:
-ImageUrl.get*StackNServe.Models.Garlic_Bun.ImageUrl.get:
-ImageUrl.set*StackNServe.Models.Garlic_Bun.ImageUrl.set@
-Description.get-StackNServe.Models.Garlic_Bun.Description.get@
-Description.set-StackNServe.Models.Garlic_Bun.Description.set

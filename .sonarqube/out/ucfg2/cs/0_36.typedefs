@@ -1,5 +1,0 @@
-ý
-StackNServe.Pages.Counter-Microsoft.AspNetCore.Components.ComponentBaseobject¶
-LBuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)fStackNServe.Pages.Counter.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)>
-IncrementCount()*StackNServe.Pages.Counter.IncrementCount()0
-	Counter()#StackNServe.Pages.Counter.Counter()

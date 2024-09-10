@@ -1,6 +1,0 @@
-Þ
-StackNServe.Shared.Score_Board-Microsoft.AspNetCore.Components.ComponentBaseobject»
-LBuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)kStackNServe.Shared.Score_Board.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)=
-Score_Board(),StackNServe.Shared.Score_Board.Score_Board()C
-CurrentScore.get/StackNServe.Shared.Score_Board.CurrentScore.getC
-CurrentScore.set/StackNServe.Shared.Score_Board.CurrentScore.set

@@ -1,18 +1,0 @@
-º
-"StackNServe.Shared.Toppings_Select-Microsoft.AspNetCore.Components.ComponentBaseobject¿
-LBuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)oStackNServe.Shared.Toppings_Select.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)O
-Display_Info(string)7StackNServe.Shared.Toppings_Select.Display_Info(string)G
-ClearHoverInfo()3StackNServe.Shared.Toppings_Select.ClearHoverInfo()?
-ToggleMenu()/StackNServe.Shared.Toppings_Select.ToggleMenu()E
-AddItem(string)2StackNServe.Shared.Toppings_Select.AddItem(string)M
-AddToBurger(string)6StackNServe.Shared.Toppings_Select.AddToBurger(string)E
-OnInitialized()2StackNServe.Shared.Toppings_Select.OnInitialized()c
-CheckToppingsSelectVar(object)AStackNServe.Shared.Toppings_Select.CheckToppingsSelectVar(object)9
-	Dispose(),StackNServe.Shared.Toppings_Select.Dispose()I
-Toppings_Select()4StackNServe.Shared.Toppings_Select.Toppings_Select()K
-OnStateChanged.get5StackNServe.Shared.Toppings_Select.OnStateChanged.getK
-OnStateChanged.set5StackNServe.Shared.Toppings_Select.OnStateChanged.set[
-SelectionButtonService.get=StackNServe.Shared.Toppings_Select.SelectionButtonService.get[
-SelectionButtonService.set=StackNServe.Shared.Toppings_Select.SelectionButtonService.setQ
-StringListService.get8StackNServe.Shared.Toppings_Select.StringListService.getQ
-StringListService.set8StackNServe.Shared.Toppings_Select.StringListService.set

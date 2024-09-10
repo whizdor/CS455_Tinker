@@ -1,13 +1,0 @@
-±
-StackNServe.Models.Eggobject%
-Egg()StackNServe.Models.Egg.Egg()'
-Id.getStackNServe.Models.Egg.Id.get'
-Id.setStackNServe.Models.Egg.Id.set+
-Name.getStackNServe.Models.Egg.Name.get+
-Name.setStackNServe.Models.Egg.Name.set-
-	Price.get StackNServe.Models.Egg.Price.get-
-	Price.set StackNServe.Models.Egg.Price.set3
-ImageUrl.get#StackNServe.Models.Egg.ImageUrl.get3
-ImageUrl.set#StackNServe.Models.Egg.ImageUrl.set9
-Description.get&StackNServe.Models.Egg.Description.get9
-Description.set&StackNServe.Models.Egg.Description.set

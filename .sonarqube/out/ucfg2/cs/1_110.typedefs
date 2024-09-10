@@ -1,18 +1,0 @@
-ê
- StackNServe.Shared.Sauces_Select-Microsoft.AspNetCore.Components.ComponentBaseobjectΩ
-LBuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)mStackNServe.Shared.Sauces_Select.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)M
-Display_Info(string)5StackNServe.Shared.Sauces_Select.Display_Info(string)E
-ClearHoverInfo()1StackNServe.Shared.Sauces_Select.ClearHoverInfo()=
-ToggleMenu()-StackNServe.Shared.Sauces_Select.ToggleMenu()C
-AddItem(string)0StackNServe.Shared.Sauces_Select.AddItem(string)K
-AddToBurger(string)4StackNServe.Shared.Sauces_Select.AddToBurger(string)C
-OnInitialized()0StackNServe.Shared.Sauces_Select.OnInitialized()]
-CheckSaucesSelectVar(object)=StackNServe.Shared.Sauces_Select.CheckSaucesSelectVar(object)7
-	Dispose()*StackNServe.Shared.Sauces_Select.Dispose()C
-Sauces_Select()0StackNServe.Shared.Sauces_Select.Sauces_Select()I
-OnStateChanged.get3StackNServe.Shared.Sauces_Select.OnStateChanged.getI
-OnStateChanged.set3StackNServe.Shared.Sauces_Select.OnStateChanged.setY
-SelectionButtonService.get;StackNServe.Shared.Sauces_Select.SelectionButtonService.getY
-SelectionButtonService.set;StackNServe.Shared.Sauces_Select.SelectionButtonService.setO
-StringListService.get6StackNServe.Shared.Sauces_Select.StringListService.getO
-StringListService.set6StackNServe.Shared.Sauces_Select.StringListService.set

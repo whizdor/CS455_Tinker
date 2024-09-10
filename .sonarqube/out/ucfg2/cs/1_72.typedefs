@@ -1,13 +1,0 @@
-¯
-StackNServe.Models.Veggie_Pattyobject@
-Veggie_Patty().StackNServe.Models.Veggie_Patty.Veggie_Patty()0
-Id.get&StackNServe.Models.Veggie_Patty.Id.get0
-Id.set&StackNServe.Models.Veggie_Patty.Id.set4
-Name.get(StackNServe.Models.Veggie_Patty.Name.get4
-Name.set(StackNServe.Models.Veggie_Patty.Name.set6
-	Price.get)StackNServe.Models.Veggie_Patty.Price.get6
-	Price.set)StackNServe.Models.Veggie_Patty.Price.set<
-ImageUrl.get,StackNServe.Models.Veggie_Patty.ImageUrl.get<
-ImageUrl.set,StackNServe.Models.Veggie_Patty.ImageUrl.setB
-Description.get/StackNServe.Models.Veggie_Patty.Description.getB
-Description.set/StackNServe.Models.Veggie_Patty.Description.set

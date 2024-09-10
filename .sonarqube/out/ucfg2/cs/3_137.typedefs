@@ -1,13 +1,0 @@
-é
-StackNServe.Models.Lettuceobject1
-	Lettuce()$StackNServe.Models.Lettuce.Lettuce()+
-Id.get!StackNServe.Models.Lettuce.Id.get+
-Id.set!StackNServe.Models.Lettuce.Id.set/
-Name.get#StackNServe.Models.Lettuce.Name.get/
-Name.set#StackNServe.Models.Lettuce.Name.set1
-	Price.get$StackNServe.Models.Lettuce.Price.get1
-	Price.set$StackNServe.Models.Lettuce.Price.set7
-ImageUrl.get'StackNServe.Models.Lettuce.ImageUrl.get7
-ImageUrl.set'StackNServe.Models.Lettuce.ImageUrl.set=
-Description.get*StackNServe.Models.Lettuce.Description.get=
-Description.set*StackNServe.Models.Lettuce.Description.set

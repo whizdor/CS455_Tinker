@@ -1,9 +1,0 @@
-ü
-StackNServe.BurgerComponentsobjectE
-BurgerComponents()/StackNServe.BurgerComponents.BurgerComponents()_
-GetSecureRandomNumber(int, int)<StackNServe.BurgerComponents.GetSecureRandomNumber(int, int)
-6RandomizeList(System.Collections.Generic.List<string>)SStackNServe.BurgerComponents.RandomizeList(System.Collections.Generic.List<string>)A
-InitializeBuns()-StackNServe.BurgerComponents.InitializeBuns()G
-InitializePatties()0StackNServe.BurgerComponents.InitializePatties()I
-InitializeToppings()1StackNServe.BurgerComponents.InitializeToppings()E
-InitializeSauces()/StackNServe.BurgerComponents.InitializeSauces()

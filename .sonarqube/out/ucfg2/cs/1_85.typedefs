@@ -1,13 +1,0 @@
-é
-StackNServe.Models.Avocadoobject1
-	Avocado()$StackNServe.Models.Avocado.Avocado()+
-Id.get!StackNServe.Models.Avocado.Id.get+
-Id.set!StackNServe.Models.Avocado.Id.set/
-Name.get#StackNServe.Models.Avocado.Name.get/
-Name.set#StackNServe.Models.Avocado.Name.set1
-	Price.get$StackNServe.Models.Avocado.Price.get1
-	Price.set$StackNServe.Models.Avocado.Price.set7
-ImageUrl.get'StackNServe.Models.Avocado.ImageUrl.get7
-ImageUrl.set'StackNServe.Models.Avocado.ImageUrl.set=
-Description.get*StackNServe.Models.Avocado.Description.get=
-Description.set*StackNServe.Models.Avocado.Description.set

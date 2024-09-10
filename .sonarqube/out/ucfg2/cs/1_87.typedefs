@@ -1,13 +1,0 @@
-Û
-StackNServe.Models.Cheeseobject.
-Cheese()"StackNServe.Models.Cheese.Cheese()*
-Id.get StackNServe.Models.Cheese.Id.get*
-Id.set StackNServe.Models.Cheese.Id.set.
-Name.get"StackNServe.Models.Cheese.Name.get.
-Name.set"StackNServe.Models.Cheese.Name.set0
-	Price.get#StackNServe.Models.Cheese.Price.get0
-	Price.set#StackNServe.Models.Cheese.Price.set6
-ImageUrl.get&StackNServe.Models.Cheese.ImageUrl.get6
-ImageUrl.set&StackNServe.Models.Cheese.ImageUrl.set<
-Description.get)StackNServe.Models.Cheese.Description.get<
-Description.set)StackNServe.Models.Cheese.Description.set
