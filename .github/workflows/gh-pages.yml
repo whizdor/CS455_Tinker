@@ -1,10 +1,9 @@
 name: Deploy to GitHub Pages
 
-on:
-  [push]
+on: [push]
 
 jobs:
-  build :
+  build:
     name: SonarCloud
     runs-on: windows-latest
     steps:
@@ -12,15 +11,15 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: 17
-          distribution: 'zulu' # Alternative distribution options are available.
+          distribution: "zulu" # Alternative distribution options are available.
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
       # Installing the correct version of .NET SDK
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: "8.0.x"
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
         with:
@@ -40,16 +39,26 @@ jobs:
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
-      # Build the main solution first
+
+
+
+      # SonarCloud analysis begins
+      - name: Begin SonarCloud Analysis
+        run: .\.sonar\scanner\dotnet-sonarscanner begin /k:"whizdor_CS455_Tinker" /o:"whizdor" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.opencover.reportsPaths="tests/StackNServe.Tests/TestResults/coverage.cobertura.xml"
+
+      # Build the solution after starting SonarCloud analysis
       - name: Build the solution
         run: dotnet build src/StackNServe/StackNServe.csproj --configuration Debug
+
       # Build the test project explicitly to generate test DLLs
       - name: Build the test project
         run: dotnet build tests/StackNServe.Tests/StackNServe.Tests.csproj --configuration Debug
+
       # Run tests and collect coverage
       - name: Run tests and collect coverage
         run: |
           dotnet test tests/StackNServe.Tests/StackNServe.Tests.csproj --configuration Debug --framework net8.0 --collect:"XPlat Code Coverage" --logger "trx;LogFileName=test_results.trx" --verbosity normal
+      
       # Ensure tests ran successfully (using PowerShell syntax)
       - name: Ensure tests ran successfully
         shell: powershell
@@ -67,6 +76,7 @@ jobs:
           } else {
             Write-Host "All tests passed!"
           }
+      
       # Find the coverage.cobertura.xml file and copy it to a predictable location
       - name: Locate and move coverage file
         shell: powershell
@@ -79,6 +89,7 @@ jobs:
             Write-Host "Coverage file not found!"
             exit 1
           }
+     
       # Check for coverage report (using PowerShell syntax)
       - name: Check for coverage report
         shell: powershell
@@ -89,15 +100,11 @@ jobs:
           } else {
             Write-Host "Coverage report found!"
           }
-      # Begin SonarCloud analysis using SonarCloud scanner
-      - name: Run SonarCloud Analysis
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        shell: powershell
-        run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"whizdor_CS455_Tinker" /o:"whizdor" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.opencover.reportsPaths="tests/StackNServe.Tests/TestResults/coverage.cobertura.xml /d:sonar.scanner.scanAll=false"
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }} "
+      
+      # Finalize the SonarCloud analysis after building the project
+      - name: End SonarCloud Analysis
+        run: .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+
       # Fetch detailed SonarCloud results and output in the logs
       - name: Fetch and display detailed SonarCloud analysis results
         if: always()
@@ -108,14 +115,14 @@ jobs:
           echo "Fetching detailed analysis results..."
           curl -u $SONAR_TOKEN: "https://sonarcloud.io/api/issues/search?componentKeys=whizdor_CS455_Tinker" > sonarcloud-results.json
           echo "Analysis results:"
-          cat sonarcloud-results.json | jq '.issues[] | {key, component, severity, message, line}' 
+          cat sonarcloud-results.json | jq '.issues[] | {key, component, severity, message, line}'
       # Upload the SonarCloud results JSON as an artifact
       - name: Upload SonarCloud results artifact
-        if: always()  
+        if: always()
         uses: actions/upload-artifact@v3
         with:
           name: sonarcloud-results
-          path: sonarcloud-results.json 
+          path: sonarcloud-results.json
       - name: Check SonarCloud Quality Gate
         id: quality-gate
         shell: bash
@@ -135,43 +142,43 @@ jobs:
     runs-on: ubuntu-latest
     if: success()
     steps:
-    # Checkout the code from the master branch
-    - uses: actions/checkout@v3
-    
-    # Setup .NET Core SDK
-    - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 8.0.107
+      # Checkout the code from the master branch
+      - uses: actions/checkout@v3
 
-    # Publish the project
-    - name: Publish .NET Core Project
-      run: dotnet publish src/StackNServe/StackNServe.csproj -c Release -o release --nologo
-    
-    # Verify that index.html exists after the publish
-    - name: Verify index.html exists
-      run: |
-        if [ ! -f release/wwwroot/index.html ]; then
-          echo "Error: index.html not found!"
-          exit 1
-        fi
+      # Setup .NET Core SDK
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.107
 
-    # Change base tag in index.html to point to the correct subdirectory (StackNServe)
-    - name: Change base-tag in index.html
-      run: sed -i 's/<base href="\/" \/>/<base href="\/CS455_Tinker\/" \/>/g' release/wwwroot/index.html
-    
-    # Copy index.html to 404.html for GitHub Pages fallback routing
-    - name: Copy index.html to 404.html
-      run: cp release/wwwroot/index.html release/wwwroot/404.html
+      # Publish the project
+      - name: Publish .NET Core Project
+        run: dotnet publish src/StackNServe/StackNServe.csproj -c Release -o release --nologo
 
-    # Add a .nojekyll file to prevent Jekyll processing
-    - name: Add .nojekyll file
-      run: touch release/wwwroot/.nojekyll
+      # Verify that index.html exists after the publish
+      - name: Verify index.html exists
+        run: |
+          if [ ! -f release/wwwroot/index.html ]; then
+            echo "Error: index.html not found!"
+            exit 1
+          fi
 
-    # Deploy the wwwroot folder to the gh-pages branch
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@3.7.1
-      with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: release/wwwroot
+      # Change base tag in index.html to point to the correct subdirectory (StackNServe)
+      - name: Change base-tag in index.html
+        run: sed -i 's/<base href="\/" \/>/<base href="\/CS455_Tinker\/" \/>/g' release/wwwroot/index.html
+
+      # Copy index.html to 404.html for GitHub Pages fallback routing
+      - name: Copy index.html to 404.html
+        run: cp release/wwwroot/index.html release/wwwroot/404.html
+
+      # Add a .nojekyll file to prevent Jekyll processing
+      - name: Add .nojekyll file
+        run: touch release/wwwroot/.nojekyll
+
+      # Deploy the wwwroot folder to the gh-pages branch
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: release/wwwroot
