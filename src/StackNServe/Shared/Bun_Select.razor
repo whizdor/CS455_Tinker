@@ -69,7 +69,7 @@
         border-radius: 5px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         top: 70px;
-        left: 0;
+        @* left: 0; *@
         width: 200px;
     }
     .HoverInfoHeading
@@ -82,7 +82,10 @@
     }
 </style>
 
+@using StackNServe.Services
+@using StackNServe.Models
 @inject GlobalStringListService StringListService
+@inject SelectionButtonService SelectionButtonService
 
 <div class = "BunSelect">
     <button @onclick="ToggleMenu" class = "BunToggleButton">
@@ -93,13 +96,13 @@
     @if (isExpanded)
     {
         <ul class = "ClickExpandMenu">
-            @foreach (var Bun in BunImages)
+            @foreach (var item in BunImages.Select((Bun, index) => new { Bun, index }))
             {
-                <li @onmouseenter="() => Display_Info(Bun)" @onmouseleave="ClearHoverInfo" @onclick="() => AddToBurger(Bun)">
-                    <img src="@Bun" class="ImageSmallCircular" alt="Bun" />
-                    @if (currentHoverInfo != null && currentHoverPatty == Bun)
+                <li @onmouseenter="() => Display_Info(item.Bun)" @onmouseleave="ClearHoverInfo" @onclick="() => AddToBurger(item.Bun)">
+                    <img src="@item.Bun" class="ImageSmallCircular" alt="Bun" />
+                    @if (currentHoverInfo != null && currentHoverPatty == item.Bun)
                     {
-                        <div class="HoverInfo">
+                        <div class="HoverInfo" style="margin-left:@($"{item.index * 3.5}vw")">
                             <h5 class="HoverInfoHeading">@currentHoverInfo.Name</h5>
                             <p>@currentHoverInfo.Description</p>
                             <p class="HoverInfoPrice">Price: Rs. @currentHoverInfo.Price.ToString("F2")</p>
@@ -161,7 +164,17 @@
         
     private async Task ToggleMenu()
     {
-        isExpanded = !isExpanded;
+        if(isExpanded) {
+            isExpanded = false;
+        }
+        else {
+            isExpanded = true;
+            SelectionButtonService.BunSelectVar = true;
+            SelectionButtonService.PattySelectVar = false;
+            SelectionButtonService.SaucesSelectVar = false;
+            SelectionButtonService.ToppingSelectVar = false;
+            SelectionButtonService.NotifyStateChanged();
+        }
         await OnStateChanged.InvokeAsync(isExpanded);
     }
     private class BunInfo
@@ -218,5 +231,29 @@
             else if (buns == "images/Bun/Plain_Bun.png") AddItem("Plain Bun");
             else if (buns == "images/Bun/Sesame_Bun.png") AddItem("Sesame Bun");
         }
+    }
+
+    private System.Threading.Timer _timer;
+
+    protected override void OnInitialized()
+    {
+        _timer = new System.Threading.Timer(CheckBunSelectVar, null, 0, 100); // Check every 100ms
+    }
+
+    private void CheckBunSelectVar(object state)
+    {
+        if (!SelectionButtonService.BunSelectVar && isExpanded)
+        {
+            InvokeAsync(async () =>
+            {
+                await ToggleMenu();
+                StateHasChanged();
+            });
+        }
+    }
+
+    public void Dispose()
+    {
+        _timer?.Dispose();
     }
 }

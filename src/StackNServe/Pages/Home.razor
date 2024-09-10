@@ -1,6 +1,11 @@
 ﻿@page "/New_Game"
+
 @using StackNServe.Pages
 @using StackNServe.Shared
+@using StackNServe.Services
+@using StackNServe.Models
+@using System.Security.Cryptography;
+
 
 @inject GlobalStringListService StringListService
 @inject IJSRuntime JSRuntime
@@ -101,7 +106,16 @@
     private List<string> currentOrderList = new List<string>();
     private int currentOrderPrice = 0;
     private int makingCost = 0;
-
+    public int GetSecureRandomNumber(int min, int max)
+    {
+        using (var rng = RandomNumberGenerator.Create())
+        {
+            byte[] data = new byte[4];
+            rng.GetBytes(data);
+            int value = BitConverter.ToInt32(data, 0) & int.MaxValue; 
+            return value % (max - min) + min; 
+        }
+    }
     Users New_Player= new Users();
     private void HandleTimerFinished()
     {
@@ -115,8 +129,7 @@
     }
     private int Fetch_Order_Price()
     {
-        Random random = new Random();
-        return random.Next(5, 200);
+        return GetSecureRandomNumber(5,200);
     }
 
     private void ReloadGame()
@@ -136,7 +149,7 @@
 
     private void Player_Skip()
     {
-        New_Player.Balance -= 5;
+        New_Player.Balance -= 10;
         StringListService.ClearList();
         UpdateOrder();
         StateHasChanged();
