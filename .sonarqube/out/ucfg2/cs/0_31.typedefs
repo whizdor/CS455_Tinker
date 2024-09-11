@@ -1,0 +1,13 @@
+…
+StackNServe.Models.Jalapenosobject7
+Jalapenos()(StackNServe.Models.Jalapenos.Jalapenos()-
+Id.get#StackNServe.Models.Jalapenos.Id.get-
+Id.set#StackNServe.Models.Jalapenos.Id.set1
+Name.get%StackNServe.Models.Jalapenos.Name.get1
+Name.set%StackNServe.Models.Jalapenos.Name.set3
+	Price.get&StackNServe.Models.Jalapenos.Price.get3
+	Price.set&StackNServe.Models.Jalapenos.Price.set9
+ImageUrl.get)StackNServe.Models.Jalapenos.ImageUrl.get9
+ImageUrl.set)StackNServe.Models.Jalapenos.ImageUrl.set?
+Description.get,StackNServe.Models.Jalapenos.Description.get?
+Description.set,StackNServe.Models.Jalapenos.Description.set

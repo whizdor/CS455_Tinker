@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Patty_Select.razor</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+&lt;style&gt;
+    @@import url(&#39;https://fonts.googleapis.com/css2?family=Cedarville+Cursive&amp;family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap&#39;);
+    .PattySelect
+    {
+        display: flex;
+        flex-direction: row;
+    }
+    .PattyToggleButton
+    {
+        background-color: #FFCBA2;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 1px solid #E38282;
+    }
+
+    .PattyToggleButton:hover
+    {
+        background-color: rgb(208, 168, 221);
+        transition: 0.5s;
+    }
+
+    .Patty_Select_Image 
+    {
+        padding-left: 10px;
+        padding-top: 12px;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+
+    .ClickExpandMenu
+    {
+        background-color: #fce1cc;
+        position: absolute;
+        align-items: center;
+        margin-left: 10rem;
+        margin-top: 1.5rem;
+        padding: 5px;
+        padding-left: 25px;
+        border-radius: 15px;
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        animation: 0.5s;
+    }
+
+    .ClickExpandMenu li
+    {
+        margin-right: 10px;
+    }
+
+    .ImageSmallCircular
+    {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%; 
+        object-fit: cover; 
+    }
+    .HoverInfo 
+    {
+        z-index: 2000;
+        text-align: center;
+        font-family:&quot;Cedarville Cursive&quot;, cursive;
+        position: absolute;
+        background-color: white;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        top: 70px;
+        left: 0;
+        width: 200px;
+    }
+    .HoverInfoHeading
+    {
+        color:#E36565;
+    }
+    .HoverInfoPrice
+    {
+        color:#E36565;
+    }
+&lt;/style&gt;
+
+@using StackNServe.Services
+@using StackNServe.Models
+
+@inject GlobalStringListService StringListService
+@inject SelectionButtonService SelectionButtonService
+
+&lt;div class = &quot;PattySelect&quot;&gt;
+
+    &lt;button @onclick=&quot;ToggleMenu&quot; class = &quot;PattyToggleButton&quot;&gt;
+        &lt;div class=&quot;PattyIconContainer&quot;&gt;
+            &lt;img src=&quot;images/Patty_Select.png&quot; alt=&quot;Patty Select&quot; class=&quot;Patty_Select_Image&quot; /&gt;
+        &lt;/div&gt;
+    &lt;/button&gt;
+    @if (isExpanded)
+    {
+        &lt;ul class = &quot;ClickExpandMenu&quot; @onmouseenter=&quot;CancelAutoClose&quot; @onmouseleave=&quot;StartAutoClose&quot;&gt;
+            @foreach (var item in PattyImages.Select((Patty, index) =&gt; new { Patty, index }))
+            {
+                &lt;li @onmouseenter=&quot;() =&gt; Display_Info(item.Patty)&quot; @onmouseleave=&quot;ClearHoverInfo&quot; @onclick=&quot;() =&gt; AddToBurger(item.Patty)&quot;&gt;
+                    &lt;img src=&quot;@item.Patty&quot; class=&quot;ImageSmallCircular&quot; alt=&quot;Bun&quot; /&gt;
+                    @if (currentHoverInfo != null &amp;&amp; currentHoverPatty == item.Patty)
+                    {
+                        &lt;div class=&quot;HoverInfo&quot; style=&quot;margin-left:@($&quot;{item.index * 3.5}vw&quot;)&quot;&gt;
+                            &lt;h5 class=&quot;HoverInfoHeading&quot;&gt;@currentHoverInfo.Name&lt;/h5&gt;
+                            &lt;p&gt;@currentHoverInfo.Description&lt;/p&gt;
+                            &lt;p class=&quot;HoverInfoPrice&quot;&gt;Price: Rs. @currentHoverInfo.Price.ToString(&quot;F2&quot;)&lt;/p&gt;
+                        &lt;/div&gt;
+                    }
+                &lt;/li&gt;
+            }
+            &lt;li&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+        
+    }
+&lt;/div&gt;
+
+
+@code
+{  
+    List&lt;string&gt; PattyImages = new List&lt;string&gt;
+        {
+            &quot;images/Patty/Veggie_Patty.png&quot;,
+            &quot;images/Patty/Chicken_Patty.png&quot;,
+            &quot;images/Patty/Fish_Patty.png&quot;,
+            &quot;images/Patty/Portobello_Mushroom_Patty.png&quot;,
+        };
+    
+    private bool isExpanded = false;
+    private PattyInfo currentHoverInfo;
+    private string currentHoverPatty;
+    private Timer autoCloseTimer;
+    private void Display_Info(string patty)
+    {
+        currentHoverPatty = patty;
+        if (patty == &quot;images/Patty/Veggie_Patty.png&quot;)
+        {
+            Veggie_Patty temp_object = new Veggie_Patty();
+            currentHoverInfo = new PattyInfo(&quot;Veggie Patty&quot;, temp_object.Description, temp_object.Price);
+        }
+        else if (patty == &quot;images/Patty/Chicken_Patty.png&quot;)
+        {
+            Chicken_Patty temp_object = new Chicken_Patty();    
+            currentHoverInfo = new PattyInfo(&quot;Chicken Patty&quot;, temp_object.Description, temp_object.Price);
+
+        }
+        else if (patty == &quot;images/Patty/Fish_Patty.png&quot;)
+        {
+            Fish_Patty temp_object = new Fish_Patty();
+            currentHoverInfo = new PattyInfo(&quot;Fish Patty&quot;, temp_object.Description, temp_object.Price);
+        }
+        else if (patty == &quot;images/Patty/Portobello_Mushroom_Patty.png&quot;)
+        {
+            Portobello_Mushroom_Patty temp_object = new Portobello_Mushroom_Patty();
+            currentHoverInfo = new PattyInfo(&quot;Portobello Mushroom Patty&quot;, temp_object.Description, temp_object.Price);
+        }
+    }
+
+    private void ClearHoverInfo()
+    {
+        currentHoverInfo = null;
+        currentHoverPatty = null;
+    }
+    [Parameter]
+    public EventCallback&lt;bool&gt; OnStateChanged { get; set; }
+    
+    private async Task ToggleMenu()
+    {
+        if(isExpanded) {
+            isExpanded = false;
+        }
+        else {
+            isExpanded = true;
+            SelectionButtonService.BunSelectVar = false;
+            SelectionButtonService.PattySelectVar = true;
+            SelectionButtonService.SaucesSelectVar = false;
+            SelectionButtonService.ToppingSelectVar = false;
+            SelectionButtonService.NotifyStateChanged();
+        }
+        await OnStateChanged.InvokeAsync(isExpanded);
+    }
+    private void StartAutoClose()
+    {
+        CancelAutoClose(); // Cancel any existing timer
+        autoCloseTimer = new Timer(CloseMenu, null, 1, Timeout.Infinite);
+        
+    }
+
+    private void CancelAutoClose()
+    {
+        autoCloseTimer?.Dispose();
+        autoCloseTimer = null;
+    }
+
+    private void CloseMenu(object state)
+    {
+        isExpanded = false;
+        InvokeAsync(StateHasChanged);
+    }
+    private class PattyInfo
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+
+        public PattyInfo(string name, string description, decimal price)
+        {
+            Name = name;
+            Description = description;
+            Price = price;
+        }
+    }
+
+    private void AddItem(string newItem)
+    {
+        if (!string.IsNullOrWhiteSpace(newItem))
+        {
+            StringListService.AddString(newItem);
+            newItem = &quot;&quot;;
+        }
+    }
+
+    public void AddToBurger(string patty)
+    {
+        Console.WriteLine(&quot;Adding Patty to Burger&quot;);
+        // Add Patty to Burger
+        currentHoverPatty = patty;
+        if (patty == &quot;images/Patty/Veggie_Patty.png&quot;) AddItem(&quot;Veggie Patty&quot;);
+        else if (patty == &quot;images/Patty/Chicken_Patty.png&quot;) AddItem(&quot;Chicken Patty&quot;);
+        else if (patty == &quot;images/Patty/Fish_Patty.png&quot;) AddItem(&quot;Fish Patty&quot;);
+        else if (patty == &quot;images/Patty/Portobello_Mushroom_Patty.png&quot;) AddItem(&quot;Portobello Mushroom Patty&quot;);
+    }
+
+    private System.Threading.Timer _timer;
+
+    protected override void OnInitialized()
+    {
+        _timer = new System.Threading.Timer(CheckPattySelectVar, null, 0, 100); // Check every 100ms
+    }
+
+    private void CheckPattySelectVar(object state)
+    {
+        if (!SelectionButtonService.PattySelectVar &amp;&amp; isExpanded)
+        {
+            InvokeAsync(async () =&gt;
+            {
+                await ToggleMenu();
+                StateHasChanged();
+            });
+        }
+    }
+
+    public void Dispose()
+    {
+        _timer?.Dispose();
+    }
+}
+
+
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[98,6,98,21,1],[99,5,99,6,0],[101,14,101,21,0],[101,23,101,31,0],[101,32,101,34,0],[101,35,101,72,0],[101,72,101,92,0],[101,92,101,93,0],[102,13,102,14,0],[103,42,103,66,0],[103,115,103,138,0],[105,22,105,86,0],[106,21,106,22,0],[112,21,112,22,0],[114,13,114,14,0],[118,5,118,6,0],[124,5,130,11,1],[132,5,132,37,1],[137,5,137,6,0],[138,9,138,35,0],[139,9,139,54,0],[140,9,140,10,0],[141,13,141,59,0],[142,13,142,106,0],[143,9,143,10,0],[144,14,144,60,0],[145,9,145,10,0],[146,13,146,61,0],[147,13,147,107,0],[149,9,149,10,0],[150,14,150,57,0],[151,9,151,10,0],[152,13,152,55,0],[153,13,153,104,0],[154,9,154,10,0],[155,14,155,72,0],[156,9,156,10,0],[157,13,157,85,0],[158,13,158,119,0],[159,9,159,10,0],[160,5,160,6,0],[163,5,163,6,0],[164,9,164,33,0],[165,9,165,34,0],[166,5,166,6,0],[168,49,168,53,0],[168,54,168,58,0],[171,5,171,6,0],[172,9,172,23,0],[172,24,172,25,0],[173,13,173,32,0],[174,9,174,10,0],[175,14,175,15,0],[176,13,176,31,0],[177,13,177,57,0],[178,13,178,58,0],[179,13,179,60,0],[180,13,180,61,0],[181,13,181,57,0],[182,9,182,10,0],[183,9,183,54,0],[184,5,184,6,0],[186,5,186,6,0],[187,9,187,27,0],[188,9,188,74,0],[190,5,190,6,0],[193,5,193,6,0],[194,9,194,35,0],[195,9,195,31,0],[196,5,196,6,0],[199,5,199,6,0],[200,9,200,28,0],[201,9,201,38,0],[202,5,202,6,0],[205,30,205,34,0],[205,35,205,39,0],[206,37,206,41,0],[206,42,206,46,0],[207,32,207,36,0],[207,37,207,41,0],[209,9,209,73,0],[210,9,210,10,0],[211,13,211,25,0],[212,13,212,39,0],[213,13,213,27,0],[214,9,214,10,0],[218,5,218,6,0],[219,9,219,49,0],[220,9,220,10,0],[221,13,221,50,0],[222,13,222,26,0],[223,9,223,10,0],[224,5,224,6,0],[227,5,227,6,0],[228,9,228,53,0],[230,9,230,35,0],[231,9,231,54,0],[231,55,231,79,0],[232,14,232,60,0],[232,61,232,86,0],[233,14,233,57,0],[233,58,233,80,0],[234,14,234,72,0],[234,73,234,110,0],[235,5,235,6,0],[240,5,240,6,1],[241,9,241,80,1],[242,5,242,6,1],[245,5,245,6,1],[246,9,246,66,1],[247,9,247,10,0],[248,13,249,13,0],[249,13,249,14,0],[249,14,250,17,0],[250,17,250,36,0],[250,36,251,17,0],[251,17,251,35,0],[251,35,252,13,0],[252,13,252,14,0],[252,14,252,16,0],[253,9,253,10,0],[254,5,254,6,1],[257,5,257,6,0],[258,9,258,27,0],[259,5,259,6,0]]);
+    </script>
+  </body>
+</html>

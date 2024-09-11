@@ -1,0 +1,9 @@
+ó
+.StackNServe.Shared.Toppings_Select.ToppingInfoobject{
+$ToppingInfo(string, string, decimal)SStackNServe.Shared.Toppings_Select.ToppingInfo.ToppingInfo(string, string, decimal)C
+Name.get7StackNServe.Shared.Toppings_Select.ToppingInfo.Name.getC
+Name.set7StackNServe.Shared.Toppings_Select.ToppingInfo.Name.setQ
+Description.get>StackNServe.Shared.Toppings_Select.ToppingInfo.Description.getQ
+Description.set>StackNServe.Shared.Toppings_Select.ToppingInfo.Description.setE
+	Price.get8StackNServe.Shared.Toppings_Select.ToppingInfo.Price.getE
+	Price.set8StackNServe.Shared.Toppings_Select.ToppingInfo.Price.set

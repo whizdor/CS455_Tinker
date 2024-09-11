@@ -2,35 +2,35 @@ namespace StackNServe.Services
 {
     public class GlobalStringListService
     {
-        private List<string> _stringList = new List<string>();
+        public List<string> stringList = new List<string>();
         public event Action? OnChange;
 
-        public IReadOnlyList<string> StringList => _stringList.AsReadOnly();
+        public IReadOnlyList<string> StringList => stringList.AsReadOnly();
 
         public void AddString(string item)
         {
             if (!string.IsNullOrWhiteSpace(item))
             {
-                _stringList.Add(item);
+                stringList.Add(item);
                 NotifyStateChanged();
             }
         }
 
         public void RemoveString(string item)
         {
-            if (_stringList.Remove(item))
+            if (stringList.Remove(item))
             {
                 NotifyStateChanged();
             }
         }
 
-        public void ClearList()
+        public virtual void ClearList()
         {
-            _stringList.Clear();
+            stringList.Clear();
             NotifyStateChanged();
         }
 
-        private void NotifyStateChanged() => OnChange?.Invoke();
+        public void NotifyStateChanged() => OnChange?.Invoke();
     }
 
 }

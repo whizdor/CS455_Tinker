@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/CountdownTimer.razor</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+@using System.Timers
+@implements IDisposable
+&lt;style&gt;
+    .CountdownTimer
+    {
+        background-color: black;
+        width:30%;
+        max-height: 2.5rem;
+    }   
+    .Timer
+    {
+        font-size: 2rem;
+        color: red;
+    }
+&lt;/style&gt;
+&lt;div class=&quot;CountdownTimer&quot;&gt;
+    &lt;h3 class=&quot;Timer&quot;&gt;@FormatTimeSpan(TimeRemaining)&lt;/h3&gt;
+    @if (ShowResetButton)
+    {
+        &lt;button @onclick=&quot;ResetTimer&quot;&gt;Reset&lt;/button&gt;
+    }
+&lt;/div&gt;
+
+@code {
+    [Parameter]
+    public int InitialTimeInSeconds { get; set; } = 20; // Default to 2 minutes
+
+    [Parameter]
+    public bool ShowResetButton { get; set; } = true;
+
+    [Parameter]
+    public EventCallback OnTimerFinished { get; set; }
+
+    private TimeSpan TimeRemaining { get; set; }
+    private Timer _timer;
+
+    protected override void OnInitialized()
+    {
+        TimeRemaining = TimeSpan.FromSeconds(InitialTimeInSeconds);
+        _timer = new Timer(1000);
+        _timer.Elapsed += async (sender, e) =&gt; await TimerTick();
+        _timer.Start();
+    }
+
+    private async Task TimerTick()
+    {
+        await InvokeAsync(() =&gt;
+        {
+            TimeRemaining = TimeRemaining.Subtract(TimeSpan.FromSeconds(1));
+            
+            if (TimeRemaining &lt;= TimeSpan.Zero)
+            {
+                _timer.Stop();
+                TimeRemaining = TimeSpan.Zero;
+                OnTimerFinished.InvokeAsync();
+            }
+
+            StateHasChanged();
+        });
+    }
+
+    private void ResetTimer()
+    {
+        TimeRemaining = TimeSpan.FromSeconds(InitialTimeInSeconds);
+        if (!_timer.Enabled)
+        {
+            _timer.Start();
+        }
+    }
+
+    private string FormatTimeSpan(TimeSpan timeSpan)
+    {
+        return $&quot;{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}&quot;;
+    }
+
+    public void Dispose()
+    {
+        _timer?.Stop();
+        _timer?.Dispose();
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[18,6,18,26,1],[19,5,19,6,0],[21,5,21,6,0],[26,39,26,43,1],[26,44,26,48,1],[26,53,26,55,1],[29,35,29,39,1],[29,40,29,44,1],[29,49,29,53,1],[32,44,32,48,0],[32,49,32,53,1],[34,38,34,42,1],[34,43,34,47,1],[38,5,38,6,1],[39,9,39,68,1],[40,9,40,34,1],[41,9,41,48,1],[41,48,41,65,0],[41,65,41,66,1],[42,9,42,24,1],[43,5,43,6,1],[46,5,46,6,0],[47,9,48,9,0],[48,9,48,10,0],[48,10,49,13,0],[49,13,49,77,0],[49,77,51,13,0],[51,13,51,48,0],[51,48,52,13,0],[52,13,52,14,0],[52,14,53,17,0],[53,17,53,31,0],[53,31,54,17,0],[54,17,54,47,0],[54,47,55,17,0],[55,17,55,47,0],[55,47,56,13,0],[56,13,56,14,0],[56,14,58,13,0],[58,13,58,31,0],[58,31,59,9,0],[59,9,59,10,0],[59,10,59,12,0],[60,5,60,6,0],[63,5,63,6,0],[64,9,64,68,0],[65,9,65,29,0],[66,9,66,10,0],[67,13,67,28,0],[68,9,68,10,0],[69,5,69,6,0],[72,5,72,6,1],[73,9,73,63,1],[74,5,74,6,1],[77,5,77,6,1],[78,9,78,24,1],[79,9,79,27,1],[80,5,80,6,1]]);
+    </script>
+  </body>
+</html>

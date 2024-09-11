@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+@page &quot;/New_Game&quot;
+
+@using StackNServe.Pages
+@using StackNServe.Shared
+@using StackNServe.Services
+@using StackNServe.Models
+@using System.Security.Cryptography;
+
+
+@inject GlobalStringListService StringListService
+@inject IJSRuntime JSRuntime
+
+
+&lt;style&gt;
+    .Play_Again 
+    {
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        margin: 10px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+    }
+    .Play_Again_Heading 
+    {
+        font-size: 40px;
+        align-self: center;
+        justify-self: center;
+        margin-top:10px;
+
+    }
+    .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: black;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        display: none;
+    }
+&lt;/style&gt;
+&lt;div class=&quot;Home_Page&quot;&gt;
+    @if(isEnded)
+    {
+        &lt;h1 class=&quot;Time_Elapsed_Message&quot;&gt;Your time finished!&lt;/h1&gt;&lt;br&gt;
+        &lt;h2 class=&quot;Time_Elapsed_Score&quot;&gt;Your score was:@New_Player.Balance&lt;/h2&gt;&lt;br&gt;
+        &lt;h3 class=&quot;Time_Elapsed_Instruction&quot;&gt;Click on the button below to play again&lt;/h3&gt;
+        &lt;div class=&quot;Play_Again_Button&quot;&gt;
+            &lt;div class=&quot;Play_Again&quot; @onclick=&quot;ReloadGame&quot;&gt;
+                &lt;h1 class=&quot;Play_Again_Heading&quot;&gt;PLAY AGAIN&lt;/h1&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    }
+    else
+    {
+        &lt;div class=&quot;Select_Buttons&quot;&gt;
+            &lt;Bun_Select /&gt;
+            &lt;br&gt;
+            &lt;Patty_Select /&gt;
+            &lt;br&gt;
+            &lt;Toppings_Select /&gt;
+            &lt;br&gt;
+            &lt;Sauces_Select /&gt;
+        &lt;/div&gt;
+        &lt;!-- &lt;button class=&quot;btn btn-primary&quot; @onclick=&quot;ShowNotification&quot;&gt;Show Notification&lt;/button&gt; --&gt;
+        &lt;div id=&quot;notification&quot; class=&quot;notification&quot; style=&quot;display: none;&quot;&gt;
+            @message
+        &lt;/div&gt;
+        &lt;Main_Page_Header /&gt;
+        &lt;div class=&quot;Timer_Divison&quot;&gt;
+            &lt;CountdownTimer InitialTimeInSeconds=&quot;120&quot; OnTimerFinished= &quot;HandleTimerFinished&quot; ShowResetButton = &quot;false&quot; /&gt;
+        &lt;/div&gt;
+        @* &lt;div class=&quot;burger-and-table-container&quot;&gt; *@
+        &lt;div class=&quot;Cooking_Table_Division&quot;&gt;
+            &lt;div class=&quot;burger-container&quot;&gt;
+                @foreach (var ingredient in StringListService.StringList)
+                {
+                    &lt;div class=&quot;@ingredient.ToLower().Replace(&quot; &quot;, &quot;-&quot;)&quot;&gt;&lt;/div&gt;
+                }
+            &lt;/div&gt;
+            &lt;Cooking_Table /&gt;
+        &lt;/div&gt;
+        @* &lt;/div&gt; *@
+
+        &lt;div class=&quot;Order_Division&quot;&gt;
+            &lt;Order Order_List=&quot;@currentOrderList&quot; Order_Price=&quot;@currentOrderPrice&quot; /&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;Skip_Play_Buttons&quot;&gt;
+            &lt;Skip OnSkip=&quot;Player_Skip&quot;/&gt;
+            &lt;Submit OnSubmit=&quot;CheckList&quot;/&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;Score_Board_Divison&quot;&gt;
+            &lt;Score_Board CurrentScore=&quot;New_Player.Balance&quot;/&gt;
+        &lt;/div&gt;
+    }
+&lt;/div&gt;
+
+@code
+{
+    private bool isEnded=false;
+    private string message = &quot;Hello World!&quot;;
+    private List&lt;string&gt; currentOrderList = new List&lt;string&gt;();
+    private int currentOrderPrice = 0;
+    private int makingCost = 0;
+    public int GetSecureRandomNumber(int min, int max)
+    {
+        using (var rng = RandomNumberGenerator.Create())
+        {
+            byte[] data = new byte[4];
+            rng.GetBytes(data);
+            int value = BitConverter.ToInt32(data, 0) &amp; int.MaxValue; 
+            return value % (max - min) + min; 
+        }
+    }
+    Users New_Player= new Users();
+    private void HandleTimerFinished()
+    {
+        isEnded = true;
+        Console.WriteLine(&quot;Timer Finished&quot;);
+    }
+    private List&lt;string&gt; Fetch_Order_List()
+    {
+        BurgerComponents burgerComponents = new BurgerComponents();
+        return burgerComponents.Order_List;
+    }
+    private int Fetch_Order_Price()
+    {
+        return GetSecureRandomNumber(5,200);
+    }
+
+    private void ReloadGame()
+    {
+        if (isEnded)
+        {
+            isEnded = false;
+            New_Player = new Users();
+        }
+    }
+    private void UpdateOrder()
+    {
+        currentOrderList = Fetch_Order_List();
+        currentOrderPrice = Fetch_Order_Price();
+        StateHasChanged();
+    }
+
+    private void Player_Skip()
+    {
+        New_Player.Balance -= 10;
+        StringListService.ClearList();
+        UpdateOrder();
+        StateHasChanged();
+    }
+    
+    protected override void OnInitialized()
+    {
+        StringListService.OnChange += StateHasChanged;
+        UpdateOrder();
+    }
+
+    public void Dispose()
+    {
+        StringListService.OnChange -= StateHasChanged;
+    }
+
+    private void CheckList()
+    {
+        //Compare the Elements in the two lists.
+        //If they are the same, add the price to the player&#39;s balance
+        //Calculate the making cost of the burger
+        makingCost = 0;
+
+        if (StringListService.StringList.Count == 0)
+        {
+            message = &quot;No Order!&quot;;
+            ShowNotification();
+            return;
+        }
+    
+        foreach (var item in StringListService.StringList)
+        {
+            if(item == &quot;Bun Bottom&quot;) makingCost += 0;
+            else if(item == &quot;Plain Bun&quot;) makingCost += 10;
+            else if(item == &quot;Sesame Bun&quot;) makingCost += 12;
+            else if(item == &quot;Garlic Bun&quot;) makingCost += 20;
+            else if(item == &quot;Parmesan Bun&quot;) makingCost += 25;
+            else if(item == &quot;Veggie Patty&quot;) makingCost += 15;
+            else if(item == &quot;Chicken Patty&quot;) makingCost += 20;
+            else if(item == &quot;Fish Patty&quot;) makingCost += 25;
+            else if(item == &quot;Portobello Mushroom Patty&quot;) makingCost += 18;
+            else if(item == &quot;Avocado&quot;) makingCost += 8;
+            else if(item == &quot;Bacon&quot;) makingCost += 7;
+            else if(item == &quot;Cheese&quot;) makingCost += 5;
+            else if(item == &quot;Egg&quot;) makingCost += 4;
+            else if(item == &quot;Jalapenos&quot;) makingCost += 6;
+            else if(item == &quot;Lettuce&quot;) makingCost += 3;
+            else if(item == &quot;Onion&quot;) makingCost += 4;
+            else if(item == &quot;Pickles&quot;) makingCost += 2;
+            else if(item == &quot;Tomato&quot;) makingCost += 5;
+            else if(item == &quot;Aioli&quot;) makingCost += 5;
+            else if(item == &quot;BBQ Sauce&quot;) makingCost += 5;
+            else if(item == &quot;Hot Sauce&quot;) makingCost += 5;
+            else if(item == &quot;Ketchup&quot;) makingCost += 5;
+            else if(item == &quot;Mayonnaise&quot;) makingCost += 5;
+            else if(item == &quot;Mustard&quot;) makingCost += 5;
+            else if(item == &quot;Ranch&quot;) makingCost += 5;
+            else makingCost += 0;
+        }
+        New_Player.Balance -= makingCost;
+        bool truth = true;
+        foreach (var item in currentOrderList)
+        {
+            if (StringListService.StringList.Contains(item))
+            {
+                Console.WriteLine(&quot;You passed the order&quot;);
+                Console.WriteLine(item);
+                continue;
+            }
+            else
+            {
+                Console.WriteLine(&quot;You failed the order&quot;);
+                Console.WriteLine(item);
+                truth = false;
+                break;
+            }
+        }
+        if(currentOrderList.Count + 1 != StringListService.StringList.Count)
+        {
+            truth = false;
+        }
+        //Check the first element of the list
+        if (&quot;Bun Bottom&quot;!= StringListService.StringList[0])
+        {
+            New_Player.Balance -= 10;
+            truth = false;
+        }
+        if (truth)
+        {
+            message = &quot;Perfect Order!&quot;;
+            ShowNotification();
+            New_Player.Balance += currentOrderPrice;
+        }
+        else
+        {
+            message = &quot;Wrong Order!&quot;;
+            ShowNotification();
+        }
+        
+        StringListService.ClearList();
+        UpdateOrder();
+        StateHasChanged();
+    }
+    private void Clear_List()
+    {
+        StringListService.ClearList();
+    }
+    private async Task ShowNotification()
+    {
+        await JSRuntime.InvokeVoidAsync(&quot;showNotification&quot;);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync(&quot;initializeNotification&quot;);
+        }
+    }
+}
+
+&lt;script&gt;
+    function initializeNotification() 
+    {
+        window.showNotification = function () 
+        {
+            var notification = document.getElementById(&#39;notification&#39;);
+            notification.style.display = &#39;block&#39;;
+            setTimeout(function () 
+            {
+                notification.style.display = &#39;none&#39;;
+            }, 5000);
+        }
+    }
+&lt;/script&gt;
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[46,6,46,17,0],[47,5,47,6,0],[56,5,56,6,0],[58,5,58,6,0],[79,18,79,25,0],[79,27,79,41,0],[79,42,79,44,0],[79,45,79,73,0],[80,17,80,18,0],[82,17,82,18,0],[99,5,99,6,0],[104,5,104,32,0],[105,5,105,45,0],[106,5,106,64,0],[107,5,107,39,0],[108,5,108,32,0],[110,5,110,6,0],[111,16,111,56,0],[112,9,112,10,0],[113,13,113,39,0],[114,13,114,32,0],[115,13,115,70,0],[116,13,116,46,0],[118,5,118,6,0],[119,5,119,35,0],[121,5,121,6,0],[122,9,122,24,0],[123,9,123,45,0],[124,5,124,6,0],[126,5,126,6,0],[127,9,127,68,0],[128,9,128,44,0],[129,5,129,6,0],[131,5,131,6,0],[132,9,132,45,0],[133,5,133,6,0],[136,5,136,6,0],[137,9,137,21,0],[138,9,138,10,0],[139,13,139,29,0],[140,13,140,38,0],[141,9,141,10,0],[142,5,142,6,0],[144,5,144,6,0],[145,9,145,47,0],[146,9,146,49,0],[147,9,147,27,0],[148,5,148,6,0],[151,5,151,6,0],[152,9,152,34,0],[153,9,153,39,0],[154,9,154,23,0],[155,9,155,27,0],[156,5,156,6,0],[159,5,159,6,0],[160,9,160,55,0],[161,9,161,23,0],[162,5,162,6,0],[165,5,165,6,0],[166,9,166,55,0],[167,5,167,6,0],[170,5,170,6,0],[174,9,174,24,0],[176,9,176,53,0],[177,9,177,10,0],[178,13,178,35,0],[179,13,179,32,0],[180,13,180,20,0],[183,9,183,16,0],[183,18,183,26,0],[183,27,183,29,0],[183,30,183,58,0],[184,9,184,10,0],[185,13,185,37,0],[185,38,185,54,0],[186,18,186,41,0],[186,42,186,59,0],[187,18,187,42,0],[187,43,187,60,0],[188,18,188,42,0],[188,43,188,60,0],[189,18,189,44,0],[189,45,189,62,0],[190,18,190,44,0],[190,45,190,62,0],[191,18,191,45,0],[191,46,191,63,0],[192,18,192,42,0],[192,43,192,60,0],[193,18,193,57,0],[193,58,193,75,0],[194,18,194,39,0],[194,40,194,56,0],[195,18,195,37,0],[195,38,195,54,0],[196,18,196,38,0],[196,39,196,55,0],[197,18,197,35,0],[197,36,197,52,0],[198,18,198,41,0],[198,42,198,58,0],[199,18,199,39,0],[199,40,199,56,0],[200,18,200,37,0],[200,38,200,54,0],[201,18,201,39,0],[201,40,201,56,0],[202,18,202,38,0],[202,39,202,55,0],[203,18,203,37,0],[203,38,203,54,0],[204,18,204,41,0],[204,42,204,58,0],[205,18,205,41,0],[205,42,205,58,0],[206,18,206,39,0],[206,40,206,56,0],[207,18,207,42,0],[207,43,207,59,0],[208,18,208,39,0],[208,40,208,56,0],[209,18,209,37,0],[209,38,209,54,0],[210,18,210,34,0],[211,9,211,10,0],[212,9,212,42,0],[213,9,213,27,0],[214,9,214,16,0],[214,18,214,26,0],[214,27,214,29,0],[214,30,214,46,0],[215,9,215,10,0],[216,13,216,61,0],[217,13,217,14,0],[218,17,218,59,0],[219,17,219,41,0],[220,17,220,26,0],[223,13,223,14,0],[224,17,224,59,0],[225,17,225,41,0],[226,17,226,31,0],[227,17,227,23,0],[230,9,230,77,0],[231,9,231,10,0],[232,13,232,27,0],[233,9,233,10,0],[235,9,235,60,0],[236,9,236,10,0],[237,13,237,38,0],[238,13,238,27,0],[239,9,239,10,0],[240,9,240,19,0],[241,9,241,10,0],[242,13,242,40,0],[243,13,243,32,0],[244,13,244,53,0],[245,9,245,10,0],[247,9,247,10,0],[248,13,248,38,0],[249,13,249,32,0],[250,9,250,10,0],[252,9,252,39,0],[253,9,253,23,0],[254,9,254,27,0],[255,5,255,6,0],[257,5,257,6,0],[258,9,258,39,0],[259,5,259,6,0],[261,5,261,6,0],[262,9,262,61,0],[263,5,263,6,0],[266,5,266,6,0],[267,9,267,25,0],[268,9,268,10,0],[269,13,269,71,0],[270,9,270,10,0],[271,5,271,6,0]]);
+    </script>
+  </body>
+</html>

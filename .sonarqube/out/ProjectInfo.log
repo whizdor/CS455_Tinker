@@ -1,0 +1,27 @@
+Product projects
+---------------------------------------
+/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/StackNServe.csproj
+
+
+Test projects
+---------------------------------------
+/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/tests/StackNServe.Tests/StackNServe.Tests.csproj
+
+
+Invalid projects
+---------------------------------------
+{none}
+
+
+Skipped projects
+---------------------------------------
+/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/tests/StackNServe.Tests/StackNServe.Tests.csproj
+/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/StackNServe.csproj
+/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/StackNServe.csproj
+
+
+Excluded projects
+---------------------------------------
+{none}
+
+

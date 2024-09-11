@@ -1,0 +1,22 @@
+Ó
+
+StackNServe.Pages.Home-Microsoft.AspNetCore.Components.ComponentBaseobject³
+LBuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)cStackNServe.Pages.Home.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)Y
+GetSecureRandomNumber(int, int)6StackNServe.Pages.Home.GetSecureRandomNumber(int, int)E
+HandleTimerFinished(),StackNServe.Pages.Home.HandleTimerFinished()?
+Fetch_Order_List())StackNServe.Pages.Home.Fetch_Order_List()A
+Fetch_Order_Price()*StackNServe.Pages.Home.Fetch_Order_Price()3
+ReloadGame()#StackNServe.Pages.Home.ReloadGame()5
+UpdateOrder()$StackNServe.Pages.Home.UpdateOrder()5
+Player_Skip()$StackNServe.Pages.Home.Player_Skip()9
+OnInitialized()&StackNServe.Pages.Home.OnInitialized()-
+	Dispose() StackNServe.Pages.Home.Dispose()1
+CheckList()"StackNServe.Pages.Home.CheckList()3
+Clear_List()#StackNServe.Pages.Home.Clear_List()?
+ShowNotification())StackNServe.Pages.Home.ShowNotification()K
+OnAfterRenderAsync(bool)/StackNServe.Pages.Home.OnAfterRenderAsync(bool)'
+Home()StackNServe.Pages.Home.Home()5
+JSRuntime.get$StackNServe.Pages.Home.JSRuntime.get5
+JSRuntime.set$StackNServe.Pages.Home.JSRuntime.setE
+StringListService.get,StackNServe.Pages.Home.StringListService.getE
+StringListService.set,StackNServe.Pages.Home.StringListService.set

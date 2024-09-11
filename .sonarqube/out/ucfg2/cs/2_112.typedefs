@@ -1,0 +1,9 @@
+£
+%StackNServe.Shared.Bun_Select.BunInfoobjectj
+ BunInfo(string, string, decimal)FStackNServe.Shared.Bun_Select.BunInfo.BunInfo(string, string, decimal):
+Name.get.StackNServe.Shared.Bun_Select.BunInfo.Name.get:
+Name.set.StackNServe.Shared.Bun_Select.BunInfo.Name.setH
+Description.get5StackNServe.Shared.Bun_Select.BunInfo.Description.getH
+Description.set5StackNServe.Shared.Bun_Select.BunInfo.Description.set<
+	Price.get/StackNServe.Shared.Bun_Select.BunInfo.Price.get<
+	Price.set/StackNServe.Shared.Bun_Select.BunInfo.Price.set

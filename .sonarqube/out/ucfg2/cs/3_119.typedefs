@@ -1,0 +1,13 @@
+“
+StackNServe.Models.Sesame_Bunobject:
+Sesame_Bun()*StackNServe.Models.Sesame_Bun.Sesame_Bun().
+Id.get$StackNServe.Models.Sesame_Bun.Id.get.
+Id.set$StackNServe.Models.Sesame_Bun.Id.set2
+Name.get&StackNServe.Models.Sesame_Bun.Name.get2
+Name.set&StackNServe.Models.Sesame_Bun.Name.set4
+	Price.get'StackNServe.Models.Sesame_Bun.Price.get4
+	Price.set'StackNServe.Models.Sesame_Bun.Price.set:
+ImageUrl.get*StackNServe.Models.Sesame_Bun.ImageUrl.get:
+ImageUrl.set*StackNServe.Models.Sesame_Bun.ImageUrl.set@
+Description.get-StackNServe.Models.Sesame_Bun.Description.get@
+Description.set-StackNServe.Models.Sesame_Bun.Description.set

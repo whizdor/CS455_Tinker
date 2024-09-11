@@ -1,0 +1,10 @@
+Š
+"StackNServe.Shared.BackgroundMusic-Microsoft.AspNetCore.Components.ComponentBaseobject¿
+LBuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)oStackNServe.Shared.BackgroundMusic.BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)W
+OnAfterRenderAsync(bool);StackNServe.Shared.BackgroundMusic.OnAfterRenderAsync(bool)=
+PlayAsync().StackNServe.Shared.BackgroundMusic.PlayAsync()?
+PauseAsync()/StackNServe.Shared.BackgroundMusic.PauseAsync()A
+ToggleAsync()0StackNServe.Shared.BackgroundMusic.ToggleAsync()I
+BackgroundMusic()4StackNServe.Shared.BackgroundMusic.BackgroundMusic()A
+JSRuntime.get0StackNServe.Shared.BackgroundMusic.JSRuntime.getA
+JSRuntime.set0StackNServe.Shared.BackgroundMusic.JSRuntime.set

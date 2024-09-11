@@ -1,0 +1,3681 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Microsoft (R) Visual C# Compiler",
+        "version": "4.10.0.0",
+        "fileVersion": "4.10.0-3.24314.14 (259e82e9)",
+        "semanticVersion": "4.10.0",
+        "language": "en-US"
+      },
+      "results": [
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable property 'Name' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Services/BurgerBuilderServices.razor.cs",
+                "region": {
+                  "startLine": 8,
+                  "startColumn": 23,
+                  "endLine": 8,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Services/BurgerBuilderServices.razor.cs",
+                "region": {
+                  "startLine": 8,
+                  "startColumn": 23,
+                  "endLine": 8,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable property 'Color' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Services/BurgerBuilderServices.razor.cs",
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 23,
+                  "endLine": 9,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Services/BurgerBuilderServices.razor.cs",
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 23,
+                  "endLine": 9,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable event 'OnChange' must contain a non-null value when exiting constructor. Consider declaring the event as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Services/SelectionButtonsService.razor.cs",
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 29,
+                  "endLine": 10,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Services/SelectionButtonsService.razor.cs",
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 29,
+                  "endLine": 10,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable event 'OnBurgerChanged' must contain a non-null value when exiting constructor. Consider declaring the event as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Services/BurgerBuilderServices.razor.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 29,
+                  "endLine": 15,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Services/BurgerBuilderServices.razor.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 29,
+                  "endLine": 15,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable property 'Order_List' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Order.razor",
+                "region": {
+                  "startLine": 65,
+                  "startColumn": 25,
+                  "endLine": 65,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Order.razor",
+                "region": {
+                  "startLine": 65,
+                  "startColumn": 25,
+                  "endLine": 65,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS4014",
+          "level": "warning",
+          "message": "Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 179,
+                  "startColumn": 13,
+                  "endLine": 179,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS4014",
+          "level": "warning",
+          "message": "Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 243,
+                  "startColumn": 13,
+                  "endLine": 243,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS4014",
+          "level": "warning",
+          "message": "Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 249,
+                  "startColumn": 13,
+                  "endLine": 249,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field '_timer' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/CountdownTimer.razor",
+                "region": {
+                  "startLine": 35,
+                  "startColumn": 19,
+                  "endLine": 35,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/CountdownTimer.razor",
+                "region": {
+                  "startLine": 35,
+                  "startColumn": 19,
+                  "endLine": 35,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8625",
+          "level": "warning",
+          "message": "Cannot convert null literal to non-nullable reference type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Patty_Select.razor",
+                "region": {
+                  "startLine": 164,
+                  "startColumn": 28,
+                  "endLine": 164,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8625",
+          "level": "warning",
+          "message": "Cannot convert null literal to non-nullable reference type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Patty_Select.razor",
+                "region": {
+                  "startLine": 165,
+                  "startColumn": 29,
+                  "endLine": 165,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8625",
+          "level": "warning",
+          "message": "Cannot convert null literal to non-nullable reference type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Bun_Select.razor",
+                "region": {
+                  "startLine": 159,
+                  "startColumn": 28,
+                  "endLine": 159,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8625",
+          "level": "warning",
+          "message": "Cannot convert null literal to non-nullable reference type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Bun_Select.razor",
+                "region": {
+                  "startLine": 160,
+                  "startColumn": 29,
+                  "endLine": 160,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8625",
+          "level": "warning",
+          "message": "Cannot convert null literal to non-nullable reference type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Sauces_Select.razor",
+                "region": {
+                  "startLine": 181,
+                  "startColumn": 28,
+                  "endLine": 181,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8625",
+          "level": "warning",
+          "message": "Cannot convert null literal to non-nullable reference type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Sauces_Select.razor",
+                "region": {
+                  "startLine": 182,
+                  "startColumn": 29,
+                  "endLine": 182,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8625",
+          "level": "warning",
+          "message": "Cannot convert null literal to non-nullable reference type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Toppings_Select.razor",
+                "region": {
+                  "startLine": 193,
+                  "startColumn": 28,
+                  "endLine": 193,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8625",
+          "level": "warning",
+          "message": "Cannot convert null literal to non-nullable reference type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Toppings_Select.razor",
+                "region": {
+                  "startLine": 194,
+                  "startColumn": 29,
+                  "endLine": 194,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8622",
+          "level": "warning",
+          "message": "Nullability of reference types in type of parameter 'state' of 'void Patty_Select.CloseMenu(object state)' doesn't match the target delegate 'TimerCallback' (possibly because of nullability attributes).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Patty_Select.razor",
+                "region": {
+                  "startLine": 188,
+                  "startColumn": 36,
+                  "endLine": 188,
+                  "endColumn": 45
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8625",
+          "level": "warning",
+          "message": "Cannot convert null literal to non-nullable reference type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Patty_Select.razor",
+                "region": {
+                  "startLine": 195,
+                  "startColumn": 26,
+                  "endLine": 195,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8622",
+          "level": "warning",
+          "message": "Nullability of reference types in type of parameter 'state' of 'void Sauces_Select.CheckSaucesSelectVar(object state)' doesn't match the target delegate 'TimerCallback' (possibly because of nullability attributes).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Sauces_Select.razor",
+                "region": {
+                  "startLine": 244,
+                  "startColumn": 45,
+                  "endLine": 244,
+                  "endColumn": 65
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8622",
+          "level": "warning",
+          "message": "Nullability of reference types in type of parameter 'state' of 'void Bun_Select.CheckBunSelectVar(object state)' doesn't match the target delegate 'TimerCallback' (possibly because of nullability attributes).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Bun_Select.razor",
+                "region": {
+                  "startLine": 240,
+                  "startColumn": 45,
+                  "endLine": 240,
+                  "endColumn": 62
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8622",
+          "level": "warning",
+          "message": "Nullability of reference types in type of parameter 'state' of 'void Patty_Select.CheckPattySelectVar(object state)' doesn't match the target delegate 'TimerCallback' (possibly because of nullability attributes).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Patty_Select.razor",
+                "region": {
+                  "startLine": 241,
+                  "startColumn": 45,
+                  "endLine": 241,
+                  "endColumn": 64
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8622",
+          "level": "warning",
+          "message": "Nullability of reference types in type of parameter 'state' of 'void Toppings_Select.CheckToppingsSelectVar(object state)' doesn't match the target delegate 'TimerCallback' (possibly because of nullability attributes).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Toppings_Select.razor",
+                "region": {
+                  "startLine": 259,
+                  "startColumn": 45,
+                  "endLine": 259,
+                  "endColumn": 67
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field 'currentHoverInfo' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Sauces_Select.razor",
+                "region": {
+                  "startLine": 138,
+                  "startColumn": 24,
+                  "endLine": 138,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Sauces_Select.razor",
+                "region": {
+                  "startLine": 138,
+                  "startColumn": 24,
+                  "endLine": 138,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field 'currentHoverPatty' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Sauces_Select.razor",
+                "region": {
+                  "startLine": 139,
+                  "startColumn": 20,
+                  "endLine": 139,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Sauces_Select.razor",
+                "region": {
+                  "startLine": 139,
+                  "startColumn": 20,
+                  "endLine": 139,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field '_timer' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Sauces_Select.razor",
+                "region": {
+                  "startLine": 240,
+                  "startColumn": 36,
+                  "endLine": 240,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Sauces_Select.razor",
+                "region": {
+                  "startLine": 240,
+                  "startColumn": 36,
+                  "endLine": 240,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field 'currentHoverInfo' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Bun_Select.razor",
+                "region": {
+                  "startLine": 131,
+                  "startColumn": 21,
+                  "endLine": 131,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Bun_Select.razor",
+                "region": {
+                  "startLine": 131,
+                  "startColumn": 21,
+                  "endLine": 131,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field 'currentHoverPatty' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Bun_Select.razor",
+                "region": {
+                  "startLine": 132,
+                  "startColumn": 20,
+                  "endLine": 132,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Bun_Select.razor",
+                "region": {
+                  "startLine": 132,
+                  "startColumn": 20,
+                  "endLine": 132,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field '_timer' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Bun_Select.razor",
+                "region": {
+                  "startLine": 236,
+                  "startColumn": 36,
+                  "endLine": 236,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Bun_Select.razor",
+                "region": {
+                  "startLine": 236,
+                  "startColumn": 36,
+                  "endLine": 236,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field 'currentHoverInfo' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Patty_Select.razor",
+                "region": {
+                  "startLine": 133,
+                  "startColumn": 23,
+                  "endLine": 133,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Patty_Select.razor",
+                "region": {
+                  "startLine": 133,
+                  "startColumn": 23,
+                  "endLine": 133,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field 'currentHoverPatty' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Patty_Select.razor",
+                "region": {
+                  "startLine": 134,
+                  "startColumn": 20,
+                  "endLine": 134,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Patty_Select.razor",
+                "region": {
+                  "startLine": 134,
+                  "startColumn": 20,
+                  "endLine": 134,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field 'autoCloseTimer' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Patty_Select.razor",
+                "region": {
+                  "startLine": 135,
+                  "startColumn": 19,
+                  "endLine": 135,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Patty_Select.razor",
+                "region": {
+                  "startLine": 135,
+                  "startColumn": 19,
+                  "endLine": 135,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field '_timer' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Patty_Select.razor",
+                "region": {
+                  "startLine": 237,
+                  "startColumn": 36,
+                  "endLine": 237,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Patty_Select.razor",
+                "region": {
+                  "startLine": 237,
+                  "startColumn": 36,
+                  "endLine": 237,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field 'currentHoverInfo' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Toppings_Select.razor",
+                "region": {
+                  "startLine": 140,
+                  "startColumn": 25,
+                  "endLine": 140,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Toppings_Select.razor",
+                "region": {
+                  "startLine": 140,
+                  "startColumn": 25,
+                  "endLine": 140,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field 'currentHoverPatty' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Toppings_Select.razor",
+                "region": {
+                  "startLine": 141,
+                  "startColumn": 20,
+                  "endLine": 141,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Toppings_Select.razor",
+                "region": {
+                  "startLine": 141,
+                  "startColumn": 20,
+                  "endLine": 141,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable field '_timer' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Toppings_Select.razor",
+                "region": {
+                  "startLine": 255,
+                  "startColumn": 36,
+                  "endLine": 255,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Toppings_Select.razor",
+                "region": {
+                  "startLine": 255,
+                  "startColumn": 36,
+                  "endLine": 255,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1633",
+          "level": "warning",
+          "message": "The file header is missing or not located at the top of the file.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Models/Bun.cs",
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1210",
+          "level": "warning",
+          "message": "Using directives should be ordered alphabetically by the namespaces.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 1,
+                  "endLine": 10,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1210",
+          "level": "warning",
+          "message": "Using directives should be ordered alphabetically by the namespaces.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 1,
+                  "endLine": 5,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1210",
+          "level": "warning",
+          "message": "Using directives should be ordered alphabetically by the namespaces.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 1,
+                  "endLine": 6,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1633",
+          "level": "warning",
+          "message": "The file header is missing or not located at the top of the file.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Models/Patty.cs",
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1633",
+          "level": "warning",
+          "message": "The file header is missing or not located at the top of the file.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Models/Sauces.cs",
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'Chicken_Patty' to match pascal case naming rules, consider using 'ChickenPatty'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Models/Patty.cs",
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 18,
+                  "endLine": 3,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1633",
+          "level": "warning",
+          "message": "The file header is missing or not located at the top of the file.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Models/Toppings.cs",
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1633",
+          "level": "warning",
+          "message": "The file header is missing or not located at the top of the file.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Models/User.cs",
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1633",
+          "level": "warning",
+          "message": "The file header is missing or not located at the top of the file.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1513",
+          "level": "warning",
+          "message": "Closing brace should be followed by blank line",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 14,
+                  "endLine": 58,
+                  "endColumn": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1513",
+          "level": "warning",
+          "message": "Closing brace should be followed by blank line",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 61,
+                  "startColumn": 14,
+                  "endLine": 62,
+                  "endColumn": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1513",
+          "level": "warning",
+          "message": "Closing brace should be followed by blank line",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 65,
+                  "startColumn": 14,
+                  "endLine": 66,
+                  "endColumn": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1513",
+          "level": "warning",
+          "message": "Closing brace should be followed by blank line",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 96,
+                  "startColumn": 14,
+                  "endLine": 97,
+                  "endColumn": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1513",
+          "level": "warning",
+          "message": "Closing brace should be followed by blank line",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 98,
+                  "startColumn": 10,
+                  "endLine": 99,
+                  "endColumn": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1513",
+          "level": "warning",
+          "message": "Closing brace should be followed by blank line",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 105,
+                  "startColumn": 10,
+                  "endLine": 106,
+                  "endColumn": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1515",
+          "level": "warning",
+          "message": "Single-line comment should be preceded by blank line",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 66,
+                  "startColumn": 13,
+                  "endLine": 66,
+                  "endColumn": 15
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1028",
+          "level": "warning",
+          "message": "Code should not contain trailing whitespace",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 51,
+                  "startColumn": 1,
+                  "endLine": 51,
+                  "endColumn": 13
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1028",
+          "level": "warning",
+          "message": "Code should not contain trailing whitespace",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 82,
+                  "startColumn": 74,
+                  "endLine": 82,
+                  "endColumn": 75
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1028",
+          "level": "warning",
+          "message": "Code should not contain trailing whitespace",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 83,
+                  "startColumn": 50,
+                  "endLine": 83,
+                  "endColumn": 51
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1633",
+          "level": "warning",
+          "message": "The file header is missing or not located at the top of the file.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Program.cs",
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1633",
+          "level": "warning",
+          "message": "The file header is missing or not located at the top of the file.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Services/BurgerBuilderServices.razor.cs",
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1633",
+          "level": "warning",
+          "message": "The file header is missing or not located at the top of the file.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Services/GlobalStringListService.razor.cs",
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1633",
+          "level": "warning",
+          "message": "The file header is missing or not located at the top of the file.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Services/SelectionButtonsService.razor.cs",
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3260",
+          "level": "warning",
+          "message": "Private classes which are not derived in the current assembly should be marked as 'sealed'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Bun_Select.razor",
+                "region": {
+                  "startLine": 180,
+                  "startColumn": 19,
+                  "endLine": 180,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3260",
+          "level": "warning",
+          "message": "Private classes which are not derived in the current assembly should be marked as 'sealed'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Patty_Select.razor",
+                "region": {
+                  "startLine": 203,
+                  "startColumn": 19,
+                  "endLine": 203,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3260",
+          "level": "warning",
+          "message": "Private classes which are not derived in the current assembly should be marked as 'sealed'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Sauces_Select.razor",
+                "region": {
+                  "startLine": 202,
+                  "startColumn": 19,
+                  "endLine": 202,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3260",
+          "level": "warning",
+          "message": "Private classes which are not derived in the current assembly should be marked as 'sealed'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Toppings_Select.razor",
+                "region": {
+                  "startLine": 216,
+                  "startColumn": 19,
+                  "endLine": 216,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'Plain_Bun' to match pascal case naming rules, consider using 'PlainBun'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Models/Bun.cs",
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 18,
+                  "endLine": 3,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'Fish_Patty' to match pascal case naming rules, consider using 'FishPatty'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Models/Patty.cs",
+                "region": {
+                  "startLine": 78,
+                  "startColumn": 18,
+                  "endLine": 78,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make '_burgerStack' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Services/BurgerBuilderServices.razor.cs",
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 39,
+                  "endLine": 14,
+                  "endColumn": 51
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'Veggie_Patty' to match pascal case naming rules, consider using 'VeggiePatty'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Models/Patty.cs",
+                "region": {
+                  "startLine": 40,
+                  "startColumn": 18,
+                  "endLine": 40,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'Bun' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 33,
+                  "endLine": 17,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'Patty' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 33,
+                  "endLine": 18,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'Toppings' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 33,
+                  "endLine": 19,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'Sauces' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 33,
+                  "endLine": 20,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'Sesame_Bun' to match pascal case naming rules, consider using 'SesameBun'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Models/Bun.cs",
+                "region": {
+                  "startLine": 40,
+                  "startColumn": 18,
+                  "endLine": 40,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make '_stringList' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Services/GlobalStringListService.razor.cs",
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 30,
+                  "endLine": 5,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'Portobello_Mushroom_Patty' to match pascal case naming rules, consider using 'PortobelloMushroomPatty'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Models/Patty.cs",
+                "region": {
+                  "startLine": 115,
+                  "startColumn": 18,
+                  "endLine": 115,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S4487",
+          "level": "warning",
+          "message": "Remove this unread private field 'audioElement' or refactor the code to use its value.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/BackgroundMusic.razor",
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 30,
+                  "endLine": 10,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'Garlic_Bun' to match pascal case naming rules, consider using 'GarlicBun'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Models/Bun.cs",
+                "region": {
+                  "startLine": 77,
+                  "startColumn": 18,
+                  "endLine": 77,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'Parmesan_Bun' to match pascal case naming rules, consider using 'ParmesanBun'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Models/Bun.cs",
+                "region": {
+                  "startLine": 114,
+                  "startColumn": 18,
+                  "endLine": 114,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'BBQSauce' to match pascal case naming rules, consider using 'BbqSauce'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Models/Sauces.cs",
+                "region": {
+                  "startLine": 54,
+                  "startColumn": 18,
+                  "endLine": 54,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2953",
+          "level": "warning",
+          "message": "Either implement 'IDisposable.Dispose', or totally rename this method to prevent confusion.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 164,
+                  "startColumn": 17,
+                  "endLine": 164,
+                  "endColumn": 24
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2953",
+          "level": "warning",
+          "message": "Either implement 'IDisposable.Dispose', or totally rename this method to prevent confusion.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Bun_Select.razor",
+                "region": {
+                  "startLine": 255,
+                  "startColumn": 17,
+                  "endLine": 255,
+                  "endColumn": 24
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'BunImages' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Bun_Select.razor",
+                "region": {
+                  "startLine": 122,
+                  "startColumn": 18,
+                  "endLine": 122,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1144",
+          "level": "warning",
+          "message": "Remove the unused private method 'Clear_List'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 256,
+                  "startColumn": 18,
+                  "endLine": 256,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1104",
+          "level": "warning",
+          "message": "Make this field 'private' and encapsulate it in a 'public' property.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 29,
+                  "endLine": 21,
+                  "endColumn": 60
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1306",
+          "level": "warning",
+          "message": "Field 'Toppings' should begin with lower-case letter",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 33,
+                  "endLine": 19,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1306",
+          "level": "warning",
+          "message": "Field 'Bun' should begin with lower-case letter",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 33,
+                  "endLine": 17,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1306",
+          "level": "warning",
+          "message": "Field 'Patty' should begin with lower-case letter",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 33,
+                  "endLine": 18,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1306",
+          "level": "warning",
+          "message": "Field 'Sauces' should begin with lower-case letter",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 33,
+                  "endLine": 20,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1309",
+          "level": "warning",
+          "message": "Field '_stringList' should not begin with an underscore",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Services/GlobalStringListService.razor.cs",
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 30,
+                  "endLine": 5,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1309",
+          "level": "warning",
+          "message": "Field '_burgerStack' should not begin with an underscore",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Services/BurgerBuilderServices.razor.cs",
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 39,
+                  "endLine": 14,
+                  "endColumn": 51
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1310",
+          "level": "warning",
+          "message": "Field 'Order_List' should not contain an underscore",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 29,
+                  "endLine": 21,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1003",
+          "level": "warning",
+          "message": "Operator '=' should be preceded by whitespace.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 41,
+                  "endLine": 19,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "Action": "InsertBefore"
+            }
+          }
+        },
+        {
+          "ruleId": "SA1003",
+          "level": "warning",
+          "message": "Operator '=' should be preceded by whitespace.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 38,
+                  "endLine": 18,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "Action": "InsertBefore"
+            }
+          }
+        },
+        {
+          "ruleId": "SA1003",
+          "level": "warning",
+          "message": "Operator '=' should be preceded by whitespace.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 36,
+                  "endLine": 17,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "Action": "InsertBefore"
+            }
+          }
+        },
+        {
+          "ruleId": "SA1003",
+          "level": "warning",
+          "message": "Operator '=' should be preceded by whitespace.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 39,
+                  "endLine": 20,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "Action": "InsertBefore"
+            }
+          }
+        },
+        {
+          "ruleId": "S2953",
+          "level": "warning",
+          "message": "Either implement 'IDisposable.Dispose', or totally rename this method to prevent confusion.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Sauces_Select.razor",
+                "region": {
+                  "startLine": 259,
+                  "startColumn": 17,
+                  "endLine": 259,
+                  "endColumn": 24
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'SaucesImages' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Sauces_Select.razor",
+                "region": {
+                  "startLine": 126,
+                  "startColumn": 18,
+                  "endLine": 126,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2292",
+          "level": "warning",
+          "message": "Make this an auto-implemented property and remove its backing field.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Score_Board.razor",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 16,
+                  "endLine": 18,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2953",
+          "level": "warning",
+          "message": "Either implement 'IDisposable.Dispose', or totally rename this method to prevent confusion.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Patty_Select.razor",
+                "region": {
+                  "startLine": 256,
+                  "startColumn": 17,
+                  "endLine": 256,
+                  "endColumn": 24
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'PattyImages' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Patty_Select.razor",
+                "region": {
+                  "startLine": 124,
+                  "startColumn": 18,
+                  "endLine": 124,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2953",
+          "level": "warning",
+          "message": "Either implement 'IDisposable.Dispose', or totally rename this method to prevent confusion.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Toppings_Select.razor",
+                "region": {
+                  "startLine": 274,
+                  "startColumn": 17,
+                  "endLine": 274,
+                  "endColumn": 24
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'Toppings' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Toppings_Select.razor",
+                "region": {
+                  "startLine": 124,
+                  "startColumn": 18,
+                  "endLine": 124,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'ToppingImages' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Toppings_Select.razor",
+                "region": {
+                  "startLine": 126,
+                  "startColumn": 18,
+                  "endLine": 126,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1144",
+          "level": "warning",
+          "message": "Remove the unused private field 'Toppings'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Toppings_Select.razor",
+                "region": {
+                  "startLine": 124,
+                  "startColumn": 5,
+                  "endLine": 124,
+                  "endColumn": 139
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1312",
+          "level": "warning",
+          "message": "Variable 'Bun_Type' should begin with lower-case letter",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 30,
+                  "startColumn": 17,
+                  "endLine": 30,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1312",
+          "level": "warning",
+          "message": "Variable 'numPatty' should begin with lower-case letter",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 31,
+                  "startColumn": 17,
+                  "endLine": 31,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1312",
+          "level": "warning",
+          "message": "Variable 'Patty_Type' should begin with lower-case letter",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 32,
+                  "startColumn": 26,
+                  "endLine": 32,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1312",
+          "level": "warning",
+          "message": "Variable 'numTopping' should begin with lower-case letter",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 38,
+                  "startColumn": 17,
+                  "endLine": 38,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1312",
+          "level": "warning",
+          "message": "Variable 'Topping_Type' should begin with lower-case letter",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 39,
+                  "startColumn": 26,
+                  "endLine": 39,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1312",
+          "level": "warning",
+          "message": "Variable 'numSauce' should begin with lower-case letter",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 45,
+                  "startColumn": 17,
+                  "endLine": 45,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1312",
+          "level": "warning",
+          "message": "Variable 'Sauce_Type' should begin with lower-case letter",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 26,
+                  "endLine": 46,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2325",
+          "level": "warning",
+          "message": "Make 'Fetch_Order_List' a static method.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 125,
+                  "startColumn": 26,
+                  "endLine": 125,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2325",
+          "level": "warning",
+          "message": "Make 'GetSecureRandomNumber' a static method.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 109,
+                  "startColumn": 16,
+                  "endLine": 109,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2325",
+          "level": "warning",
+          "message": "Make 'GetSecureRandomNumber' a static method.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 76,
+                  "startColumn": 20,
+                  "endLine": 76,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA1407",
+          "level": "warning",
+          "message": "Arithmetic expressions should declare precedence",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 83,
+                  "startColumn": 24,
+                  "endLine": 83,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1822",
+          "level": "note",
+          "message": "Member 'GetSecureRandomNumber' does not access instance data and can be marked as static",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Order_Generator.razor.cs",
+                "region": {
+                  "startLine": 76,
+                  "startColumn": 20,
+                  "endLine": 76,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2325",
+          "level": "warning",
+          "message": "Make 'FormatTimeSpan' a static method.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/CountdownTimer.razor",
+                "region": {
+                  "startLine": 71,
+                  "startColumn": 20,
+                  "endLine": 71,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3776",
+          "level": "warning",
+          "message": "Refactor this method to reduce its Cognitive Complexity from 37 to the 15 allowed.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 169,
+                  "startColumn": 18,
+                  "endLine": 169,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 176,
+                  "startColumn": 9,
+                  "endLine": 176,
+                  "endColumn": 11
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 183,
+                  "startColumn": 9,
+                  "endLine": 183,
+                  "endColumn": 16
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 185,
+                  "startColumn": 13,
+                  "endLine": 185,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 186,
+                  "startColumn": 13,
+                  "endLine": 186,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 187,
+                  "startColumn": 13,
+                  "endLine": 187,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 188,
+                  "startColumn": 13,
+                  "endLine": 188,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 189,
+                  "startColumn": 13,
+                  "endLine": 189,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 190,
+                  "startColumn": 13,
+                  "endLine": 190,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 191,
+                  "startColumn": 13,
+                  "endLine": 191,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 192,
+                  "startColumn": 13,
+                  "endLine": 192,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 193,
+                  "startColumn": 13,
+                  "endLine": 193,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 194,
+                  "startColumn": 13,
+                  "endLine": 194,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 195,
+                  "startColumn": 13,
+                  "endLine": 195,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 196,
+                  "startColumn": 13,
+                  "endLine": 196,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 197,
+                  "startColumn": 13,
+                  "endLine": 197,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 198,
+                  "startColumn": 13,
+                  "endLine": 198,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 199,
+                  "startColumn": 13,
+                  "endLine": 199,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 200,
+                  "startColumn": 13,
+                  "endLine": 200,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 201,
+                  "startColumn": 13,
+                  "endLine": 201,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 202,
+                  "startColumn": 13,
+                  "endLine": 202,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 203,
+                  "startColumn": 13,
+                  "endLine": 203,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 204,
+                  "startColumn": 13,
+                  "endLine": 204,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 205,
+                  "startColumn": 13,
+                  "endLine": 205,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 206,
+                  "startColumn": 13,
+                  "endLine": 206,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 207,
+                  "startColumn": 13,
+                  "endLine": 207,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 208,
+                  "startColumn": 13,
+                  "endLine": 208,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 209,
+                  "startColumn": 13,
+                  "endLine": 209,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 210,
+                  "startColumn": 13,
+                  "endLine": 210,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 214,
+                  "startColumn": 9,
+                  "endLine": 214,
+                  "endColumn": 16
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 216,
+                  "startColumn": 13,
+                  "endLine": 216,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 222,
+                  "startColumn": 13,
+                  "endLine": 222,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 230,
+                  "startColumn": 9,
+                  "endLine": 230,
+                  "endColumn": 11
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 235,
+                  "startColumn": 9,
+                  "endLine": 235,
+                  "endColumn": 11
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 240,
+                  "startColumn": 9,
+                  "endLine": 240,
+                  "endColumn": 11
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 246,
+                  "startColumn": 9,
+                  "endLine": 246,
+                  "endColumn": 13
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": "+1",
+              "1": "+1",
+              "10": "+1",
+              "11": "+1",
+              "12": "+1",
+              "13": "+1",
+              "14": "+1",
+              "15": "+1",
+              "16": "+1",
+              "17": "+1",
+              "18": "+1",
+              "19": "+1",
+              "2": "+2 (incl 1 for nesting)",
+              "20": "+1",
+              "21": "+1",
+              "22": "+1",
+              "23": "+1",
+              "24": "+1",
+              "25": "+1",
+              "26": "+1",
+              "27": "+1",
+              "28": "+1",
+              "29": "+2 (incl 1 for nesting)",
+              "3": "+1",
+              "30": "+1",
+              "31": "+1",
+              "32": "+1",
+              "33": "+1",
+              "34": "+1",
+              "4": "+1",
+              "5": "+1",
+              "6": "+1",
+              "7": "+1",
+              "8": "+1",
+              "9": "+1"
+            }
+          }
+        },
+        {
+          "ruleId": "S3626",
+          "level": "warning",
+          "message": "Remove this redundant jump.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Pages/Home.razor",
+                "region": {
+                  "startLine": 220,
+                  "startColumn": 17,
+                  "endLine": 220,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1854",
+          "level": "warning",
+          "message": "Remove this useless assignment to local variable 'newItem'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Sauces_Select.razor",
+                "region": {
+                  "startLine": 222,
+                  "startColumn": 13,
+                  "endLine": 222,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1854",
+          "level": "warning",
+          "message": "Remove this useless assignment to local variable 'newItem'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Toppings_Select.razor",
+                "region": {
+                  "startLine": 235,
+                  "startColumn": 13,
+                  "endLine": 235,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1854",
+          "level": "warning",
+          "message": "Remove this useless assignment to local variable 'newItem'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Patty_Select.razor",
+                "region": {
+                  "startLine": 222,
+                  "startColumn": 13,
+                  "endLine": 222,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SA0001",
+          "level": "warning",
+          "message": "XML comment analysis is disabled due to project configuration",
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "CA1822": {
+          "id": "CA1822",
+          "shortDescription": "Mark members as static",
+          "fullDescription": "Members that do not access instance data or call instance methods can be marked as static. After you mark the methods as static, the compiler will emit nonvirtual call sites to these members. This can give you a measurable performance gain for performance-sensitive code.",
+          "defaultLevel": "note",
+          "helpUri": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1822",
+          "properties": {
+            "category": "Performance",
+            "isEnabledByDefault": true,
+            "tags": [
+              "PortedFromFxCop",
+              "Telemetry",
+              "EnabledRuleInAggressiveMode"
+            ]
+          }
+        },
+        "CS4014": {
+          "id": "CS4014",
+          "shortDescription": "Because this call is not awaited, execution of the current method continues before the call is completed",
+          "fullDescription": "The current method calls an async method that returns a Task or a Task<TResult> and doesn't apply the await operator to the result. The call to the async method starts an asynchronous task. However, because no await operator is applied, the program continues without waiting for the task to complete. In most cases, that behavior isn't what you expect. Usually other aspects of the calling method depend on the results of the call or, minimally, the called method is expected to complete before you return from the method that contains the call.\u000d\u000a\u000d\u000aAn equally important issue is what happens to exceptions that are raised in the called async method. An exception that's raised in a method that returns a Task or Task<TResult> is stored in the returned task. If you don't await the task or explicitly check for exceptions, the exception is lost. If you await the task, its exception is rethrown.\u000d\u000a\u000d\u000aAs a best practice, you should always await the call.\u000d\u000a\u000d\u000aYou should consider suppressing the warning only if you're sure that you don't want to wait for the asynchronous call to complete and that the called method won't raise any exceptions. In that case, you can suppress the warning by assigning the task result of the call to a variable.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS4014)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "CS8618": {
+          "id": "CS8618",
+          "shortDescription": "Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8618)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "CS8622": {
+          "id": "CS8622",
+          "shortDescription": "Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8622)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "CS8625": {
+          "id": "CS8625",
+          "shortDescription": "Cannot convert null literal to non-nullable reference type.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8625)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "S101": {
+          "id": "S101",
+          "shortDescription": "Types should be named in PascalCase",
+          "fullDescription": "Shared naming conventions allow teams to collaborate efficiently.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-101",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1104": {
+          "id": "S1104",
+          "shortDescription": "Fields should not have public accessibility",
+          "fullDescription": "Public fields in public classes do not respect the encapsulation principle and have three main disadvantages:",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1104",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1144": {
+          "id": "S1144",
+          "shortDescription": "Unused private types or members should be removed",
+          "fullDescription": "This rule raises an issue when a private/internal type or member is never referenced in the code.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1144",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1854": {
+          "id": "S1854",
+          "shortDescription": "Unused assignments should be removed",
+          "fullDescription": "Dead stores refer to assignments made to local variables that are subsequently never used or immediately overwritten. Such assignments are unnecessary and don’t contribute to the functionality or clarity of the code. They may even negatively impact performance. Removing them enhances code cleanliness and readability. Even if the unnecessary operations do not do any harm in terms of the program’s correctness, they are - at best - a waste of computing resources.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1854",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S2292": {
+          "id": "S2292",
+          "shortDescription": "Trivial properties should be auto-implemented",
+          "fullDescription": "Trivial properties, which include no logic but setting and getting a backing field should be converted to auto-implemented properties, yielding cleaner and more readable code.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2292",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S2325": {
+          "id": "S2325",
+          "shortDescription": "Methods and properties that don't access instance data should be static",
+          "fullDescription": "Methods and properties that don’t access instance data should be marked as static for the following reasons:",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2325",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S2933": {
+          "id": "S2933",
+          "shortDescription": "Fields that are only assigned in the constructor should be \"readonly\"",
+          "fullDescription": "readonly fields can only be assigned in a class constructor. If a class has a field that’s not marked readonly but is only set in the constructor, it could cause confusion about the field’s intended use. To avoid confusion, such fields should be marked readonly to make their intended use explicit, and to prevent future maintainers from inadvertently changing their use.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2933",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S2953": {
+          "id": "S2953",
+          "shortDescription": "Methods named \"Dispose\" should implement \"IDisposable.Dispose\"",
+          "fullDescription": "IDisposable is an interface implemented by all types which need to provide a mechanism for releasing unmanaged resources.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2953",
+          "properties": {
+            "category": "Blocker Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S3260": {
+          "id": "S3260",
+          "shortDescription": "Non-derived \"private\" classes and records should be \"sealed\"",
+          "fullDescription": "Classes and records with either private or file access modifiers aren’t visible outside of their assemblies or files, so if they’re not extended inside their scope, they should be made explicitly non-extensible with the addition of the sealed keyword.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3260",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S3626": {
+          "id": "S3626",
+          "shortDescription": "Jump statements should not be redundant",
+          "fullDescription": "Jump statements, such as return, yield break, goto, and continue let you change the default flow of program execution, but jump statements that direct the control flow to the original direction are just a waste of keystrokes.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3626",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S3776": {
+          "id": "S3776",
+          "shortDescription": "Cognitive Complexity of methods should not be too high",
+          "fullDescription": "This rule raises an issue when the code cognitive complexity of a function is above a certain threshold.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3776",
+          "properties": {
+            "category": "Critical Code Smell",
+            "isEnabledByDefault": false,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S4487": {
+          "id": "S4487",
+          "shortDescription": "Unread \"private\" fields should be removed",
+          "fullDescription": "Private fields which are written but never read are a case of \"dead store\". Changing the value of such a field is useless and most probably indicates an error in the code.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-4487",
+          "properties": {
+            "category": "Critical Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "SA0001": {
+          "id": "SA0001",
+          "shortDescription": "XML comment analysis disabled",
+          "fullDescription": "XML comment analysis can only be performed when the project is configured to parse documentation comments. To enable this functionality, update the project to produce an XML documentation file as part of the build.",
+          "defaultLevel": "warning",
+          "helpUri": "https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA0001.md",
+          "properties": {
+            "category": "StyleCop.CSharp.SpecialRules",
+            "isEnabledByDefault": true
+          }
+        },
+        "SA1003": {
+          "id": "SA1003",
+          "shortDescription": "Symbols should be spaced correctly",
+          "fullDescription": "The spacing around an operator symbol is incorrect, within a C# code file.",
+          "defaultLevel": "warning",
+          "helpUri": "https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1003.md",
+          "properties": {
+            "category": "StyleCop.CSharp.SpacingRules",
+            "isEnabledByDefault": true
+          }
+        },
+        "SA1028": {
+          "id": "SA1028",
+          "shortDescription": "Code should not contain trailing whitespace",
+          "fullDescription": "There should not be any whitespace at the end of a line of code.",
+          "defaultLevel": "warning",
+          "helpUri": "https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1028.md",
+          "properties": {
+            "category": "StyleCop.CSharp.SpacingRules",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Unnecessary"
+            ]
+          }
+        },
+        "SA1210": {
+          "id": "SA1210",
+          "shortDescription": "Using directives should be ordered alphabetically by namespace",
+          "fullDescription": "The using directives within a C# code file are not sorted alphabetically by namespace.",
+          "defaultLevel": "warning",
+          "helpUri": "https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1210.md",
+          "properties": {
+            "category": "StyleCop.CSharp.OrderingRules",
+            "isEnabledByDefault": true
+          }
+        },
+        "SA1306": {
+          "id": "SA1306",
+          "shortDescription": "Field names should begin with lower-case letter",
+          "fullDescription": "The name of a field in C# does not begin with a lower-case letter.",
+          "defaultLevel": "warning",
+          "helpUri": "https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1306.md",
+          "properties": {
+            "category": "StyleCop.CSharp.NamingRules",
+            "isEnabledByDefault": true
+          }
+        },
+        "SA1309": {
+          "id": "SA1309",
+          "shortDescription": "Field names should not begin with underscore",
+          "fullDescription": "A field name in C# begins with an underscore.",
+          "defaultLevel": "warning",
+          "helpUri": "https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1309.md",
+          "properties": {
+            "category": "StyleCop.CSharp.NamingRules",
+            "isEnabledByDefault": true
+          }
+        },
+        "SA1310": {
+          "id": "SA1310",
+          "shortDescription": "Field names should not contain underscore",
+          "fullDescription": "A field name in C# contains an underscore.",
+          "defaultLevel": "warning",
+          "helpUri": "https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1310.md",
+          "properties": {
+            "category": "StyleCop.CSharp.NamingRules",
+            "isEnabledByDefault": true
+          }
+        },
+        "SA1312": {
+          "id": "SA1312",
+          "shortDescription": "Variable names should begin with lower-case letter",
+          "fullDescription": "The name of a variable in C# does not begin with a lower-case letter.",
+          "defaultLevel": "warning",
+          "helpUri": "https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1312.md",
+          "properties": {
+            "category": "StyleCop.CSharp.NamingRules",
+            "isEnabledByDefault": true
+          }
+        },
+        "SA1407": {
+          "id": "SA1407",
+          "shortDescription": "Arithmetic expressions should declare precedence",
+          "fullDescription": "A C# statement contains a complex arithmetic expression which omits parenthesis around operators.",
+          "defaultLevel": "warning",
+          "helpUri": "https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1407.md",
+          "properties": {
+            "category": "StyleCop.CSharp.MaintainabilityRules",
+            "isEnabledByDefault": true
+          }
+        },
+        "SA1513": {
+          "id": "SA1513",
+          "shortDescription": "Closing brace should be followed by blank line",
+          "fullDescription": "A closing brace within a C# element, statement, or expression is not followed by a blank line.",
+          "defaultLevel": "warning",
+          "helpUri": "https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1513.md",
+          "properties": {
+            "category": "StyleCop.CSharp.LayoutRules",
+            "isEnabledByDefault": true
+          }
+        },
+        "SA1515": {
+          "id": "SA1515",
+          "shortDescription": "Single-line comment should be preceded by blank line",
+          "fullDescription": "A single-line comment within C# code is not preceded by a blank line.",
+          "defaultLevel": "warning",
+          "helpUri": "https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1515.md",
+          "properties": {
+            "category": "StyleCop.CSharp.LayoutRules",
+            "isEnabledByDefault": true
+          }
+        },
+        "SA1633": {
+          "id": "SA1633",
+          "shortDescription": "File should have header",
+          "fullDescription": "A C# code file is missing a standard file header.",
+          "defaultLevel": "warning",
+          "helpUri": "https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1633.md",
+          "properties": {
+            "category": "StyleCop.CSharp.DocumentationRules",
+            "isEnabledByDefault": true
+          }
+        }
+      }
+    }
+  ]
+}

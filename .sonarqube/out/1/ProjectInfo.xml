@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+  <ProjectName>StackNServe.Tests</ProjectName>
+  <ProjectLanguage>C#</ProjectLanguage>
+  <ProjectType>Test</ProjectType>
+  <ProjectGuid>68b9d46c-4f23-44c4-b27b-a91785f529b2</ProjectGuid>
+  <FullPath>/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/tests/StackNServe.Tests/StackNServe.Tests.csproj</FullPath>
+  <IsExcluded>false</IsExcluded>
+  <AnalysisResults>
+    <AnalysisResult Id="FilesToAnalyze" Location="/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/.sonarqube/conf/1/FilesToAnalyze.txt" />
+  </AnalysisResults>
+  <AnalysisSettings>
+    <Property Name="sonar.cs.roslyn.reportFilePaths">/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/.sonarqube/out/1/Issues.json</Property>
+    <Property Name="sonar.cs.analyzer.projectOutPaths">/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/.sonarqube/out/1</Property>
+  </AnalysisSettings>
+  <Configuration>Debug</Configuration>
+  <Platform>AnyCPU</Platform>
+  <TargetFramework>net8.0</TargetFramework>
+</ProjectInfo>

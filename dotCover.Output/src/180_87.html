@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Services/GlobalStringListService.razor.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+namespace StackNServe.Services
+{
+    public class GlobalStringListService 
+    {
+        public List&lt;string&gt; _stringList = new List&lt;string&gt;();
+        public event Action? OnChange;
+
+        public IReadOnlyList&lt;string&gt; StringList =&gt; _stringList.AsReadOnly();
+
+        public void AddString(string item)
+        {
+            if (!string.IsNullOrWhiteSpace(item))
+            {
+                _stringList.Add(item);
+                NotifyStateChanged();
+            }
+        }
+
+        public void RemoveString(string item)
+        {
+            if (_stringList.Remove(item))
+            {
+                NotifyStateChanged();
+            }
+        }
+
+        public virtual void ClearList()
+        {
+            _stringList.Clear();
+            NotifyStateChanged();
+        }
+
+        public void NotifyStateChanged() =&gt; OnChange?.Invoke();
+    }
+
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[5,9,5,62,1],[8,52,8,76,1],[11,9,11,10,1],[12,13,12,50,1],[13,13,13,14,1],[14,17,14,39,1],[15,17,15,38,1],[16,13,16,14,1],[17,9,17,10,1],[20,9,20,10,1],[21,13,21,42,1],[22,13,22,14,1],[23,17,23,38,1],[24,13,24,14,1],[25,9,25,10,1],[28,9,28,10,1],[29,13,29,33,1],[30,13,30,34,1],[31,9,31,10,1],[33,45,33,63,1]]);
+    </script>
+  </body>
+</html>

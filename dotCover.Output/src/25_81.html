@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>/Users/kushagra/Desktop/CS455_Stuff/CS455_Tinker/src/StackNServe/Shared/Toppings_Select.razor</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+&lt;style&gt;
+    @@import url(&#39;https://fonts.googleapis.com/css2?family=Cedarville+Cursive&amp;family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap&#39;);
+    .ToppingsSelect
+    {
+        display: flex;
+        flex-direction: row;
+    }
+    .ToppingToggleButton
+    {
+        background-color: #FFCBA2;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 1px solid #E38282;
+    }
+
+    .ToppingToggleButton:hover
+    {
+        background-color: rgb(208, 168, 221);
+        transition: 0.5s;
+    }
+
+    .Topping_Select_Image 
+    {
+        padding-left: 10px;
+        padding-top: 12px;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+
+    .ClickExpandMenu
+    {
+        background-color: #fce1cc;
+        position: absolute;
+        align-items: center;
+        margin-left: 10rem;
+        margin-top: 1.5rem;
+        padding: 5px;
+        padding-left: 25px;
+        border-radius: 15px;
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        animation: 0.5s;
+    }
+
+    .ClickExpandMenu li
+    {
+        margin-right: 10px;
+    }
+
+    .ImageSmallCircular
+    {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%; 
+        object-fit: cover; 
+    }
+    .HoverInfo 
+    {
+        z-index: 2000;
+        text-align: center;
+        font-family:&quot;Cedarville Cursive&quot;, cursive;
+        position: absolute;
+        background-color: white;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        top: 70px;
+        left: 0;
+        width: 200px;
+    }
+    .HoverInfoHeading
+    {
+        color:#E36565;
+    }
+    .HoverInfoPrice
+    {
+        color:#E36565;
+    }
+&lt;/style&gt;
+
+@using StackNServe.Services
+@using StackNServe.Models
+
+@inject GlobalStringListService StringListService
+@inject SelectionButtonService SelectionButtonService
+
+&lt;div class = &quot;ToppingsSelect&quot;&gt;
+    &lt;button @onclick=&quot;ToggleMenu&quot; class = &quot;ToppingToggleButton&quot;&gt;
+        &lt;div class=&quot;ToppingIconContainer&quot;&gt;
+            &lt;img src=&quot;images/Toppings_Select.png&quot; alt=&quot;Topping Select&quot; class=&quot;Topping_Select_Image&quot; /&gt;
+        &lt;/div&gt;
+    &lt;/button&gt;
+    @if (isExpanded)
+    {
+        &lt;ul class = &quot;ClickExpandMenu&quot;&gt;
+            @foreach (var item in ToppingImages.Select((Topping, index) =&gt; new { Topping, index }))
+            {
+                &lt;li @onmouseenter=&quot;() =&gt; Display_Info(item.Topping)&quot; @onmouseleave=&quot;ClearHoverInfo&quot; @onclick=&quot;() =&gt; AddToBurger(item.Topping)&quot;&gt;
+                    &lt;img src=&quot;@item.Topping&quot; class=&quot;ImageSmallCircular&quot; alt=&quot;Bun&quot; /&gt;
+                    @if (currentHoverInfo != null &amp;&amp; currentHoverPatty == item.Topping)
+                    {
+                        &lt;div class=&quot;HoverInfo&quot; style=&quot;margin-left:@($&quot;{item.index * 4}vw&quot;)&quot;&gt;
+                            &lt;h5 class=&quot;HoverInfoHeading&quot;&gt;@currentHoverInfo.Name&lt;/h5&gt;
+                            &lt;p&gt;@currentHoverInfo.Description&lt;/p&gt;
+                            &lt;p class=&quot;HoverInfoPrice&quot;&gt;Price: Rs. @currentHoverInfo.Price.ToString(&quot;F2&quot;)&lt;/p&gt;
+                        &lt;/div&gt;
+                    }
+                &lt;/li&gt;
+            }
+            &lt;li&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+        
+    }
+&lt;/div&gt;
+
+
+@code
+{ 
+ 
+    List&lt;string&gt; Toppings = new List&lt;string&gt; { &quot;Tomato&quot;, &quot;Lettuce&quot; ,&quot;Onion&quot;, &quot;Pickles&quot;, &quot;Jalapenos&quot;, &quot;Avocado&quot;, &quot;Bacon&quot; ,&quot;Cheese&quot;, &quot;Egg&quot;}; 
+    
+    List&lt;string&gt; ToppingImages = new List&lt;string&gt;
+        {
+            &quot;images/Toppings/Avocado.png&quot;,
+            &quot;images/Toppings/Bacon.png&quot;,
+            &quot;images/Toppings/Cheese.png&quot;,
+            &quot;images/Toppings/Egg.png&quot;,
+            &quot;images/Toppings/Jalapenos.png&quot;, 
+            &quot;images/Toppings/Lettuce.png&quot;,
+            &quot;images/Toppings/Onion.png&quot;, 
+            &quot;images/Toppings/Pickles.png&quot;,
+            &quot;images/Toppings/Tomato.png&quot;
+        };
+
+    private bool isExpanded = false;
+    private ToppingInfo currentHoverInfo;
+    private string currentHoverPatty;
+    private void Display_Info(string topping)
+    {
+        currentHoverPatty = topping;
+        if (topping == &quot;images/Toppings/Avocado.png&quot;)
+        {
+            Avocado temp_object = new Avocado();
+            currentHoverInfo = new ToppingInfo(&quot;Avocado&quot;, temp_object.Description, temp_object.Price);
+        }
+        else if (topping == &quot;images/Toppings/Bacon.png&quot;)
+        {
+            Bacon temp_object = new Bacon();
+            currentHoverInfo = new ToppingInfo(&quot;Bacon&quot;, temp_object.Description, temp_object.Price);
+        }
+        else if (topping == &quot;images/Toppings/Cheese.png&quot;)
+        {
+            Cheese temp_object = new Cheese();
+            currentHoverInfo = new ToppingInfo(&quot;Cheese&quot;, temp_object.Description, temp_object.Price);
+        }
+        else if (topping == &quot;images/Toppings/Egg.png&quot;)
+        {
+            Egg temp_object = new Egg();
+            currentHoverInfo = new ToppingInfo(&quot;Egg&quot;, temp_object.Description, temp_object.Price);
+        }
+        else if (topping == &quot;images/Toppings/Jalapenos.png&quot;)
+        {
+            Jalapenos temp_object = new Jalapenos();
+            currentHoverInfo = new ToppingInfo(&quot;Jalapenos&quot;, temp_object.Description, temp_object.Price);
+        }
+        else if (topping == &quot;images/Toppings/Lettuce.png&quot;)
+        {
+            Lettuce temp_object = new Lettuce();
+            currentHoverInfo = new ToppingInfo(&quot;Lettuce&quot;, temp_object.Description, temp_object.Price);
+        }
+        else if (topping == &quot;images/Toppings/Onion.png&quot;)
+        {
+            Onion temp_object = new Onion();
+            currentHoverInfo = new ToppingInfo(&quot;Onion&quot;, temp_object.Description, temp_object.Price);
+        }
+        else if (topping == &quot;images/Toppings/Pickles.png&quot;)
+        {
+            Pickles temp_object = new Pickles();
+            currentHoverInfo = new ToppingInfo(&quot;Pickles&quot;, temp_object.Description, temp_object.Price);
+        }
+        else if (topping == &quot;images/Toppings/Tomato.png&quot;)
+        {
+            Tomato temp_object = new Tomato();
+            currentHoverInfo = new ToppingInfo(&quot;Tomato&quot;, temp_object.Description, temp_object.Price);
+        }
+    }
+    private void ClearHoverInfo()
+    {
+        currentHoverInfo = null;
+        currentHoverPatty = null;
+    }
+    [Parameter]
+    public EventCallback&lt;bool&gt; OnStateChanged { get; set; }
+        
+    private async Task ToggleMenu()
+    {
+        if(isExpanded) {
+            isExpanded = false;
+        }
+        else {
+            isExpanded = true;
+            SelectionButtonService.BunSelectVar = false;
+            SelectionButtonService.PattySelectVar = false;
+            SelectionButtonService.SaucesSelectVar = false;
+            SelectionButtonService.ToppingSelectVar = true;
+            SelectionButtonService.NotifyStateChanged();
+        }
+        await OnStateChanged.InvokeAsync(isExpanded);
+        await OnStateChanged.InvokeAsync(isExpanded);
+    }
+
+    private class ToppingInfo
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+
+        public ToppingInfo(string name, string description, decimal price)
+        {
+            Name = name;
+            Description = description;
+            Price = price;
+        }
+    }
+
+    private void AddItem(string newItem)
+    {
+        if (!string.IsNullOrWhiteSpace(newItem))
+        {
+            StringListService.AddString(newItem);
+            newItem = &quot;&quot;;
+        }
+    }
+
+    public void AddToBurger(string topping)
+    {
+        Console.WriteLine(&quot;Adding Topping to Burger&quot;);
+        // Add Patty to Burger
+        currentHoverPatty = topping;
+        if(topping == &quot;images/Toppings/Avocado.png&quot;) AddItem(&quot;Avocado&quot;);
+        else if(topping == &quot;images/Toppings/Bacon.png&quot;) AddItem(&quot;Bacon&quot;);
+        else if(topping == &quot;images/Toppings/Cheese.png&quot;) AddItem(&quot;Cheese&quot;);
+        else if(topping == &quot;images/Toppings/Egg.png&quot;) AddItem(&quot;Egg&quot;);
+        else if(topping == &quot;images/Toppings/Jalapenos.png&quot;) AddItem(&quot;Jalapenos&quot;);
+        else if(topping == &quot;images/Toppings/Lettuce.png&quot;) AddItem(&quot;Lettuce&quot;);
+        else if(topping == &quot;images/Toppings/Onion.png&quot;) AddItem(&quot;Onion&quot;);
+        else if(topping == &quot;images/Toppings/Pickles.png&quot;) AddItem(&quot;Pickles&quot;);
+        else if(topping == &quot;images/Toppings/Tomato.png&quot;) AddItem(&quot;Tomato&quot;);
+    }
+
+    private System.Threading.Timer _timer;
+
+    protected override void OnInitialized()
+    {
+        _timer = new System.Threading.Timer(CheckToppingsSelectVar, null, 0, 100); // Check every 100ms
+    }
+
+    private void CheckToppingsSelectVar(object state)
+    {
+        if (!SelectionButtonService.ToppingSelectVar &amp;&amp; isExpanded)
+        {
+            InvokeAsync(async () =&gt;
+            {
+                await ToggleMenu();
+                StateHasChanged();
+            });
+        }
+    }
+
+    public void Dispose()
+    {
+        _timer?.Dispose();
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[97,6,97,21,0],[98,5,98,6,0],[100,14,100,21,0],[100,23,100,31,0],[100,32,100,34,0],[100,35,100,76,0],[100,76,100,98,0],[100,98,100,99,0],[101,13,101,14,0],[102,42,102,68,0],[102,117,102,142,0],[104,22,104,88,0],[105,21,105,22,0],[111,21,111,22,0],[113,13,113,14,0],[117,5,117,6,0],[124,5,124,139,0],[126,5,137,11,0],[139,5,139,37,0],[143,5,143,6,0],[144,9,144,37,0],[145,9,145,54,0],[146,9,146,10,0],[147,13,147,49,0],[148,13,148,103,0],[149,9,149,10,0],[150,14,150,57,0],[151,9,151,10,0],[152,13,152,45,0],[153,13,153,101,0],[154,9,154,10,0],[155,14,155,58,0],[156,9,156,10,0],[157,13,157,47,0],[158,13,158,102,0],[159,9,159,10,0],[160,14,160,55,0],[161,9,161,10,0],[162,13,162,41,0],[163,13,163,99,0],[164,9,164,10,0],[165,14,165,61,0],[166,9,166,10,0],[167,13,167,53,0],[168,13,168,105,0],[169,9,169,10,0],[170,14,170,59,0],[171,9,171,10,0],[172,13,172,49,0],[173,13,173,103,0],[174,9,174,10,0],[175,14,175,57,0],[176,9,176,10,0],[177,13,177,45,0],[178,13,178,101,0],[179,9,179,10,0],[180,14,180,59,0],[181,9,181,10,0],[182,13,182,49,0],[183,13,183,103,0],[184,9,184,10,0],[185,14,185,58,0],[186,9,186,10,0],[187,13,187,47,0],[188,13,188,102,0],[189,9,189,10,0],[190,5,190,6,0],[192,5,192,6,0],[193,9,193,33,0],[194,9,194,34,0],[195,5,195,6,0],[197,49,197,53,0],[197,54,197,58,0],[200,5,200,6,0],[201,9,201,23,0],[201,24,201,25,0],[202,13,202,32,0],[203,9,203,10,0],[204,14,204,15,0],[205,13,205,31,0],[206,13,206,57,0],[207,13,207,59,0],[208,13,208,60,0],[209,13,209,60,0],[210,13,210,57,0],[211,9,211,10,0],[212,9,212,54,0],[213,9,213,54,0],[214,5,214,6,0],[218,30,218,34,0],[218,35,218,39,0],[219,37,219,41,0],[219,42,219,46,0],[220,32,220,36,0],[220,37,220,41,0],[222,9,222,75,0],[223,9,223,10,0],[224,13,224,25,0],[225,13,225,39,0],[226,13,226,27,0],[227,9,227,10,0],[231,5,231,6,0],[232,9,232,49,0],[233,9,233,10,0],[234,13,234,50,0],[235,13,235,26,0],[236,9,236,10,0],[237,5,237,6,0],[240,5,240,6,0],[241,9,241,55,0],[243,9,243,37,0],[244,9,244,53,0],[244,54,244,73,0],[245,14,245,56,0],[245,57,245,74,0],[246,14,246,57,0],[246,58,246,76,0],[247,14,247,54,0],[247,55,247,70,0],[248,14,248,60,0],[248,61,248,82,0],[249,14,249,58,0],[249,59,249,78,0],[250,14,250,56,0],[250,57,250,74,0],[251,14,251,58,0],[251,59,251,78,0],[252,14,252,57,0],[252,58,252,76,0],[253,5,253,6,0],[258,5,258,6,0],[259,9,259,83,0],[260,5,260,6,0],[263,5,263,6,0],[264,9,264,68,0],[265,9,265,10,0],[266,13,267,13,0],[267,13,267,14,0],[267,14,268,17,0],[268,17,268,36,0],[268,36,269,17,0],[269,17,269,35,0],[269,35,270,13,0],[270,13,270,14,0],[270,14,270,16,0],[271,9,271,10,0],[272,5,272,6,0],[275,5,275,6,0],[276,9,276,27,0],[277,5,277,6,0]]);
+    </script>
+  </body>
+</html>
