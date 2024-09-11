@@ -11,7 +11,7 @@ namespace StackNServe.Services
 
     public class BurgerService
     {
-        private List<BurgerComponent> burgerStack = new List<BurgerComponent>();
+        private readonly List<BurgerComponent> burgerStack = new List<BurgerComponent>();
         public event Action OnBurgerChanged;
 
         public IReadOnlyList<BurgerComponent> BurgerStack => burgerStack.AsReadOnly();

@@ -10,24 +10,24 @@
     <pre id="content" class="source-code">
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
-using System.Data;
-using System.Security.Cryptography;
 using Microsoft.AspNetCore.Components.WebAssembly.Services;
-using StackNServe.Services;
 using StackNServe.Models;
+using StackNServe.Services;
 
 namespace StackNServe
 {
     public class BurgerComponents
     {
-        Dictionary&lt;int, string&gt; Bun= new Dictionary&lt;int, string&gt;();
-        Dictionary&lt;int, string&gt; Patty= new Dictionary&lt;int, string&gt;();
-        Dictionary&lt;int, string&gt; Toppings= new Dictionary&lt;int, string&gt;();
-        Dictionary&lt;int, string&gt; Sauces= new Dictionary&lt;int, string&gt;();
+        readonly Dictionary&lt;int, string&gt; Bun = new Dictionary&lt;int, string&gt;();
+        readonly Dictionary&lt;int, string&gt; Patty = new Dictionary&lt;int, string&gt;();
+        readonly Dictionary&lt;int, string&gt; Toppings = new Dictionary&lt;int, string&gt;();
+        readonly Dictionary&lt;int, string&gt; Sauces = new Dictionary&lt;int, string&gt;();
         public List&lt;string&gt; Order_List = new List&lt;string&gt;();
 
         public BurgerComponents()
@@ -37,39 +37,38 @@ namespace StackNServe
             InitializeToppings();
             InitializeSauces();
 
-            int Bun_Type = GetSecureRandomNumber(1, 5); // Select a bun type
+            int bunType = GetSecureRandomNumber(1, 5); // Select a bun type
             int numPatty = GetSecureRandomNumber(1, 5); // Number of patties
-            HashSet&lt;int&gt; Patty_Type = new HashSet&lt;int&gt;();
-            while (Patty_Type.Count &lt; numPatty)
+            HashSet&lt;int&gt; pattyType = new HashSet&lt;int&gt;();
+            while (pattyType.Count &lt; numPatty)
             {
-                Patty_Type.Add(GetSecureRandomNumber(1, Patty.Count + 1)); // Select patty types
+                pattyType.Add(GetSecureRandomNumber(1, Patty.Count + 1)); // Select patty types
             }
 
             int numTopping = GetSecureRandomNumber(1, 5); // Number of toppings
-            HashSet&lt;int&gt; Topping_Type = new HashSet&lt;int&gt;();
-            while (Topping_Type.Count &lt; numTopping)
+            HashSet&lt;int&gt; toppingType = new HashSet&lt;int&gt;();
+            while (toppingType.Count &lt; numTopping)
             {
-                Topping_Type.Add(GetSecureRandomNumber(1, Toppings.Count + 1)); // Select toppings
+                toppingType.Add(GetSecureRandomNumber(1, Toppings.Count + 1)); // Select toppings
             }
 
             int numSauce = GetSecureRandomNumber(1, 5); // Number of sauces
-            HashSet&lt;int&gt; Sauce_Type = new HashSet&lt;int&gt;();
-            while (Sauce_Type.Count &lt; numSauce)
+            HashSet&lt;int&gt; sauceType = new HashSet&lt;int&gt;();
+            while (sauceType.Count &lt; numSauce)
             {
-                Sauce_Type.Add(GetSecureRandomNumber(1, Sauces.Count + 1)); // Select sauces
+                sauceType.Add(GetSecureRandomNumber(1, Sauces.Count + 1)); // Select sauces
             }
-            
-            // make the order list
-            Order_List.Add(Bun[Bun_Type]);
-            foreach (int patty in Patty_Type)
+            // Make the order list
+            Order_List.Add(Bun[bunType]);
+            foreach (int patty in pattyType)
             {
                 Order_List.Add(Patty[patty]);
             }
-            foreach (int topping in Topping_Type)
+            foreach (int topping in toppingType)
             {
                 Order_List.Add(Toppings[topping]);
             }
-            foreach (int sauce in Sauce_Type)
+            foreach (int sauce in sauceType)
             {
                 Order_List.Add(Sauces[sauce]);
             }
@@ -89,8 +88,8 @@ namespace StackNServe
             {
                 byte[] data = new byte[4];
                 rng.GetBytes(data);
-                int value = BitConverter.ToInt32(data, 0) &amp; int.MaxValue; 
-                return value % (max - min) + min; 
+                int value = BitConverter.ToInt32(data, 0) &amp; int.MaxValue;
+                return value % (max - min) + min;
             }
         }
 
@@ -150,7 +149,7 @@ namespace StackNServe
 
     </pre>
     <script type="text/javascript">
-      highlightRanges([[17,9,17,68,1],[18,9,18,70,1],[19,9,19,73,1],[20,9,20,71,1],[21,9,21,61,1],[23,9,23,34,1],[24,9,24,10,1],[25,13,25,30,1],[26,13,26,33,1],[27,13,27,34,1],[28,13,28,32,1],[30,13,30,56,1],[31,13,31,57,1],[32,13,32,58,1],[33,13,33,49,1],[34,13,34,14,1],[35,17,35,75,1],[36,13,36,14,1],[38,13,38,59,1],[39,13,39,60,1],[40,13,40,53,1],[41,13,41,14,1],[42,17,42,80,1],[43,13,43,14,1],[45,13,45,57,1],[46,13,46,58,1],[47,13,47,49,1],[48,13,48,14,1],[49,17,49,76,1],[50,13,50,14,1],[53,13,53,43,1],[54,13,54,20,1],[54,22,54,31,1],[54,32,54,34,1],[54,35,54,45,1],[55,13,55,14,1],[56,17,56,46,1],[57,13,57,14,1],[58,13,58,20,1],[58,22,58,33,1],[58,34,58,36,1],[58,37,58,49,1],[59,13,59,14,1],[60,17,60,51,1],[61,13,61,14,1],[62,13,62,20,1],[62,22,62,31,1],[62,32,62,34,1],[62,35,62,45,1],[63,13,63,14,1],[64,17,64,47,1],[65,13,65,14,1],[67,13,67,52,1],[70,13,70,20,1],[70,22,70,33,1],[70,34,70,36,1],[70,37,70,47,1],[71,13,71,14,1],[72,17,72,41,1],[73,13,73,14,1],[74,9,74,10,1],[77,9,77,10,1],[78,20,78,60,1],[79,13,79,14,1],[80,17,80,43,1],[81,17,81,36,1],[82,17,82,74,1],[83,17,83,50,1],[85,9,85,10,1],[88,9,88,10,1],[89,13,89,66,1],[90,18,90,27,1],[90,29,90,53,1],[90,55,90,58,1],[91,13,91,14,1],[92,17,92,72,1],[93,17,93,46,1],[94,17,94,55,1],[95,17,95,42,1],[96,13,96,14,1],[97,13,97,35,1],[98,9,98,10,1],[100,9,100,10,1],[101,13,101,37,1],[102,13,102,38,1],[103,13,103,38,1],[104,13,104,40,1],[105,9,105,10,1],[107,9,107,10,1],[108,13,108,43,1],[109,13,109,42,1],[110,13,110,40,1],[111,13,111,55,1],[112,9,112,10,1],[115,9,115,10,1],[116,13,116,39,1],[117,13,117,40,1],[118,13,118,38,1],[119,13,119,40,1],[120,13,120,42,1],[121,13,121,40,1],[122,13,122,38,1],[123,13,123,39,1],[124,13,124,36,1],[125,9,125,10,1],[128,9,128,10,1],[129,13,129,38,1],[130,13,130,38,1],[131,13,131,41,1],[132,13,132,40,1],[133,13,133,40,1],[134,13,134,36,1],[135,13,135,36,1],[136,9,136,10,1]]);
+      highlightRanges([[17,9,17,78,1],[18,9,18,80,1],[19,9,19,83,1],[20,9,20,81,1],[21,9,21,61,1],[23,9,23,34,1],[24,9,24,10,1],[25,13,25,30,1],[26,13,26,33,1],[27,13,27,34,1],[28,13,28,32,1],[30,13,30,55,1],[31,13,31,56,1],[32,13,32,57,1],[33,13,33,47,1],[34,13,34,14,1],[35,17,35,74,1],[36,13,36,14,1],[38,13,38,58,1],[39,13,39,59,1],[40,13,40,51,1],[41,13,41,14,1],[42,17,42,79,1],[43,13,43,14,1],[45,13,45,56,1],[46,13,46,57,1],[47,13,47,47,1],[48,13,48,14,1],[49,17,49,75,1],[50,13,50,14,1],[52,13,52,42,1],[53,13,53,20,1],[53,22,53,31,1],[53,32,53,34,1],[53,35,53,44,1],[54,13,54,14,1],[55,17,55,46,1],[56,13,56,14,1],[57,13,57,20,1],[57,22,57,33,1],[57,34,57,36,1],[57,37,57,48,1],[58,13,58,14,1],[59,17,59,51,1],[60,13,60,14,1],[61,13,61,20,1],[61,22,61,31,1],[61,32,61,34,1],[61,35,61,44,1],[62,13,62,14,1],[63,17,63,47,1],[64,13,64,14,1],[66,13,66,52,1],[69,13,69,20,1],[69,22,69,33,1],[69,34,69,36,1],[69,37,69,47,1],[70,13,70,14,1],[71,17,71,41,1],[72,13,72,14,1],[73,9,73,10,1],[76,9,76,10,1],[77,20,77,60,1],[78,13,78,14,1],[79,17,79,43,1],[80,17,80,36,1],[81,17,81,74,1],[82,17,82,50,1],[84,9,84,10,1],[87,9,87,10,1],[88,13,88,66,1],[89,18,89,27,1],[89,29,89,53,1],[89,55,89,58,1],[90,13,90,14,1],[91,17,91,72,1],[92,17,92,46,1],[93,17,93,55,1],[94,17,94,42,1],[95,13,95,14,1],[96,13,96,35,1],[97,9,97,10,1],[99,9,99,10,1],[100,13,100,37,1],[101,13,101,38,1],[102,13,102,38,1],[103,13,103,40,1],[104,9,104,10,1],[106,9,106,10,1],[107,13,107,43,1],[108,13,108,42,1],[109,13,109,40,1],[110,13,110,55,1],[111,9,111,10,1],[114,9,114,10,1],[115,13,115,39,1],[116,13,116,40,1],[117,13,117,38,1],[118,13,118,40,1],[119,13,119,42,1],[120,13,120,40,1],[121,13,121,38,1],[122,13,122,39,1],[123,13,123,36,1],[124,9,124,10,1],[127,9,127,10,1],[128,13,128,38,1],[129,13,129,38,1],[130,13,130,41,1],[131,13,131,40,1],[132,13,132,40,1],[133,13,133,36,1],[134,13,134,36,1],[135,9,135,10,1]]);
     </script>
   </body>
 </html>

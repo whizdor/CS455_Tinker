@@ -10,25 +10,25 @@
     <pre id="content" class="source-code">
 namespace StackNServe.Services
 {
-    public class GlobalStringListService 
+    public class GlobalStringListService
     {
-        public List&lt;string&gt; _stringList = new List&lt;string&gt;();
+        public List&lt;string&gt; stringList = new List&lt;string&gt;();
         public event Action? OnChange;
 
-        public IReadOnlyList&lt;string&gt; StringList =&gt; _stringList.AsReadOnly();
+        public IReadOnlyList&lt;string&gt; StringList =&gt; stringList.AsReadOnly();
 
         public void AddString(string item)
         {
             if (!string.IsNullOrWhiteSpace(item))
             {
-                _stringList.Add(item);
+                stringList.Add(item);
                 NotifyStateChanged();
             }
         }
 
         public void RemoveString(string item)
         {
-            if (_stringList.Remove(item))
+            if (stringList.Remove(item))
             {
                 NotifyStateChanged();
             }
@@ -36,7 +36,7 @@ namespace StackNServe.Services
 
         public virtual void ClearList()
         {
-            _stringList.Clear();
+            stringList.Clear();
             NotifyStateChanged();
         }
 
@@ -44,9 +44,10 @@ namespace StackNServe.Services
     }
 
 }
+
     </pre>
     <script type="text/javascript">
-      highlightRanges([[5,9,5,62,1],[8,52,8,76,1],[11,9,11,10,1],[12,13,12,50,1],[13,13,13,14,1],[14,17,14,39,1],[15,17,15,38,1],[16,13,16,14,1],[17,9,17,10,1],[20,9,20,10,1],[21,13,21,42,1],[22,13,22,14,1],[23,17,23,38,1],[24,13,24,14,1],[25,9,25,10,1],[28,9,28,10,1],[29,13,29,33,1],[30,13,30,34,1],[31,9,31,10,1],[33,45,33,63,1]]);
+      highlightRanges([[5,9,5,61,1],[8,52,8,75,1],[11,9,11,10,1],[12,13,12,50,1],[13,13,13,14,1],[14,17,14,38,1],[15,17,15,38,1],[16,13,16,14,1],[17,9,17,10,1],[20,9,20,10,1],[21,13,21,41,1],[22,13,22,14,1],[23,17,23,38,1],[24,13,24,14,1],[25,9,25,10,1],[28,9,28,10,1],[29,13,29,32,1],[30,13,30,34,1],[31,9,31,10,1],[33,45,33,63,1]]);
     </script>
   </body>
 </html>

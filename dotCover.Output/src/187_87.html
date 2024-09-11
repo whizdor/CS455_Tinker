@@ -8,6 +8,8 @@
   </head>
   <body>
     <pre id="content" class="source-code">
+using System;
+using System.Net.Http;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using StackNServe;
@@ -19,13 +21,15 @@ builder.RootComponents.Add&lt;HeadOutlet&gt;(&quot;head::after&quot;);
 
 builder.Services.AddScoped(sp =&gt; new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddSingleton&lt;GlobalStringListService&gt;();
+
+// Replacing the misplaced end-of-line marker with two newlines
 builder.Services.AddScoped&lt;SelectionButtonService&gt;();
 
 await builder.Build().RunAsync();
 
     </pre>
     <script type="text/javascript">
-      highlightRanges([[6,1,6,58,0],[7,1,7,41,0],[8,1,8,55,0],[10,1,10,34,0],[10,34,10,111,0],[10,111,10,113,0],[11,1,11,58,0],[12,1,12,54,0],[14,1,14,34,0]]);
+      highlightRanges([[8,1,8,58,0],[9,1,9,41,0],[10,1,10,55,0],[12,1,12,34,0],[12,34,12,111,0],[12,111,12,113,0],[13,1,13,58,0],[16,1,16,54,0],[18,1,18,34,0]]);
     </script>
   </body>
 </html>
