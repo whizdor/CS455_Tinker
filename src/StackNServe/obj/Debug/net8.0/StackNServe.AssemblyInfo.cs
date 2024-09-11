@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StackNServe")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9008c8080744955088aea9b593692408589c84a0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0edd3777e1740948cdc6f052b12db2e4faf07482")]
 [assembly: System.Reflection.AssemblyProductAttribute("StackNServe")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StackNServe")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
