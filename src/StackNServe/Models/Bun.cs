@@ -2,7 +2,7 @@ namespace StackNServe.Models
 {
     public class Plain_Bun
     {
-        public Plain_Bun()
+public Plain_Bun()
         {
             this.Id = 1;
             this.Name = "Plain Bun";
