@@ -82,11 +82,8 @@
     }
 </style>
 
-@using StackNServe.Services
-@using StackNServe.Models
 
 @inject GlobalStringListService StringListService
-@inject SelectionButtonService SelectionButtonService
 
 <div class = "ToppingsSelect">
     <button @onclick="ToggleMenu" class = "ToppingToggleButton">
@@ -97,13 +94,13 @@
     @if (isExpanded)
     {
         <ul class = "ClickExpandMenu">
-            @foreach (var item in ToppingImages.Select((Topping, index) => new { Topping, index }))
+            @foreach (var Topping in ToppingImages)
             {
-                <li @onmouseenter="() => Display_Info(item.Topping)" @onmouseleave="ClearHoverInfo" @onclick="() => AddToBurger(item.Topping)">
-                    <img src="@item.Topping" class="ImageSmallCircular" alt="Bun" />
-                    @if (currentHoverInfo != null && currentHoverPatty == item.Topping)
+                <li @onmouseenter="() => Display_Info(Topping)" @onmouseleave="ClearHoverInfo" @onclick="() => AddToBurger(Topping)">
+                    <img src="@Topping" class="ImageSmallCircular" alt="Sauce" />
+                    @if (currentHoverInfo != null && currentHoverPatty == Topping)
                     {
-                        <div class="HoverInfo" style="margin-left:@($"{item.index * 4}vw")">
+                        <div class="HoverInfo">
                             <h5 class="HoverInfoHeading">@currentHoverInfo.Name</h5>
                             <p>@currentHoverInfo.Description</p>
                             <p class="HoverInfoPrice">Price: Rs. @currentHoverInfo.Price.ToString("F2")</p>
@@ -198,18 +195,7 @@
         
     private async Task ToggleMenu()
     {
-        if(isExpanded) {
-            isExpanded = false;
-        }
-        else {
-            isExpanded = true;
-            SelectionButtonService.BunSelectVar = false;
-            SelectionButtonService.PattySelectVar = false;
-            SelectionButtonService.SaucesSelectVar = false;
-            SelectionButtonService.ToppingSelectVar = true;
-            SelectionButtonService.NotifyStateChanged();
-        }
-        await OnStateChanged.InvokeAsync(isExpanded);
+        isExpanded = !isExpanded;
         await OnStateChanged.InvokeAsync(isExpanded);
     }
 
@@ -250,29 +236,5 @@
         else if(topping == "images/Toppings/Onion.png") AddItem("Onion");
         else if(topping == "images/Toppings/Pickles.png") AddItem("Pickles");
         else if(topping == "images/Toppings/Tomato.png") AddItem("Tomato");
-    }
-
-    private System.Threading.Timer _timer;
-
-    protected override void OnInitialized()
-    {
-        _timer = new System.Threading.Timer(CheckToppingsSelectVar, null, 0, 100); // Check every 100ms
-    }
-
-    private void CheckToppingsSelectVar(object state)
-    {
-        if (!SelectionButtonService.ToppingSelectVar && isExpanded)
-        {
-            InvokeAsync(async () =>
-            {
-                await ToggleMenu();
-                StateHasChanged();
-            });
-        }
-    }
-
-    public void Dispose()
-    {
-        _timer?.Dispose();
     }
 }

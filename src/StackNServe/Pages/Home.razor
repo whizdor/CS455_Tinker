@@ -1,11 +1,6 @@
 ﻿@page "/New_Game"
-
 @using StackNServe.Pages
 @using StackNServe.Shared
-@using StackNServe.Services
-@using StackNServe.Models
-@using System.Security.Cryptography;
-
 
 @inject GlobalStringListService StringListService
 @inject IJSRuntime JSRuntime
@@ -101,38 +96,30 @@
 
 @code
 {
-    public bool isEnded=false;
-    public string message = "Hello World!";
-    public List<string> currentOrderList = new List<string>();
-    public int currentOrderPrice = 0;
-    public int makingCost = 0;
-    public int GetSecureRandomNumber(int min, int max)
-    {
-        using (var rng = RandomNumberGenerator.Create())
-        {
-            byte[] data = new byte[4];
-            rng.GetBytes(data);
-            int value = BitConverter.ToInt32(data, 0) & int.MaxValue; 
-            return value % (max - min) + min; 
-        }
-    }
-    public Users New_Player= new Users();
-    public void HandleTimerFinished()
+    private bool isEnded=false;
+    private string message = "Hello World!";
+    private List<string> currentOrderList = new List<string>();
+    private int currentOrderPrice = 0;
+    private int makingCost = 0;
+
+    Users New_Player= new Users();
+    private void HandleTimerFinished()
     {
         isEnded = true;
         Console.WriteLine("Timer Finished");
     }
-    public List<string> Fetch_Order_List()
+    private List<string> Fetch_Order_List()
     {
         BurgerComponents burgerComponents = new BurgerComponents();
         return burgerComponents.Order_List;
     }
-    public int Fetch_Order_Price()
+    private int Fetch_Order_Price()
     {
-        return GetSecureRandomNumber(5,200);
+        Random random = new Random();
+        return random.Next(5, 200);
     }
 
-    public void ReloadGame()
+    private void ReloadGame()
     {
         if (isEnded)
         {
@@ -140,16 +127,16 @@
             New_Player = new Users();
         }
     }
-    public void UpdateOrder()
+    private void UpdateOrder()
     {
         currentOrderList = Fetch_Order_List();
         currentOrderPrice = Fetch_Order_Price();
         StateHasChanged();
     }
 
-    public void Player_Skip()
+    private void Player_Skip()
     {
-        New_Player.Balance -= 10;
+        New_Player.Balance -= 5;
         StringListService.ClearList();
         UpdateOrder();
         StateHasChanged();
@@ -166,7 +153,7 @@
         StringListService.OnChange -= StateHasChanged;
     }
 
-    public void CheckList()
+    private void CheckList()
     {
         //Compare the Elements in the two lists.
         //If they are the same, add the price to the player's balance
@@ -253,11 +240,11 @@
         UpdateOrder();
         StateHasChanged();
     }
-    public void Clear_List()
+    private void Clear_List()
     {
         StringListService.ClearList();
     }
-    public async Task ShowNotification()
+    private async Task ShowNotification()
     {
         await JSRuntime.InvokeVoidAsync("showNotification");
     }
