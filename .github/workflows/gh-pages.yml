@@ -80,7 +80,7 @@ jobs:
 
       # Build the solution after starting SonarCloud analysis
       - name: Build the solution
-        run: dotnet build StackNServe.csproj --configuration Debug
+        run: dotnet build client/StackNServe.csproj --configuration Debug
 
       # Build the test project explicitly to generate test DLLs
       - name: Build the test project
