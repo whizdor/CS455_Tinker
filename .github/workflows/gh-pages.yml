@@ -22,14 +22,6 @@ jobs:
       - name: Run dotnet-format
         run: dotnet format client/StackNServe.csproj --verify-no-changes
 
-      # # Upload the dotnet format results as an artifact
-      # - name: Upload DotNet Format results artifact
-      #   if: always()
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: dotnet-format-results
-      #     path: format-results.txt
-
   sonarcloud:
     name: SonarCloud Scan
     runs-on: ubuntu-latest
@@ -51,6 +43,13 @@ jobs:
         run: |
           coverage run --source=server -m pytest tests/server.Tests
           coverage xml -o coverage.xml
+    
+      - name: Install dotCover
+        run: dotnet tool install --global JetBrains.dotCover.GlobalTool
+
+      - name: Run .NET tests with dotCover
+        run: |
+          dotnet dotcover test tests/client.Tests/StackNServe.Tests.csproj --dcReportType=HTML
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
