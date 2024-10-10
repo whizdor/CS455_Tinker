@@ -1,38 +1,12 @@
-name: Deploy to GitHub Pages
+```name: Deploy to GitHub Pages
 
 on:
   [push]
 
-jobs:
-  dotnetformat:
-    name: DotNet Format
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+jobs:    
 
-      - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: "8.0.x"
-
-      - name: Install dotnet-format
-        run: dotnet tool install -g dotnet-format
-
-      - name: Run dotnet-format
-        run: dotnet format client/StackNServe.csproj --verify-no-changes
-
-      # # Upload the dotnet format results as an artifact
-      # - name: Upload DotNet Format results artifact
-      #   if: always()
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: dotnet-format-results
-      #     path: format-results.txt
-    
-
-  SonarCloud :
-    name: SonarCloud Analysis
+  build :
+    name: SonarCloud
     runs-on: windows-latest
     steps:
       - name: Set up JDK 17
@@ -44,22 +18,17 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       
-      # Installing the correct version of .NET SDK
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
 
-      - name: Setup Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: '3.10'
-
-      - name: Install Python dependencies
+      - name: Install server test dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -r tests/server.Tests/requirements.txt
-      
+          cd server
+          npm install
+          cd ..
+
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
         with:
@@ -82,46 +51,33 @@ jobs:
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
       
-      # Install dotcover for code coverage
       - name: Install dotCover
         run: dotnet tool install --global JetBrains.dotCover.GlobalTool
 
-      # SonarCloud analysis begins
-      - name: Begin SonarCloud Analysis
-        run: .\.sonar\scanner\dotnet-sonarscanner begin /k:"whizdor_CS455_Tinker" /o:"whizdor" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html /d:sonar.python.coverage.reportPaths=coverage.xml /d:sonar.exclusions="**/dotCover.Output/**,dotCover.Output.html"
-
-      # Build the solution after starting SonarCloud analysis
       - name: Build the solution
-        run: dotnet build client/StackNServe.csproj --configuration Debug
+        run: dotnet build src/MoleProject.csproj --configuration Debug
 
-      # Build the test project explicitly to generate test DLLs
       - name: Build the test project
-        run: dotnet build tests/client.Tests/ --configuration Debug
+        run: dotnet build TestProject/TestProject.csproj --configuration Debug
+
+      - name: Begin SonarCloud Analysis
+        run: .\.sonar\scanner\dotnet-sonarscanner begin /k:"CS455-Project_CS455-Assignment-1" /o:"cs455-project" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html /d:sonar.javascript.lcov.reportPaths=server/coverage/lcov.info /d:sonar.exclusions="**/dotCover.Output/**,dotCover.Output.html"
 
       # Run tests and collect coverage
       - name: Run tests and collect coverage
+        run: dotnet dotcover test TestProject/TestProject.csproj --dcReportType=HTML        
+        
+      - name: Run JavaScript tests and Coverage
         run: |
-          dotnet dotcover test tests/client.Tests/StackNServe.Tests.csproj --dcReportType=HTML > test-results.txt
-          cat test-results.txt
+          cd server
+          npm test 
+          cd ..
 
-       # Run Python server tests and collect coverage
-      - name: Run Python tests and collect coverage
-        run: |
-          pytest tests/server.Tests --cov=server --cov-report xml:coverage.xml
 
-      # Upload unit test results and coverage reports as artifacts
-      - name: Upload Unit Test and Coverage Results
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: test-results
-          path: test-results.txt                 
-
-      # Finalize the SonarCloud analysis after building the project
+      # End SonarCloud analysis after running tests
       - name: End SonarCloud Analysis
         run: .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
-      # Fetch detailed SonarCloud results and output in the logs
       - name: Fetch and display detailed SonarCloud analysis results
         if: always()
         shell: bash
@@ -129,7 +85,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           echo "Fetching detailed analysis results..."
-          curl -u $SONAR_TOKEN: "https://sonarcloud.io/api/issues/search?componentKeys=whizdor_CS455_Tinker" > sonarcloud-results.json
+          curl -u $SONAR_TOKEN: "https://sonarcloud.io/api/issues/search?componentKeys=CS455-Project_CS455-Assignment-1" > sonarcloud-results.json
           echo "Analysis results:"
           cat sonarcloud-results.json | jq '.issues[] | {key, component, severity, message, line}' 
       # Upload the SonarCloud results JSON as an artifact
@@ -145,17 +101,19 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          SONAR_STATUS=$(curl -s -u $SONAR_TOKEN: "https://sonarcloud.io/api/qualitygates/project_status?projectKey=whizdor_CS455_Tinker" | jq -r '.projectStatus.status')
+          SONAR_STATUS=$(curl -s -u $SONAR_TOKEN: "https://sonarcloud.io/api/qualitygates/project_status?projectKey=CS455-Project_CS455-Assignment-1" | jq -r '.projectStatus.status')
           if [ "$SONAR_STATUS" != "OK" ]; then
             echo "Quality gate failed: $SONAR_STATUS"
-            exit 1
+            exit 1  
           else
             echo "Quality gate passed!"
           fi
 
   deploy-to-github-pages:
-    needs: [SonarCloud, dotnetformat]
+    needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: write   
     if: success()
     steps:
     # Checkout the code from the master branch
@@ -169,7 +127,7 @@ jobs:
 
     # Publish the project
     - name: Publish .NET Core Project
-      run: dotnet publish src/StackNServe/StackNServe.csproj -c Release -o release --nologo
+      run: dotnet publish src/MoleProject.csproj -c Release -o release --nologo
     
     # Verify that index.html exists after the publish
     - name: Verify index.html exists
@@ -179,22 +137,19 @@ jobs:
           exit 1
         fi
 
-    # Change base tag in index.html to point to the correct subdirectory (StackNServe)
     - name: Change base-tag in index.html
-      run: sed -i 's/<base href="\/" \/>/<base href="\/CS455_Tinker\/" \/>/g' release/wwwroot/index.html
+      run: sed -i 's/<base href="\/" \/>/<base href="\/MoleProject\/" \/>/g' release/wwwroot/index.html
     
-    # Copy index.html to 404.html for GitHub Pages fallback routing
     - name: Copy index.html to 404.html
       run: cp release/wwwroot/index.html release/wwwroot/404.html
 
-    # Add a .nojekyll file to prevent Jekyll processing
     - name: Add .nojekyll file
       run: touch release/wwwroot/.nojekyll
 
-    # Deploy the wwwroot folder to the gh-pages branch
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages
         FOLDER: release/wwwroot
+```
