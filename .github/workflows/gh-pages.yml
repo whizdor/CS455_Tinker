@@ -89,7 +89,7 @@ jobs:
       # Run tests and collect coverage
       - name: Run tests and collect coverage
         run: |
-          dotnet dotcover test tests/client.Tests/StackNServe.Tests.csproj --dcReportType=HTML > test-results.txt         
+          dotnet dotcover test tests/client.Tests/StackNServe.Tests.csproj --dcReportType=HTML     
 
       # Finalize the SonarCloud analysis after building the project
       - name: End SonarCloud Analysis
@@ -103,10 +103,9 @@ jobs:
           args: >
             -Dsonar.projectKey=whizdor_CS455_Tinker
             -Dsonar.organization=whizdor
-            -Dsonar.sources=server,client
+            -Dsonar.sources=server
             -Dsonar.python.version=3.9
             -Dsonar.python.coverage.reportPaths=coverage.xml
-            -Dsonar.cs.dotcover.reportsPaths=dotCover.Output.html
 
 
   # SonarCloud :
