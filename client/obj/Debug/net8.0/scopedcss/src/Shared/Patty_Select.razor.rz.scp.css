@@ -1,0 +1,80 @@
+.PattySelect[b-kav18e04ca]
+{
+    display: flex;
+    flex-direction: row;
+}
+.PattyToggleButton[b-kav18e04ca]
+{
+    background-color: #FFCBA2;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 1px solid #E38282;
+}
+
+.PattyToggleButton:hover[b-kav18e04ca]
+{
+    background-color: rgb(208, 168, 221);
+    transition: 0.5s;
+}
+
+.Patty_Select_Image[b-kav18e04ca] 
+{
+    padding-left: 10px;
+    padding-top: 12px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.ClickExpandMenu[b-kav18e04ca]
+{
+    background-color: #fce1cc;
+    position: absolute;
+    align-items: center;
+    margin-left: 10rem;
+    margin-top: 1.5rem;
+    padding: 5px;
+    padding-left: 25px;
+    border-radius: 15px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    animation: 0.5s;
+}
+
+.ClickExpandMenu li[b-kav18e04ca]
+{
+    margin-right: 10px;
+}
+
+.ImageSmallCircular[b-kav18e04ca]
+{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; 
+    object-fit: cover; 
+}
+.HoverInfo[b-kav18e04ca] 
+{
+    z-index: 2000;
+    text-align: center;
+    font-family:"Cedarville Cursive", cursive;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    top: 70px;
+    left: 0;
+    width: 200px;
+}
+.HoverInfoHeading[b-kav18e04ca]
+{
+    color:#E36565;
+}
+.HoverInfoPrice[b-kav18e04ca]
+{
+    color:#E36565;
+}

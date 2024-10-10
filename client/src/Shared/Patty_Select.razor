@@ -1,0 +1,208 @@
+@namespace StackNServe.Shared
+
+@using StackNServe.Services
+
+@using System.Text.Json;
+@inject HttpClient Http
+@inject GlobalStringListService StringListService
+@inject SelectionButtonService SelectionButtonService
+
+<div class = "PattySelect">
+
+    <button @onclick="ToggleMenu" class = "PattyToggleButton">
+        <div class="PattyIconContainer">
+            <img src="images/Patty_Select.png" alt="Patty Select" class="Patty_Select_Image" />
+        </div>
+    </button>
+    @if (isExpanded)
+    {
+        <ul class = "ClickExpandMenu" @onmouseenter="CancelAutoClose" @onmouseleave="StartAutoClose">
+            @foreach (var item in PattyImages.Select((Patty, index) => new { Patty, index }))
+            {
+                <li @onmouseenter="() => Display_Info(item.Patty)" @onmouseleave="ClearHoverInfo" @onclick="() => AddToBurger(item.Patty)">
+                    <img src="@item.Patty" class="ImageSmallCircular" alt="Patty" />
+                    @if (currentHoverInfo != null && currentHoverPatty == item.Patty)
+                    {
+                        <div class="HoverInfo" style="margin-left:@($"{item.index * 3.5}vw")">
+                            <h5 class="HoverInfoHeading">@currentHoverInfo.Name</h5>
+                            <p>@currentHoverInfo.Description</p>
+                            <p class="HoverInfoPrice">Price: Rs. @currentHoverInfo.Price.ToString("F2")</p>
+                        </div>
+                    }
+                </li>
+            }
+            <li></li>
+        </ul>
+        
+    }
+</div>
+
+<link href="src/Shared/Patty_Select.razor.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+@code
+{  
+    List<string> PattyImages = new List<string>
+        {
+            "images/Patty/Veggie_Patty.png",
+            "images/Patty/Chicken_Patty.png",
+            "images/Patty/Fish_Patty.png",
+            "images/Patty/Portobello_Mushroom_Patty.png",
+        };
+    
+    public bool isExpanded = false;
+    public PattyInfo currentHoverInfo;
+    public string currentHoverPatty;
+    public Timer autoCloseTimer;
+
+
+    public async Task Display_Info(string Patty)
+    {
+        currentHoverPatty = Patty;
+
+        // Map image path to patty name
+        string pattyName = Patty switch
+        {
+            "images/Patty/Veggie_Patty.png" => "Veggie Patty",
+            "images/Patty/Chicken_Patty.png" => "Chicken Patty",
+            "images/Patty/Fish_Patty.png" => "Fish Patty",
+            "images/Patty/Portobello_Mushroom_Patty.png" => "Portobello Mushroom Patty",
+            _ => null
+        };
+
+        if (!string.IsNullOrEmpty(pattyName))
+        {
+            try
+            {
+                string url = $"burger/description?type=patty&name={Uri.EscapeDataString(pattyName)}";
+                var response = await Http.GetAsync(url);
+                var content = await response.Content.ReadAsStringAsync();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    currentHoverInfo = JsonSerializer.Deserialize<PattyInfo>(content, new JsonSerializerOptions
+                        {
+                            PropertyNameCaseInsensitive
+                        = true
+                        });
+                }
+                else
+                {
+                    currentHoverInfo = new PattyInfo(pattyName, $"Error: {response.StatusCode} - {content}", 0);
+                }
+            }
+            catch (Exception ex)
+            {
+                currentHoverInfo = new PattyInfo(pattyName, $"Exception: {ex.Message}", 0);
+            }
+
+            StateHasChanged();
+        }
+        else
+        {
+            currentHoverInfo = new PattyInfo("Unknown Patty", "Description not available.", 0);
+            StateHasChanged();
+        }
+    }
+
+    public void ClearHoverInfo()
+    {
+        currentHoverInfo = null;
+        currentHoverPatty = null;
+    }
+    [Parameter]
+    public EventCallback<bool> OnStateChanged { get; set; }
+    
+    public async Task ToggleMenu()
+    {
+        if(isExpanded) {
+            isExpanded = false;
+        }
+        else {
+            isExpanded = true;
+            SelectionButtonService.BunSelectVar = false;
+            SelectionButtonService.PattySelectVar = true;
+            SelectionButtonService.SaucesSelectVar = false;
+            SelectionButtonService.ToppingSelectVar = false;
+            SelectionButtonService.NotifyStateChanged();
+        }
+        await OnStateChanged.InvokeAsync(isExpanded);
+    }
+    public void StartAutoClose()
+    {
+        CancelAutoClose(); // Cancel any existing timer
+        autoCloseTimer = new Timer(CloseMenu, null, 1, Timeout.Infinite);
+        
+    }
+
+    public void CancelAutoClose()
+    {
+        autoCloseTimer?.Dispose();
+        autoCloseTimer = null;
+    }
+
+    public void CloseMenu(object state)
+    {
+        isExpanded = false;
+        InvokeAsync(StateHasChanged);
+    }
+    public class PattyInfo
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+
+        public PattyInfo(string name, string description, decimal price)
+        {
+            Name = name;
+            Description = description;
+            Price = price;
+        }
+    }
+
+    public void AddItem(string newItem)
+    {
+        if (!string.IsNullOrWhiteSpace(newItem))
+        {
+            StringListService.AddString(newItem);
+            newItem = "";
+        }
+    }
+
+    public void AddToBurger(string patty)
+    {
+        Console.WriteLine("Adding Patty to Burger");
+        // Add Patty to Burger
+        currentHoverPatty = patty;
+        if (patty == "images/Patty/Veggie_Patty.png") AddItem("Veggie Patty");
+        else if (patty == "images/Patty/Chicken_Patty.png") AddItem("Chicken Patty");
+        else if (patty == "images/Patty/Fish_Patty.png") AddItem("Fish Patty");
+        else if (patty == "images/Patty/Portobello_Mushroom_Patty.png") AddItem("Portobello Mushroom Patty");
+    }
+
+    public System.Threading.Timer _timer;
+
+    protected override void OnInitialized()
+    {
+        _timer = new System.Threading.Timer(CheckPattySelectVar, null, 0, 100); // Check every 100ms
+    }
+
+    public void CheckPattySelectVar(object state)
+    {
+        if (!SelectionButtonService.PattySelectVar && isExpanded)
+        {
+            InvokeAsync(async () =>
+            {
+                await ToggleMenu();
+                StateHasChanged();
+            });
+        }
+    }
+
+    public void Dispose()
+    {
+        _timer?.Dispose();
+    }
+}
+
+

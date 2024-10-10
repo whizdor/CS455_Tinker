@@ -1,0 +1,15 @@
+.Player_Guide[b-a26awm07li] {
+    font-family: 'Poppins', sans-serif;
+}
+
+.Player_Guide_Heading[b-a26awm07li] {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #ff7f50;
+}
+
+.Player_Guide_Rules[b-a26awm07li] {
+    background-color: #FFCBA2;
+    border: 1px solid black;
+    padding: 10px;
+}

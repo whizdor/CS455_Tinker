@@ -1,0 +1,332 @@
+﻿@namespace StackNServe.Pages
+@page "/New_Game"
+
+@using StackNServe.Pages
+@using StackNServe.Shared
+@using StackNServe.Services
+
+@using System.Text.Json;
+@using System.Text;
+@using System.Net.Http;
+@using System.Net.Http.Headers;
+
+
+@inject HttpClient Http
+@inject GlobalStringListService StringListService
+@inject IJSRuntime JSRuntime
+
+<div class="Home_Page">
+    @if (isGameStarting)
+    {
+        <div class="Player_Name_Input">
+            <h3 class="Player_Name_Label">Please enter your name to start the game:</h3>
+            <input type="text" class="Player_Name_Field" @bind="playerName" placeholder="Enter your name" />
+            <button class="Player_Name_Button" @onclick="validate_and_start_game">Start Game</button>
+            @if (is_input_valid)
+            {
+                <p class="error-message">@error_message</p>
+            }
+        </div>
+    }
+    else if (isEnded)
+    {
+        <h1 class="Time_Elapsed_Message">Your time finished!</h1>
+
+        <br>
+        <h2 class="Time_Elapsed_Score">Your score was:@current_player_score</h2>
+
+        <br>
+        <h3 class="Time_Elapsed_Instruction">Click on the button below to play again</h3>
+        <div class="Play_Again_Button">
+        <div class="Play_Again" @onclick="reload_game">
+            <h1 class="Play_Again_Heading">PLAY AGAIN</h1>
+        </div>
+    </div>
+    }
+    else
+    {
+        <div class="Select_Buttons">
+            <Bun_Select />
+            <br>
+            <Patty_Select />
+            <br>
+            <Toppings_Select />
+            <br>
+            <Sauces_Select />
+        </div>
+        <div id="notification" class="notification" style="display: none;">
+        @message
+    </div>
+        <Main_Page_Header />
+        <div class="Timer_Divison">
+            <CountdownTimer InitialTimeInSeconds="@initial_timer_time" OnTimerFinished="handle_timer_finished"
+                ShowResetButton="false" />
+        </div>
+        <div class="Cooking_Table_Division">
+        <div class="burger-container">
+            @foreach (var ingredient in StringListService.StringList)
+                {
+                    <div class="@ingredient.ToLower().Replace(" ", "-")"></div>
+                }
+            </div>
+            <Cooking_Table />
+        </div>
+
+        <div class="Order_Division">
+            <Order Order_List="@current_order_list" Order_Price="@current_order_price" />
+        </div>
+        <div class="Skip_Play_Buttons">
+            <Skip OnSkip="player_skip" />
+            <Submit OnSubmit="CheckList" />
+        </div>
+
+        <div class="Score_Board_Divison">
+        <Score_Board current_score="current_player_score" />
+    </div>
+    }
+</div>
+
+@code
+{
+    [Parameter]
+    public bool isEnded { get; set; } = false;
+    [Parameter]
+    public bool isGameStarting { get; set; } = true;
+    public string playerName = "";
+    public string message = "Hello World!";
+    public int makingCost = 0;
+
+    // New Player
+    public int current_player_id = 0;
+    public async Task create_player()
+    {
+        var post_data = new Dictionary<string, string>();
+        post_data["player_name"] = playerName;
+        var jsonString = JsonSerializer.Serialize(post_data);
+
+        var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+        content.Headers.ContentLength = Encoding.UTF8.GetByteCount(jsonString);
+
+        var response = await Http.PostAsync("createPlayer", content);
+
+        var responseContent = await response.Content.ReadAsStringAsync();
+
+        var playerData = JsonSerializer.Deserialize<Dictionary<string, int>>(responseContent);
+        current_player_id = playerData["player_id"];
+
+        StateHasChanged();
+    }
+
+    public bool is_input_valid = false;
+    public string error_message = "";
+    public async Task validate_and_start_game()
+    {
+        if (string.IsNullOrWhiteSpace(playerName))
+        {
+            error_message = "Name cannot be empty!";
+            is_input_valid = true;
+        }
+        else if (playerName.Contains(" "))
+        {
+            error_message = "Name cannot contain spaces!";
+            is_input_valid = true;
+        }
+        else if (playerName.Any(c => !char.IsLetterOrDigit(c)))
+        {
+            error_message = "Name can only contain letters and numbers!";
+            is_input_valid = true;
+        }
+        else if(!await check_unique_name())
+        {
+            error_message = "Name already exists!";
+            is_input_valid = true;
+        }
+        else
+        {
+            Console.WriteLine("Player created successfully!");
+            is_input_valid = false;
+            start_game();
+        }
+    
+    }
+
+    public async Task<bool> check_unique_name()
+    {
+        Dictionary<string, string> post_data = new Dictionary<string, string>();
+        post_data["player_name"] = playerName;
+
+        var jsonString = JsonSerializer.Serialize(post_data);
+        var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+        content.Headers.ContentLength = Encoding.UTF8.GetByteCount(jsonString);
+
+        var response = await Http.PostAsync("checkUniqueName", content);
+
+        var responseContent = await response.Content.ReadAsStringAsync();
+        return responseContent == "true";
+    }
+
+    public int current_player_score { get; set; } = 0;
+    public async Task fetch_player_score()
+    {
+        Dictionary<string, int> post_data = new Dictionary<string, int>();
+        post_data["player_id"] = current_player_id;
+
+        var jsonString = JsonSerializer.Serialize(post_data);
+        var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+        var response = await Http.PostAsync("fetchScore", content);
+        var scoreString = await response.Content.ReadAsStringAsync();
+    
+        current_player_score = int.Parse(scoreString);
+        await InvokeAsync(() => StateHasChanged());
+    }
+
+    public async Task update_player_score()
+    {
+        Dictionary<string, int> post_data = new Dictionary<string, int>();
+        post_data["player_id"] = current_player_id;
+        post_data["score"] = current_player_score;
+        var response = await Http.PostAsJsonAsync("updateScore", post_data);
+    }
+
+    // New Order
+    public async Task update_order()
+    {
+        await fetch_order_list();
+        await fetch_order_price();
+        StateHasChanged();
+    }
+    public int current_order_price = 0;
+    public async Task fetch_order_price()
+    {
+        string response = await Http.GetStringAsync("orderPrice");
+        current_order_price = int.Parse(response);
+        Console.WriteLine(current_order_price);
+    }
+    public List<string> current_order_list = new List<string>();
+    public async Task fetch_order_list()
+    {
+        string response = await Http.GetStringAsync("orderList");
+        current_order_list = response.Split(',').ToList();
+
+        for (int i = 0; i < current_order_list.Count; i++)
+        {
+            current_order_list[i] = current_order_list[i].Replace("\"", "").Trim();
+        }
+        current_order_list[0] = current_order_list[0].Substring(1).Trim();
+        current_order_list[current_order_list.Count - 1] = current_order_list[current_order_list.Count - 1].Substring(0,
+        current_order_list[current_order_list.Count - 1].Length - 1).Trim();
+
+        Console.WriteLine(current_order_list);
+    }
+
+    public int initial_timer_time = 120;
+    public void handle_timer_finished()
+    {
+        isEnded = true;
+        Console.WriteLine("Timer Finished");
+    }
+    public async Task reload_game()
+    {
+        if (isEnded)
+        {
+            isEnded = false;
+            isGameStarting = true;
+        }
+    }
+    public async Task player_skip()
+    {
+        current_player_score -= 10;
+        await update_player_score();
+        StringListService.ClearList();
+        await update_order();
+        StateHasChanged();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        StringListService.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        StringListService.OnChange -= StateHasChanged;
+    }
+
+    public async Task start_game()
+    {
+        isGameStarting = false;
+        await InvokeAsync(() => StateHasChanged());
+        await create_player();
+        await fetch_player_score();
+        await update_order();
+    }
+
+    //Classes to check for the right order.
+    public class OrderCheckRequest
+    {
+        public List<string> userOrderList { get; set; }
+        public List<string> requiredOrderList { get; set; }
+        public int currentPlayerScore { get; set; }
+        public int orderPrice { get; set; }
+    }
+
+    public class OrderCheckResponse
+    {
+        public bool IsOrderCorrect { get; set; }
+        public int FinalScore { get; set; }
+        public string Message { get; set; }
+    }
+    public async Task CheckList()
+    {
+        var orderCheckRequest = new OrderCheckRequest
+        {
+            userOrderList = new List<string>(StringListService.StringList),
+            requiredOrderList = current_order_list ?? new List<string>(),
+            currentPlayerScore = current_player_score,
+            orderPrice = current_order_price
+        };
+
+        var jsonString = JsonSerializer.Serialize(orderCheckRequest);
+        var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+        content.Headers.ContentLength = Encoding.UTF8.GetByteCount(jsonString);
+
+        var response = await Http.PostAsync("checkList", content);
+
+        var result = await response.Content.ReadFromJsonAsync<OrderCheckResponse>();
+
+        message = result.Message;
+        current_player_score = result.FinalScore;
+        update_player_score();
+
+        show_notification();
+        StringListService.ClearList();
+        await update_order();
+        StateHasChanged();
+    }
+
+    public async Task show_notification()
+    {
+        await JSRuntime.InvokeVoidAsync("showNotification");
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("initializeNotification");
+        }
+    }
+}
+
+<script>
+    function initializeNotification() {
+        window.showNotification = function () {
+            var notification = document.getElementById('notification');
+            notification.style.display = 'block';
+            setTimeout(function () {
+                notification.style.display = 'none';
+            }, 5000);
+        }
+    }
+</script>

@@ -16,9 +16,11 @@ jobs:
         with:
           dotnet-version: "8.0.x"
 
-      - name: Run dotnet-format and save results
-        run: |
-          dotnet format src/StackNServe/StackNServe.csproj --verify-no-changes > format-results.txt
+      - name: Install dotnet-format
+        run: dotnet tool install -g dotnet-format
+
+      - name: Run dotnet-format
+        run: dotnet format client/StackNServe.csproj --verify-no-changes > format-results.txt
           cat format-results.txt
 
       # Upload the dotnet format results as an artifact
@@ -31,7 +33,7 @@ jobs:
     
 
   SonarCloud :
-    name: SonarCloud
+    name: SonarCloud Analysis
     runs-on: windows-latest
     steps:
       - name: Set up JDK 17
@@ -77,20 +79,24 @@ jobs:
 
       # SonarCloud analysis begins
       - name: Begin SonarCloud Analysis
-        run: .\.sonar\scanner\dotnet-sonarscanner begin /k:"whizdor_CS455_Tinker" /o:"whizdor" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html /d:sonar.exclusions="**/dotCover.Output/**,dotCover.Output.html"
+        run: .\.sonar\scanner\dotnet-sonarscanner begin /k:"whizdor_CS455_Tinker" /o:"whizdor" \
+            /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html \
+            /d:sonar.sources="client,server" \
+            /d:sonar.inclusions="client/**/*.razor,server/**/*.py" \
+            /d:sonar.exclusions="client/**/*.razor.css,client/obj/**,client/bin/**,server/__pycache__/**"
 
       # Build the solution after starting SonarCloud analysis
       - name: Build the solution
-        run: dotnet build src/StackNServe/StackNServe.csproj --configuration Debug
+        run: dotnet build client/StackNServe.csproj --configuration Debug
 
       # Build the test project explicitly to generate test DLLs
       - name: Build the test project
-        run: dotnet build tests/StackNServe.Tests/StackNServe.Tests.csproj --configuration Debug
+        run: dotnet build tests/client.Tests/ --configuration Debug
 
       # Run tests and collect coverage
       - name: Run tests and collect coverage
         run: |
-          dotnet dotcover test tests/StackNServe.Tests/StackNServe.Tests.csproj --dcReportType=HTML > test-results.txt
+          dotnet dotcover test tests/client.Tests/StackNServe.Tests.csproj --dcReportType=HTML > test-results.txt
           cat test-results.txt
 
       # Upload unit test results and coverage reports as artifacts

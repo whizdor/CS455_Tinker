@@ -1,0 +1,215 @@
+@namespace StackNServe.Shared
+
+@using System.Net.Http;
+
+@using StackNServe.Services
+@using System.Text.Json;
+@inject HttpClient Http
+@inject GlobalStringListService StringListService
+@inject SelectionButtonService SelectionButtonService
+
+<div class="BunSelect">
+    <button @onclick="ToggleMenu" class="BunToggleButton">
+        <div class="BunIconContainer">
+            <img src="images/Bun_Select.png" alt="Bun Select" class="Bun_Select_Image" />
+        </div>
+    </button>
+    @if (isExpanded)
+    {
+        <ul class="ClickExpandMenu">
+            @foreach (var item in BunImages.Select((Bun, index) => new { Bun, index }))
+            {
+                <li @onmouseenter="() => Display_Info(item.Bun)" @onmouseleave="ClearHoverInfo"
+                    @onclick="() => AddToBurger(item.Bun)">
+                    <img src="@item.Bun" class="ImageSmallCircular" alt="Bun" />
+                    @if (currentHoverInfo != null && currentHoverBun == item.Bun)
+                    {
+                        <div class="HoverInfo" style="margin-left:@($"{item.index * 0.5}vw")">
+                            <h5 class="HoverInfoHeading">@currentHoverInfo.Name</h5>
+                            <p>@currentHoverInfo.Description</p>
+                            <p class="HoverInfoPrice">Price: Rs. @currentHoverInfo.Price.ToString("F2")</p>
+                        </div>
+                    }
+                </li>
+            }
+            <li></li>
+        </ul>
+
+    }
+</div>
+
+<link href="src/Shared/Bun_Select.razor.css" rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+
+@code
+{
+    List<string> BunImages = new List<string>
+{
+"images/Bun/Garlic_Bun.png",
+"images/Bun/Parmesan_Bun.png",
+"images/Bun/Plain_Bun.png",
+"images/Bun/Sesame_Bun.png",
+};
+
+    public bool isExpanded = false;
+    public BunInfo currentHoverInfo;
+    public string currentHoverBun;
+
+    public async Task Display_Info(string Bun)
+    {
+        currentHoverBun = Bun;
+
+        // Map image path to bun name
+        string bunName = Bun switch
+        {
+            "images/Bun/Garlic_Bun.png" => "Garlic Bun",
+            "images/Bun/Parmesan_Bun.png" => "Parmesan Bun",
+            "images/Bun/Plain_Bun.png" => "Plain Bun",
+            "images/Bun/Sesame_Bun.png" => "Sesame Bun",
+            _ => null
+        };
+
+        if (!string.IsNullOrEmpty(bunName))
+        {
+            try
+            {
+                string url = $"burger/description?type=bun&name={Uri.EscapeDataString(bunName)}";
+                var response = await Http.GetAsync(url);
+                var content = await response.Content.ReadAsStringAsync();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    currentHoverInfo = JsonSerializer.Deserialize<BunInfo>(content, new JsonSerializerOptions
+                        {
+                            PropertyNameCaseInsensitive
+                        = true
+                        });
+                }
+                else
+                {
+                    currentHoverInfo = new BunInfo(bunName, $"Error: {response.StatusCode} - {content}", 0);
+                }
+            }
+            catch (Exception ex)
+            {
+                currentHoverInfo = new BunInfo(bunName, $"Exception: {ex.Message}", 0);
+            }
+
+            StateHasChanged();
+        }
+        else
+        {
+            currentHoverInfo = new BunInfo("Unknown Bun", "Description not available.", 0);
+            StateHasChanged();
+        }
+    }
+
+
+
+
+    public void ClearHoverInfo()
+    {
+        currentHoverInfo = null;
+        currentHoverBun = null;
+    }
+    [Parameter]
+    public EventCallback<bool> OnStateChanged { get; set; }
+
+    public async Task ToggleMenu()
+    {
+        if (isExpanded)
+        {
+            isExpanded = false;
+        }
+        else
+        {
+            isExpanded = true;
+            SelectionButtonService.BunSelectVar = true;
+            SelectionButtonService.PattySelectVar = false;
+            SelectionButtonService.SaucesSelectVar = false;
+            SelectionButtonService.ToppingSelectVar = false;
+            SelectionButtonService.NotifyStateChanged();
+        }
+        await OnStateChanged.InvokeAsync(isExpanded);
+    }
+    public class BunInfo
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+
+        public BunInfo(string name, string description, decimal price)
+        {
+            Name = name;
+            Description = description;
+            Price = price;
+        }
+    }
+
+    public void AddItem(string newItem)
+    {
+        if (!string.IsNullOrWhiteSpace(newItem))
+        {
+            StringListService.AddString(newItem);
+        }
+    }
+
+    public void AddToBurger(string buns)
+    {
+        Console.WriteLine("Adding Bun to Burger");
+
+        currentHoverBun = buns;
+
+        int count = 0;
+        foreach (var ingredient in StringListService.StringList)
+        {
+            if (ingredient == "Bun Bottom")
+            {
+                count++;
+            }
+        }
+
+        if (count == 0)
+        {
+            if (buns == "images/Bun/Garlic_Bun.png") AddItem("Bun Bottom");
+            else if (buns == "images/Bun/Parmesan_Bun.png") AddItem("Bun Bottom");
+            else if (buns == "images/Bun/Plain_Bun.png") AddItem("Bun Bottom");
+            else if (buns == "images/Bun/Sesame_Bun.png") AddItem("Bun Bottom");
+        }
+
+        else
+        {
+            if (buns == "images/Bun/Garlic_Bun.png") AddItem("Garlic Bun");
+            else if (buns == "images/Bun/Parmesan_Bun.png") AddItem("Parmesan Bun");
+            else if (buns == "images/Bun/Plain_Bun.png") AddItem("Plain Bun");
+            else if (buns == "images/Bun/Sesame_Bun.png") AddItem("Sesame Bun");
+        }
+    }
+
+    public System.Threading.Timer _timer;
+
+    protected override void OnInitialized()
+    {
+        _timer = new System.Threading.Timer(CheckBunSelectVar, null, 0, 100); // Check every 100ms
+    }
+
+    public void CheckBunSelectVar(object state)
+    {
+        if (!SelectionButtonService.BunSelectVar && isExpanded)
+        {
+            InvokeAsync(async () =>
+            {
+                await ToggleMenu();
+                StateHasChanged();
+            });
+        }
+    }
+
+    public void Dispose()
+    {
+        _timer?.Dispose();
+    }
+}

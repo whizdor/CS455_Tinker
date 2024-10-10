@@ -1,0 +1,208 @@
+@namespace StackNServe.Shared
+
+@using StackNServe.Services
+
+@using System.Text.Json;
+@inject HttpClient Http
+@inject GlobalStringListService StringListService
+@inject SelectionButtonService SelectionButtonService
+
+<div class="ToppingsSelect">
+    <button @onclick="ToggleMenu" class="ToppingToggleButton">
+        <div class="ToppingIconContainer">
+            <img src="images/Toppings_Select.png" alt="Topping Select" class="Topping_Select_Image" />
+        </div>
+    </button>
+    @if (isExpanded)
+    {
+        <ul class="ClickExpandMenu">
+            @foreach (var item in ToppingImages.Select((Topping, index) => new { Topping, index }))
+            {
+                <li @onmouseenter="() => Display_Info(item.Topping)" @onmouseleave="ClearHoverInfo"
+                    @onclick="() => AddToBurger(item.Topping)">
+                    <img src="@item.Topping" class="ImageSmallCircular" alt="Bun" />
+                    @if (currentHoverInfo != null && currentHoverToppings == item.Topping)
+                    {
+                        <div class="HoverInfo" style="margin-left:@($"{item.index * 4}vw")">
+                            <h5 class="HoverInfoHeading">@currentHoverInfo.Name</h5>
+                            <p>@currentHoverInfo.Description</p>
+                            <p class="HoverInfoPrice">Price: Rs. @currentHoverInfo.Price.ToString("F2")</p>
+                        </div>
+                    }
+                </li>
+            }
+            <li></li>
+        </ul>
+
+    }
+</div>
+
+<link href="src/Shared/Toppings_Select.razor.css" rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+@code
+{
+
+    List<string> Toppings = new List<string> { "Tomato", "Lettuce" ,"Onion", "Pickles", "Jalapenos", "Avocado", "Bacon"
+,"Cheese", "Egg"};
+
+    List<string> ToppingImages = new List<string>
+    {
+    "images/Toppings/Avocado.png",
+    "images/Toppings/Bacon.png",
+    "images/Toppings/Cheese.png",
+    "images/Toppings/Egg.png",
+    "images/Toppings/Jalapenos.png",
+    "images/Toppings/Lettuce.png",
+    "images/Toppings/Onion.png",
+    "images/Toppings/Pickles.png",
+    "images/Toppings/Tomato.png"
+    };
+
+    public bool isExpanded = false;
+    public ToppingInfo currentHoverInfo;
+    public string currentHoverToppings;
+    public async Task Display_Info(string topping)
+    {
+        currentHoverToppings = topping;
+
+        // Map image path to topping name
+        string toppingName = topping switch
+        {
+            "images/Toppings/Avocado.png" => "Avocado",
+            "images/Toppings/Bacon.png" => "Bacon",
+            "images/Toppings/Cheese.png" => "Cheese",
+            "images/Toppings/Egg.png" => "Egg",
+            "images/Toppings/Jalapenos.png" => "Jalapenos",
+            "images/Toppings/Lettuce.png" => "Lettuce",
+            "images/Toppings/Onion.png" => "Onion",
+            "images/Toppings/Pickles.png" => "Pickles",
+            "images/Toppings/Tomato.png" => "Tomato",
+            _ => null
+        };
+
+        if (!string.IsNullOrEmpty(toppingName))
+        {
+            try
+            {
+                string url = $"burger/description?type=toppings&name={Uri.EscapeDataString(toppingName)}";
+                var response = await Http.GetAsync(url);
+                var content = await response.Content.ReadAsStringAsync();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    currentHoverInfo = JsonSerializer.Deserialize<ToppingInfo>(content, new JsonSerializerOptions
+                        {
+                            PropertyNameCaseInsensitive = true
+                        });
+                }
+                else
+                {
+                    currentHoverInfo = new ToppingInfo(toppingName, $"Error: {response.StatusCode} - {content}", 0);
+                }
+            }
+            catch (Exception ex)
+            {
+                currentHoverInfo = new ToppingInfo(toppingName, $"Exception: {ex.Message}", 0);
+            }
+
+            StateHasChanged();
+        }
+        else
+        {
+            currentHoverInfo = new ToppingInfo("Unknown Topping", "Description not available.", 0);
+            StateHasChanged();
+        }
+    }
+    public void ClearHoverInfo()
+    {
+        currentHoverInfo = null;
+        currentHoverToppings = null;
+    }
+    [Parameter]
+    public EventCallback<bool> OnStateChanged { get; set; }
+
+    public async Task ToggleMenu()
+    {
+        if (isExpanded)
+        {
+            isExpanded = false;
+        }
+        else
+        {
+            isExpanded = true;
+            SelectionButtonService.BunSelectVar = false;
+            SelectionButtonService.PattySelectVar = false;
+            SelectionButtonService.SaucesSelectVar = false;
+            SelectionButtonService.ToppingSelectVar = true;
+            SelectionButtonService.NotifyStateChanged();
+        }
+        await OnStateChanged.InvokeAsync(isExpanded);
+        await OnStateChanged.InvokeAsync(isExpanded);
+    }
+
+    public class ToppingInfo
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+
+        public ToppingInfo(string name, string description, decimal price)
+        {
+            Name = name;
+            Description = description;
+            Price = price;
+        }
+    }
+
+    public void AddItem(string newItem)
+    {
+        if (!string.IsNullOrWhiteSpace(newItem))
+        {
+            StringListService.AddString(newItem);
+            newItem = "";
+        }
+    }
+
+    public void AddToBurger(string topping)
+    {
+        Console.WriteLine("Adding Topping to Burger");
+        // Add Patty to Burger
+        currentHoverToppings = topping;
+        if (topping == "images/Toppings/Avocado.png") AddItem("Avocado");
+        else if (topping == "images/Toppings/Bacon.png") AddItem("Bacon");
+        else if (topping == "images/Toppings/Cheese.png") AddItem("Cheese");
+        else if (topping == "images/Toppings/Egg.png") AddItem("Egg");
+        else if (topping == "images/Toppings/Jalapenos.png") AddItem("Jalapenos");
+        else if (topping == "images/Toppings/Lettuce.png") AddItem("Lettuce");
+        else if (topping == "images/Toppings/Onion.png") AddItem("Onion");
+        else if (topping == "images/Toppings/Pickles.png") AddItem("Pickles");
+        else if (topping == "images/Toppings/Tomato.png") AddItem("Tomato");
+    }
+
+    public System.Threading.Timer _timer;
+
+    protected override void OnInitialized()
+    {
+        _timer = new System.Threading.Timer(CheckToppingsSelectVar, null, 0, 100); // Check every 100ms
+    }
+
+    public void CheckToppingsSelectVar(object state)
+    {
+        if (!SelectionButtonService.ToppingSelectVar && isExpanded)
+        {
+            InvokeAsync(async () =>
+            {
+                await ToggleMenu();
+                StateHasChanged();
+            });
+        }
+    }
+
+    public void Dispose()
+    {
+        _timer?.Dispose();
+    }
+}

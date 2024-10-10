@@ -1,0 +1,17 @@
+@namespace StackNServe.Shared
+
+<div class="Skip" @onclick="InvokeOnSkip">
+    <h1 class="Skip_Heading">Skip</h1>
+</div>
+
+<link href="src/Shared/Skip.razor.css" rel="stylesheet">
+
+@code
+{
+    [Parameter]
+    public EventCallback OnSkip { get; set; }
+    public async Task InvokeOnSkip()
+    {
+        await OnSkip.InvokeAsync();
+    }
+}

@@ -1,0 +1,103 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = StackNServe
+build_property.RootNamespace = StackNServe
+build_property.ProjectDir = /Users/kushagra/Desktop/CS455/tinker/CS455_Tinker/client/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = false
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/kushagra/Desktop/CS455/tinker/CS455_Tinker/client
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/kushagra/Desktop/CS455/tinker/CS455_Tinker/client/src/App.razor]
+build_metadata.AdditionalFiles.TargetPath = c3JjL0FwcC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kushagra/Desktop/CS455/tinker/CS455_Tinker/client/src/Shared/BackgroundMusic.razor]
+build_metadata.AdditionalFiles.TargetPath = c3JjL1NoYXJlZC9CYWNrZ3JvdW5kTXVzaWMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kushagra/Desktop/CS455/tinker/CS455_Tinker/client/src/Shared/Main_Page_Header.razor]
+build_metadata.AdditionalFiles.TargetPath = c3JjL1NoYXJlZC9NYWluX1BhZ2VfSGVhZGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kushagra/Desktop/CS455/tinker/CS455_Tinker/client/src/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = c3JjL19JbXBvcnRzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kushagra/Desktop/CS455/tinker/CS455_Tinker/client/src/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = c3JjL0xheW91dC9NYWluTGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-ki4rbs8pro
+
+[/Users/kushagra/Desktop/CS455/tinker/CS455_Tinker/client/src/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = c3JjL0xheW91dC9OYXZNZW51LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-8h63vtf6tk
+
+[/Users/kushagra/Desktop/CS455/tinker/CS455_Tinker/client/src/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = c3JjL1BhZ2VzL0hvbWUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-us3kyvq5il
+
+[/Users/kushagra/Desktop/CS455/tinker/CS455_Tinker/client/src/Pages/Leaderboard.razor]
+build_metadata.AdditionalFiles.TargetPath = c3JjL1BhZ2VzL0xlYWRlcmJvYXJkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-ouijnuvbsk
+
+[/Users/kushagra/Desktop/CS455/tinker/CS455_Tinker/client/src/Pages/Player_Guide.razor]
+build_metadata.AdditionalFiles.TargetPath = c3JjL1BhZ2VzL1BsYXllcl9HdWlkZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-a26awm07li
+
+[/Users/kushagra/Desktop/CS455/tinker/CS455_Tinker/client/src/Shared/Bun_Select.razor]
+build_metadata.AdditionalFiles.TargetPath = c3JjL1NoYXJlZC9CdW5fU2VsZWN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-driyezzxmt
+
+[/Users/kushagra/Desktop/CS455/tinker/CS455_Tinker/client/src/Shared/Cooking_Table.razor]
+build_metadata.AdditionalFiles.TargetPath = c3JjL1NoYXJlZC9Db29raW5nX1RhYmxlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-f810o7bwlm
+
+[/Users/kushagra/Desktop/CS455/tinker/CS455_Tinker/client/src/Shared/CountdownTimer.razor]
+build_metadata.AdditionalFiles.TargetPath = c3JjL1NoYXJlZC9Db3VudGRvd25UaW1lci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-5vt54m814s
+
+[/Users/kushagra/Desktop/CS455/tinker/CS455_Tinker/client/src/Shared/Order.razor]
+build_metadata.AdditionalFiles.TargetPath = c3JjL1NoYXJlZC9PcmRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-z5unuhd19t
+
+[/Users/kushagra/Desktop/CS455/tinker/CS455_Tinker/client/src/Shared/Patty_Select.razor]
+build_metadata.AdditionalFiles.TargetPath = c3JjL1NoYXJlZC9QYXR0eV9TZWxlY3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-kav18e04ca
+
+[/Users/kushagra/Desktop/CS455/tinker/CS455_Tinker/client/src/Shared/Play_Again.razor]
+build_metadata.AdditionalFiles.TargetPath = c3JjL1NoYXJlZC9QbGF5X0FnYWluLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-ax9pm1gha9
+
+[/Users/kushagra/Desktop/CS455/tinker/CS455_Tinker/client/src/Shared/Sauces_Select.razor]
+build_metadata.AdditionalFiles.TargetPath = c3JjL1NoYXJlZC9TYXVjZXNfU2VsZWN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-ot2v37ac3m
+
+[/Users/kushagra/Desktop/CS455/tinker/CS455_Tinker/client/src/Shared/Score_Board.razor]
+build_metadata.AdditionalFiles.TargetPath = c3JjL1NoYXJlZC9TY29yZV9Cb2FyZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-s60le6brux
+
+[/Users/kushagra/Desktop/CS455/tinker/CS455_Tinker/client/src/Shared/Skip.razor]
+build_metadata.AdditionalFiles.TargetPath = c3JjL1NoYXJlZC9Ta2lwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-0m5gn5znoe
+
+[/Users/kushagra/Desktop/CS455/tinker/CS455_Tinker/client/src/Shared/Submit.razor]
+build_metadata.AdditionalFiles.TargetPath = c3JjL1NoYXJlZC9TdWJtaXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-ucunfh4nfd
+
+[/Users/kushagra/Desktop/CS455/tinker/CS455_Tinker/client/src/Shared/Toppings_Select.razor]
+build_metadata.AdditionalFiles.TargetPath = c3JjL1NoYXJlZC9Ub3BwaW5nc19TZWxlY3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-pydyowslbe

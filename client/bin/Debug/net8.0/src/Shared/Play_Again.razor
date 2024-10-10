@@ -1,0 +1,21 @@
+@namespace StackNServe.Shared
+@page "/Play_Again"
+@using StackNServe.Pages
+@using StackNServe.Shared
+@inject NavigationManager NavigationManager
+
+<div class="Play_Again" @onclick="InvokeOnPlayAgain">
+    <h1 class="Play_Again_Heading">PLAY</h1>
+</div>
+
+<link href="src/Shared/Play_Again.razor.css" rel="stylesheet">
+
+@code
+{
+    [Parameter]
+    public EventCallback OnPlayAgain { get; set; }
+    private void InvokeOnPlayAgain()
+    {
+        NavigationManager.NavigateTo("New_Game");
+    }
+}
