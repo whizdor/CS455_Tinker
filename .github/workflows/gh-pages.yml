@@ -20,16 +20,15 @@ jobs:
         run: dotnet tool install -g dotnet-format
 
       - name: Run dotnet-format
-        run: dotnet format client/StackNServe.csproj --verify-no-changes > format-results.txt
-          cat format-results.txt
+        run: dotnet format client/StackNServe.csproj --verify-no-changes
 
-      # Upload the dotnet format results as an artifact
-      - name: Upload DotNet Format results artifact
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: dotnet-format-results
-          path: format-results.txt
+      # # Upload the dotnet format results as an artifact
+      # - name: Upload DotNet Format results artifact
+      #   if: always()
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: dotnet-format-results
+      #     path: format-results.txt
     
 
   SonarCloud :
