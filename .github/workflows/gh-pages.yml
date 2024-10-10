@@ -49,8 +49,7 @@ jobs:
 
       - name: Run .NET tests with dotCover
         run: |
-          dotnet dotcover test tests/client.Tests/StackNServe.Tests.csproj --dcReportType=HTML --output=dotCover.Output.html
-          dotnet dotcover report --reportType=XML --input=dotCover.Output.html --output=dotCover.Output.xml
+          dotnet dotcover test tests/client.Tests/StackNServe.Tests.csproj --dcReportType=XML --dcOutput=dotCover.Output.xml
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
