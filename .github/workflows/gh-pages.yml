@@ -52,30 +52,29 @@ jobs:
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
         with:
-          path: ~\sonar\cache
+          path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
-      
+
       - name: Cache SonarCloud scanner
         id: cache-sonar-scanner
         uses: actions/cache@v3
         with:
-          path: .\.sonar\scanner
+          path: .sonar/scanner
           key: ${{ runner.os }}-sonar-scanner
           restore-keys: ${{ runner.os }}-sonar-scanner
       
       - name: Install SonarCloud scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
-        shell: powershell
         run: |
-          New-Item -Path .\.sonar\scanner -ItemType Directory
-          dotnet tool update dotnet-sonarscanner --tool-path ./.sonar/scanner
+          mkdir -p .sonar/scanner
+          dotnet tool update dotnet-sonarscanner --tool-path .sonar/scanner
       
       # Install dotcover for code coverage
       - name: Install dotCover
         run: dotnet tool install --global JetBrains.dotCover.GlobalTool
 
-  #     # SonarCloud analysis begins
+      # SonarCloud analysis begins
       - name: Begin SonarCloud Analysis
         run: ./.sonar/scanner/dotnet-sonarscanner begin /k:"whizdor_CS455_Tinker" /o:"whizdor" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html /d:sonar.exclusions="**/dotCover.Output/**,dotCover.Output.html"
 
