@@ -137,73 +137,80 @@ jobs:
         with:
           dotnet-version: "8.0.x"
     
-      # Cache SonarCloud packages
-      - name: Cache SonarCloud packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
+      # # Cache SonarCloud packages
+      # - name: Cache SonarCloud packages
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: ~/.sonar/cache
+      #     key: ${{ runner.os }}-sonar
+      #     restore-keys: ${{ runner.os }}-sonar
 
-      # Cache SonarCloud scanner
-      - name: Cache SonarCloud scanner
-        id: cache-sonar-scanner
-        uses: actions/cache@v3
-        with:
-          path: .sonar/scanner
-          key: ${{ runner.os }}-sonar-scanner
-          restore-keys: ${{ runner.os }}-sonar-scanner
+      # # Cache SonarCloud scanner
+      # - name: Cache SonarCloud scanner
+      #   id: cache-sonar-scanner
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: .sonar/scanner
+      #     key: ${{ runner.os }}-sonar-scanner
+      #     restore-keys: ${{ runner.os }}-sonar-scanner
       
-      # Install SonarCloud scanner
-      - name: Install SonarCloud scanner
-        if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
-        run: |
-          mkdir -p .sonar/scanner
-          dotnet tool update dotnet-sonarscanner --tool-path .sonar/scanner
+      # # Install SonarCloud scanner
+      # - name: Install SonarCloud scanner
+      #   if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
+      #   run: |
+      #     mkdir -p .sonar/scanner
+      #     dotnet tool update dotnet-sonarscanner --tool-path .sonar/scanner
 
       # Install dotCover for code coverage on .NET
       - name: Install dotCover
         run: dotnet tool install --global JetBrains.dotCover.GlobalTool
 
-      # Begin SonarCloud analysis, including both Python and .NET settings
-      - name: Begin SonarCloud Analysis
-        run: ./.sonar/scanner/dotnet-sonarscanner begin /k:"whizdor_CS455_Tinker" /o:"whizdor" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.python.coverage.reportPaths="coverage.xml" /d:sonar.cs.dotcover.reportsPaths="dotCover.Output.html" /d:sonar.exclusions="**/dotCover.Output/**,dotCover.Output.html" /d:sonar.projectBaseDir="${{ github.workspace }}"
+      # # Begin SonarCloud analysis, including both Python and .NET settings
+      # - name: Begin SonarCloud Analysis
+      #   run: ./.sonar/scanner/dotnet-sonarscanner begin /k:"whizdor_CS455_Tinker" /o:"whizdor" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.python.coverage.reportPaths="coverage.xml" /d:sonar.cs.dotcover.reportsPaths="dotCover.Output.html" /d:sonar.exclusions="**/dotCover.Output/**,dotCover.Output.html" /d:sonar.projectBaseDir="${{ github.workspace }}"
 
-      # Build .NET solution for the client-side project
+      # # Build .NET solution for the client-side project
       - name: Build the solution
         run: dotnet build client/StackNServe.csproj --configuration Debug
 
       # Build the test project for .NET tests
       - name: Build the test project
-        run: dotnet build tests/client.Tests/ --configuration Debug
+        run: dotnet build tests/client.Tests/StackNServe.Tests.csproj --configuration Debug
 
-      # Run .NET tests and collect coverage using dotCover
-      - name: Run tests and collect coverage for .NET
-        run: |
-          dotnet dotcover test tests/client.Tests/StackNServe.Tests.csproj --dcReportType=HTML  
+      # Run tests and collect coverage using XPlat Code Coverage, specifying test project location
+      - name: Run tests and collect coverage
+        run: dotnet test tests/client.Tests/StackNServe.Tests.csproj --collect:"XPlat Code Coverage" --settings coverlet.runsettings
 
-      # Fix absolute paths in dotCover output (replace absolute path with relative path)
-      - name: Fix dotCover report paths
-        run: sed -i 's|/home/runner/work/CS455_Tinker/CS455_Tinker/|./|g' dotCover.Output.html
+      # Move the coverage report to a location where SonarCloud can access it
+      - name: Move coverage report
+        run: mv $(find . -name '*.coverage.cobertura.xml') ./cs_coverage.xml
+
+      # # Run .NET tests and collect coverage using dotCover
+      # - name: Run tests and collect coverage for .NET
+      #   run: |
+      #     dotnet dotcover test tests/client.Tests/StackNServe.Tests.csproj --dcReportType=HTML  
+
+      # # Fix absolute paths in dotCover output (replace absolute path with relative path)
+      # - name: Fix dotCover report paths
+      #   run: sed -i 's|/home/runner/work/CS455_Tinker/CS455_Tinker/|./|g' dotCover.Output.html
    
+      # # Finalize the SonarCloud analysis
+      # - name: End SonarCloud Analysis
+      #   run: ./.sonar/scanner/dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
-      # Finalize the SonarCloud analysis
-      - name: End SonarCloud Analysis
-        run: ./.sonar/scanner/dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
-
-      # # Perform the SonarCloud scan
-      # - name: SonarCloud Scan
-      #   uses: SonarSource/sonarcloud-github-action@master
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      #   with:
-      #     args: >
-      #       -Dsonar.projectKey=whizdor_CS455_Tinker
-      #       -Dsonar.organization=whizdor
-      #       -Dsonar.sources=server,client
-      #       -Dsonar.python.version=3.9
-      #       -Dsonar.python.coverage.reportPaths=coverage.xml
-      #       -Dsonar.cs.dotcover.reportsPaths=dotCover.Output.html
+      # Perform the SonarCloud scan
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=whizdor_CS455_Tinker
+            -Dsonar.organization=whizdor
+            -Dsonar.sources=server,client
+            -Dsonar.python.version=3.9
+            -Dsonar.python.coverage.reportPaths=coverage.xml
+            -Dsonar.cs.vscoveragexml.reportsPaths=cs_coverage.xml
 
 
 
@@ -277,25 +284,38 @@ jobs:
   #     # Run tests and collect coverage
   #     - name: Run tests and collect coverage
   #       run: |
-  #         dotnet dotcover test tests/client.Tests/StackNServe.Tests.csproj --dcReportType=HTML > test-results.txt
-  #         cat test-results.txt
+  #         dotnet dotcover test tests/client.Tests/StackNServe.Tests.csproj --dcReportType=HTML 
 
   #      # Run Python server tests and collect coverage
   #     - name: Run Python tests and collect coverage
   #       run: |
   #         pytest tests/server.Tests --cov=server --cov-report xml:coverage.xml
 
-  #     # Upload unit test results and coverage reports as artifacts
-  #     - name: Upload Unit Test and Coverage Results
-  #       if: always()
-  #       uses: actions/upload-artifact@v3
-  #       with:
-  #         name: test-results
-  #         path: test-results.txt                 
+  # #     # Upload unit test results and coverage reports as artifacts
+  # #     - name: Upload Unit Test and Coverage Results
+  # #       if: always()
+  # #       uses: actions/upload-artifact@v3
+  # #       with:
+  # #         name: test-results
+  # #         path: test-results.txt                 
 
   #     # Finalize the SonarCloud analysis after building the project
   #     - name: End SonarCloud Analysis
   #       run: .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+
+  #     # Perform the SonarCloud scan
+  #     - name: SonarCloud Scan
+  #       uses: SonarSource/sonarcloud-github-action@master
+  #       env:
+  #         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  #       with:
+  #         args: >
+  #           -Dsonar.projectKey=whizdor_CS455_Tinker
+  #           -Dsonar.organization=whizdor
+  #           -Dsonar.sources=server,client
+  #           -Dsonar.python.version=3.9
+  #           -Dsonar.python.coverage.reportPaths=coverage.xml
+  #           -Dsonar.cs.dotcover.reportsPaths=dotCover.Output.html
 
   #     # # Fetch detailed SonarCloud results and output in the logs
   #     # - name: Fetch and display detailed SonarCloud analysis results
