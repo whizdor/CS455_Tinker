@@ -76,20 +76,20 @@ jobs:
 
       # SonarCloud analysis begins
       - name: Begin SonarCloud Analysis
-        run: ./.sonar/scanner/dotnet-sonarscanner begin /k:"whizdor_CS455_Tinker" /o:"whizdor" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.dotcover.reportsPaths="./client/dotCover.Output.html" /d:sonar.exclusions="**/client/dotCover.Output/**,./client/dotCover.Output.html" /d:sonar.projectBaseDir="./client"
+        run: ./.sonar/scanner/dotnet-sonarscanner begin /k:"whizdor_CS455_Tinker" /o:"whizdor" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.dotcover.reportsPaths="dotCover.Output.html" /d:sonar.projectBaseDir="client"
 
       # Build the solution after starting SonarCloud analysis
       - name: Build the solution
-        run: dotnet build client/StackNServe.csproj --configuration Debug
+        run: dotnet build StackNServe.csproj --configuration Debug
 
       # Build the test project explicitly to generate test DLLs
       - name: Build the test project
-        run: dotnet build tests/client.Tests/ --configuration Debug
+        run: dotnet build ../tests/client.Tests/ --configuration Debug
 
       # Run tests and collect coverage
       - name: Run tests and collect coverage
         run: |
-          dotnet dotcover test tests/client.Tests/StackNServe.Tests.csproj --dcReportType=HTML > test-results.txt         
+          dotnet dotcover test ../tests/client.Tests/StackNServe.Tests.csproj --dcReportType=HTML > test-results.txt         
 
       # Finalize the SonarCloud analysis after building the project
       - name: End SonarCloud Analysis
