@@ -107,7 +107,7 @@ jobs:
   #           -Dsonar.python.version=3.9
   #           -Dsonar.python.coverage.reportPaths=coverage.xml
 
-    sonarcloud:
+  sonarcloud:
     name: SonarCloud Scan
     runs-on: ubuntu-latest
     steps:
