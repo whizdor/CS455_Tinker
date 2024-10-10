@@ -54,13 +54,6 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-  #           -Dsonar.projectKey=whizdor_CS455_Tinker
-  #           -Dsonar.organization=whizdor
-  #           -Dsonar.sources=server
-  #           -Dsonar.language=py
-  #           -Dsonar.coverageReportPaths=coverage.xml
 
 
   # SonarCloud :
