@@ -43,13 +43,17 @@ jobs:
         run: |
           coverage run --source=server -m pytest tests/server.Tests
           coverage xml -o coverage.xml
-    
-      - name: Install dotCover
-        run: dotnet tool install --global JetBrains.dotCover.GlobalTool
 
-      - name: Run .NET tests with dotCover
+       - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "8.0.x"
+
+      # Run tests and collect coverage
+      - name: Run tests and collect coverage
         run: |
-          dotnet dotcover test tests/client.Tests/StackNServe.Tests.csproj --dcReportType=XML --dcOutput=dotCover.Output.xml
+          dotnet dotcover test tests/client.Tests/StackNServe.Tests.csproj --dcReportType=HTML
+
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
