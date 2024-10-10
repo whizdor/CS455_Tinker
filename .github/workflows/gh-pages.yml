@@ -88,7 +88,7 @@ jobs:
 
       # SonarCloud analysis begins
       - name: Begin SonarCloud Analysis
-        run: .\.sonar\scanner\dotnet-sonarscanner begin /k:"whizdor_CS455_Tinker" /o:"whizdor" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html /d:sonar.python.coverage.reportPaths=coverage.xml /d:sonar.exclusions="**/dotCover.Output/**,dotCover.Output.html"
+        run: .\.sonar\scanner\dotnet-sonarscanner begin /k:"whizdor_CS455_Tinker" /o:"whizdor" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html /d:sonar.exclusions="**/dotCover.Output/**,dotCover.Output.html"
 
       # Build the solution after starting SonarCloud analysis
       - name: Build the solution
@@ -121,37 +121,51 @@ jobs:
       - name: End SonarCloud Analysis
         run: .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
-      # Fetch detailed SonarCloud results and output in the logs
-      - name: Fetch and display detailed SonarCloud analysis results
-        if: always()
-        shell: bash
+      # # Fetch detailed SonarCloud results and output in the logs
+      # - name: Fetch and display detailed SonarCloud analysis results
+      #   if: always()
+      #   shell: bash
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #   run: |
+      #     echo "Fetching detailed analysis results..."
+      #     curl -u $SONAR_TOKEN: "https://sonarcloud.io/api/issues/search?componentKeys=whizdor_CS455_Tinker" > sonarcloud-results.json
+      #     echo "Analysis results:"
+      #     cat sonarcloud-results.json | jq '.issues[] | {key, component, severity, message, line}' 
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          echo "Fetching detailed analysis results..."
-          curl -u $SONAR_TOKEN: "https://sonarcloud.io/api/issues/search?componentKeys=whizdor_CS455_Tinker" > sonarcloud-results.json
-          echo "Analysis results:"
-          cat sonarcloud-results.json | jq '.issues[] | {key, component, severity, message, line}' 
-      # Upload the SonarCloud results JSON as an artifact
-      - name: Upload SonarCloud results artifact
-        if: always()  
-        uses: actions/upload-artifact@v3
         with:
-          name: sonarcloud-results
-          path: sonarcloud-results.json 
-      - name: Check SonarCloud Quality Gate
-        id: quality-gate
-        shell: bash
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          SONAR_STATUS=$(curl -s -u $SONAR_TOKEN: "https://sonarcloud.io/api/qualitygates/project_status?projectKey=whizdor_CS455_Tinker" | jq -r '.projectStatus.status')
-          if [ "$SONAR_STATUS" != "OK" ]; then
-            echo "Quality gate failed: $SONAR_STATUS"
-            exit 1
-          else
-            echo "Quality gate passed!"
-          fi
+          args: >
+            -Dsonar.projectKey=whizdor_CS455_Tinker
+            -Dsonar.organization=whizdor
+            -Dsonar.sources=server
+            -Dsonar.language=py
+            -Dsonar.coverageReportPaths=coverage.xml
+
+      # # Upload the SonarCloud results JSON as an artifact
+      # - name: Upload SonarCloud results artifact
+      #   if: always()  
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: sonarcloud-results
+      #     path: sonarcloud-results.json 
+
+      # - name: Check SonarCloud Quality Gate
+      #   id: quality-gate
+      #   shell: bash
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #   run: |
+      #     SONAR_STATUS=$(curl -s -u $SONAR_TOKEN: "https://sonarcloud.io/api/qualitygates/project_status?projectKey=whizdor_CS455_Tinker" | jq -r '.projectStatus.status')
+      #     if [ "$SONAR_STATUS" != "OK" ]; then
+      #       echo "Quality gate failed: $SONAR_STATUS"
+      #       exit 1
+      #     else
+      #       echo "Quality gate passed!"
+      #     fi
 
   deploy-to-github-pages:
     needs: [SonarCloud, dotnetformat]
