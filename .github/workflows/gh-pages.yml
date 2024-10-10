@@ -45,7 +45,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r tests/server.Tests/requirements.txt
-          pip install coverage pytest-cov coverage-cobertura
+          pip install coverage pytest-cov
 
       - name: Run tests and generate coverage report
         run: |
