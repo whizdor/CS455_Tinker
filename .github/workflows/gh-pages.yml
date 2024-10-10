@@ -49,12 +49,52 @@ jobs:
         with:
           dotnet-version: "8.0.x"
     
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v3
+        with:
+          path: ~\sonar\cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      
+      - name: Cache SonarCloud scanner
+        id: cache-sonar-scanner
+        uses: actions/cache@v3
+        with:
+          path: .\.sonar\scanner
+          key: ${{ runner.os }}-sonar-scanner
+          restore-keys: ${{ runner.os }}-sonar-scanner
+      
+      - name: Install SonarCloud scanner
+        if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
+        shell: powershell
+        run: |
+          New-Item -Path .\.sonar\scanner -ItemType Directory
+          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+      
+      # Install dotcover for code coverage
       - name: Install dotCover
         run: dotnet tool install --global JetBrains.dotCover.GlobalTool
 
-      - name: Run .NET tests with dotCover
+  #     # SonarCloud analysis begins
+      - name: Begin SonarCloud Analysis
+        run: ./.sonar/scanner/dotnet-sonarscanner begin /k:"whizdor_CS455_Tinker" /o:"whizdor" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html /d:sonar.exclusions="**/dotCover.Output/**,dotCover.Output.html"
+
+      # Build the solution after starting SonarCloud analysis
+      - name: Build the solution
+        run: dotnet build client/StackNServe.csproj --configuration Debug
+
+      # Build the test project explicitly to generate test DLLs
+      - name: Build the test project
+        run: dotnet build tests/client.Tests/ --configuration Debug
+
+      # Run tests and collect coverage
+      - name: Run tests and collect coverage
         run: |
-          dotnet dotcover test tests/client.Tests/StackNServe.Tests.csproj --dcReportType=HTML
+          dotnet dotcover test tests/client.Tests/StackNServe.Tests.csproj --dcReportType=HTML > test-results.txt         
+
+      # Finalize the SonarCloud analysis after building the project
+      - name: End SonarCloud Analysis
+        run: ./.sonar/scanner/dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
