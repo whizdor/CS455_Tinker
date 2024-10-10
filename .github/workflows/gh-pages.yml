@@ -191,19 +191,19 @@ jobs:
       - name: End SonarCloud Analysis
         run: ./.sonar/scanner/dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
-      # Perform the SonarCloud scan
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.projectKey=whizdor_CS455_Tinker
-            -Dsonar.organization=whizdor
-            -Dsonar.sources=server,client
-            -Dsonar.python.version=3.9
-            -Dsonar.python.coverage.reportPaths=coverage.xml
-            -Dsonar.cs.dotcover.reportsPaths=dotCover.Output.html
+      # # Perform the SonarCloud scan
+      # - name: SonarCloud Scan
+      #   uses: SonarSource/sonarcloud-github-action@master
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #   with:
+      #     args: >
+      #       -Dsonar.projectKey=whizdor_CS455_Tinker
+      #       -Dsonar.organization=whizdor
+      #       -Dsonar.sources=server,client
+      #       -Dsonar.python.version=3.9
+      #       -Dsonar.python.coverage.reportPaths=coverage.xml
+      #       -Dsonar.cs.dotcover.reportsPaths=dotCover.Output.html
 
 
 
