@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "StackNServe",
   "resources": {
-    "hash": "sha256-6X3A51TrVu48HkxcuR74pt4OssRqkP1mEtE9xolrHuI=",
+    "hash": "sha256-V+DybJGYi/hEdm8tqL2C13Jr1S/+q0eEf0z1EakOtTg=",
     "jsModuleNative": {
       "dotnet.native.8.0.8.0ql9kr4r6t.js": "sha256-juC5sA7gHTLXFEhAKgdM2/RavswpwCtDfjYGsAz2FXg="
     },
@@ -218,10 +218,10 @@
       "mscorlib.wasm": "sha256-Gz8PyW2/fwihe5ul81OwmRUrU71r+KtbyRw6xlOGD+Q=",
       "netstandard.wasm": "sha256-jMTqIQzoDS810lyhZpMO5eEC36EzntXqSVn+2qwkOMQ=",
       "System.Private.CoreLib.wasm": "sha256-NFj5WE5VLP2LptZIRJCUIc1AMk06FmxpsSILfPISwAw=",
-      "StackNServe.wasm": "sha256-QShHKM7ViANPGhYx/wsnETYRCPoPVJaIiTZUBtyabxc="
+      "StackNServe.wasm": "sha256-LrFpVuVM57u6EnoeU2gDwC82IUwjfInn8bN9tWS0mj4="
     },
     "pdb": {
-      "StackNServe.pdb": "sha256-o+m32MsBiuJDPV2jQmBA5Rm5V3PqX4ZAsgN5dInR35Q="
+      "StackNServe.pdb": "sha256-eWq9XTYqPXACcPFOnhq76qkuq7/pHm5nzx+yGiQLdyo="
     }
   },
   "cacheBootResources": true,
