@@ -183,7 +183,14 @@ jobs:
 
       # Move the coverage report to a location where SonarCloud can access it
       - name: Move coverage report
-        run: mv $(find . -name '*.coverage.cobertura.xml') ./cs_coverage.xml
+        run: |
+          COVERAGE_FILE=$(find . -name 'coverage.cobertura.xml' | head -n 1)
+          if [ -n "$COVERAGE_FILE" ]; then
+            mv "$COVERAGE_FILE" ./cs_coverage.xml
+          else
+            echo "Coverage file not found!"
+            exit 1
+          fi
 
       # # Run .NET tests and collect coverage using dotCover
       # - name: Run tests and collect coverage for .NET
