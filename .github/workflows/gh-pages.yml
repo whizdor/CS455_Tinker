@@ -167,7 +167,7 @@ jobs:
 
       # Begin SonarCloud analysis, including both Python and .NET settings
       - name: Begin SonarCloud Analysis
-        run: ./.sonar/scanner/dotnet-sonarscanner begin /k:"whizdor_CS455_Tinker" /o:"whizdor" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.python.coverage.reportPaths="coverage.xml" /d:sonar.cs.dotcover.reportsPaths="dotCover.Output.html" /d:sonar.python.version=3.9 /d:sonar.python.coverage.reportPaths=coverage.xml /d:sonar.exclusions="**/dotCover.Output/**,dotCover.Output.html"
+        run: ./.sonar/scanner/dotnet-sonarscanner begin /k:"whizdor_CS455_Tinker" /o:"whizdor" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.dotcover.reportsPaths="dotCover.Output.html" /d:sonar.python.version=3.9 /d:sonar.python.coverage.reportPaths=coverage.xml /d:sonar.exclusions="**/dotCover.Output/**,dotCover.Output.html"
 
       # # Build .NET solution for the client-side project
       - name: Build the solution
