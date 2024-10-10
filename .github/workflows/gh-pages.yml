@@ -78,11 +78,7 @@ jobs:
 
       # SonarCloud analysis begins
       - name: Begin SonarCloud Analysis
-        run: .\.sonar\scanner\dotnet-sonarscanner begin /k:"whizdor_CS455_Tinker" /o:"whizdor" \
-            /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html \
-            /d:sonar.sources="client,server" \
-            /d:sonar.inclusions="client/**/*.razor,server/**/*.py" \
-            /d:sonar.exclusions="client/**/*.razor.css,client/obj/**,client/bin/**,server/__pycache__/**"
+        run: .\.sonar\scanner\dotnet-sonarscanner begin /k:"whizdor_CS455_Tinker" /o:"whizdor" /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html /d:sonar.sources="client,server" /d:sonar.inclusions="client/**/*.razor,server/**/*.py" /d:sonar.exclusions="client/**/*.razor.css,client/obj/**,client/bin/**,server/__pycache__/**"
 
       # Build the solution after starting SonarCloud analysis
       - name: Build the solution
