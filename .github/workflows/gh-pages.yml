@@ -180,7 +180,12 @@ jobs:
       # Run .NET tests and collect coverage using dotCover
       - name: Run tests and collect coverage for .NET
         run: |
-          dotnet dotcover test tests/client.Tests/StackNServe.Tests.csproj --dcReportType=HTML     
+          dotnet dotcover test tests/client.Tests/StackNServe.Tests.csproj --dcReportType=HTML  
+
+      # Fix absolute paths in dotCover output (replace absolute path with relative path)
+      - name: Fix dotCover report paths
+        run: sed -i 's|/home/runner/work/CS455_Tinker/CS455_Tinker/|./|g' dotCover.Output.html
+   
 
       # Finalize the SonarCloud analysis
       - name: End SonarCloud Analysis
